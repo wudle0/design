@@ -1,0 +1,160 @@
+#archive {
+  .material-icon {
+    display: inline-block;
+    font-family: 'Material Symbols Outlined', sans-serif !important;
+    font-size: 20px;
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 48;
+    font-style: normal;
+    font-weight: normal;
+    font-feature-settings: 'liga';
+    line-height: 1;
+    color: inherit;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+
+    // fill
+    &.fill {
+      font-variation-settings:
+        'FILL' 1,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 48;
+    }
+
+    // size
+    &.xxs {
+      font-size: 12px;
+    }
+
+    &.xs {
+      font-size: 16px;
+    }
+
+    &.sm {
+      font-size: 18px;
+    }
+
+    &.md {
+      font-size: 20px;
+    }
+
+    &.lg {
+      font-size: 22px;
+    }
+
+    &.xl {
+      font-size: 24px;
+    }
+
+    // color
+    &.default {
+      color: var(--icon-default);
+    }
+
+    &.subtle {
+      color: var(--icon-subtle);
+    }
+
+    &.on-color {
+      color: var(--icon-on-color);
+    }
+
+    &.inverse {
+      color: var(--icon-inverse);
+    }
+
+    &.brand {
+      color: var(--icon-brand-default);
+
+      &:hover:not(.disabled) {
+        color: var(--icon-brand-hover);
+      }
+
+      &:active:not(.disabled) {
+        color: var(--icon-brand-pressed);
+      }
+    }
+
+    &.error {
+      color: var(--support-red-default);
+    }
+
+    &.warning {
+      color: var(--support-orange-default);
+    }
+
+    &.info {
+      color: var(--support-blue-default);
+    }
+
+    &.success {
+      color: var(--support-green-default);
+    }
+
+    // disabled
+    &.disabled {
+      color: var(--icon-disabled);
+
+      &.on-color {
+        color: var(--icon-on-color-disabled);
+      }
+    }
+
+    // 아이콘만 있을 시 static - hover, active 효과 비활성화
+    &.static {
+      &:hover:not(.disabled),
+      &:active:not(.disabled) {
+        color: inherit;
+      }
+
+      &.success:hover:not(.disabled),
+      &.success:active:not(.disabled) {
+        color: var(--support-green-default);
+      }
+
+      &.info:hover:not(.disabled),
+      &.info:active:not(.disabled) {
+        color: var(--support-blue-default);
+      }
+
+      &.error:hover:not(.disabled),
+      &.error:active:not(.disabled) {
+        color: var(--support-red-default);
+      }
+
+      &.warning:hover:not(.disabled),
+      &.warning:active:not(.disabled) {
+        color: var(--support-orange-default);
+      }
+    }
+  }
+
+  .custom-icon {
+    display: inline-block;
+
+    &.small {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.medium {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.large {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

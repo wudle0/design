@@ -1,0 +1,69 @@
+@use '../../abstracts' as *;
+
+$solutions: (
+  'ceph': 'contrabass_sds',
+  'contrabass': 'contrabass',
+  'viola': 'viola',
+);
+
+@each $name, $image in $solutions {
+  ##{'okestro-' + $name} {
+    .lnb-container {
+      .symbol-wrap {
+        .symbol {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          border-radius: var(--radius-6);
+
+          &::before,
+          &::after {
+            position: absolute;
+            inset: 0;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+          }
+
+          &::before {
+            background-image: url('../images/logo/solution_#{$image}.svg');
+            transition: opacity 0.2s 0.1s ease-in-out;
+          }
+
+          &::after {
+            background-image: url('../images/logo/solution_#{$image}_small.svg');
+            opacity: 0;
+            transition: opacity 0.1s ease-out;
+          }
+        }
+
+        .material-icon {
+          display: none;
+        }
+      }
+
+      &.ant-layout-sider-collapsed {
+        .symbol-wrap {
+          .symbol {
+            &::before {
+              opacity: 0;
+              transition: opacity 0.1s ease-out;
+            }
+
+            &::after {
+              opacity: 1;
+              transition: opacity 0.2s 0.1s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+}

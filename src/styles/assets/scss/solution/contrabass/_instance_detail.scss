@@ -1,0 +1,21 @@
+@use '../../abstracts' as *;
+
+#archive {
+  .initial-instance-detail {
+    .main-content {
+      .content-body:not(:last-child) {
+        border-bottom: 1px solid var(--border-subtle-00);
+      }
+    }
+  }
+
+  .listbox-group {
+    .listbox-list {
+      .nodata-wrap {
+        .ant-empty-box {
+          align-items: center;
+        }
+      }
+    }
+  }
+}

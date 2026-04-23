@@ -1,0 +1,19 @@
+@use '../../abstracts' as *;
+
+#okestro-ceph {
+  .header-form {
+    border-bottom: 1px solid var(--border-subtle-00);
+
+    > .ant-form {
+      padding: var(--spacing-8) var(--spacing-16);
+    }
+  }
+
+  .content-body {
+    .ant-alert.w-100 {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: var(--spacing-16);
+    }
+  }
+}

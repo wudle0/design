@@ -1,0 +1,127 @@
+@use '../abstracts' as *;
+
+#archive {
+  // 기본 태그
+  strong {
+    @include typography(body1);
+  }
+
+  p {
+    @include typography(body2);
+  }
+
+  small {
+    @include typography(label6);
+  }
+
+  // ant typography common
+  .ant-typography {
+    @include typography(body2, var(--text-default));
+    margin: 0;
+  }
+
+  .typography-display-1 {
+    @include typography(display1, var(--text-default));
+  }
+
+  // 타이틀
+  h1.ant-typography {
+    @include typography(h1, var(--text-default));
+  }
+
+  h2.ant-typography {
+    @include typography(h2, var(--text-default));
+  }
+
+  h3.ant-typography {
+    @include typography(h3, var(--text-default));
+  }
+
+  // 본문
+  .typography-body-1 {
+    @include typography(body1, var(--text-default));
+  }
+
+  .typography-body-2 {
+    @include typography(body2, var(--text-default));
+  }
+
+  // 레이블
+  .typography-label-1 {
+    @include typography(label1, var(--text-default));
+  }
+
+  .typography-label-2 {
+    @include typography(label2, var(--text-default));
+  }
+
+  .typography-label-3 {
+    @include typography(label3, var(--text-default));
+  }
+
+  .typography-label-4 {
+    @include typography(label4, var(--text-default));
+  }
+
+  .typography-label-5 {
+    @include typography(label5, var(--text-default));
+  }
+
+  .typography-label-6 {
+    @include typography(label6, var(--text-default));
+  }
+
+  .typography-code-2 {
+    @include typography(code2, var(--text-inverse));
+  }
+
+  // 커러 정의 텍스트
+  .ant-typography-default {
+    color: var(--text-default);
+  }
+
+  .ant-typography-subtle {
+    color: var(--text-subtle) !important;
+  }
+
+  .ant-typography-subtler {
+    color: var(--text-subtler);
+  }
+
+  .ant-typography-helper {
+    color: var(--text-helper);
+  }
+
+  .ant-typography-brand {
+    color: var(--text-brand);
+  }
+
+  .ant-typography-brand-bold {
+    color: var(--text-brand-bold);
+  }
+
+  // tag 컬러
+  .ant-typography-success {
+    color: var(--tag-read-only-green);
+  }
+
+  .ant-typography-warning {
+    color: var(--tag-read-only-orange);
+  }
+
+  .ant-typography-danger {
+    color: var(--tag-read-only-red);
+  }
+
+  .ant-typography-down {
+    color: var(--tag-read-only-down);
+  }
+
+  .ant-typography-gray {
+    color: var(--tag-read-only-gray);
+  }
+
+  .ant-typography-disabled {
+    color: var(--text-disabled);
+  }
+}

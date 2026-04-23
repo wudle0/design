@@ -1,0 +1,25 @@
+@use '../../abstracts' as *;
+
+#archive {
+  .progress-multi-wrap {
+    display: flex;
+
+    .progress-multi-item {
+      width: 100%;
+      padding: var(--spacing-16);
+      border-bottom: 1px solid var(--border-subtle-01);
+
+      &:not(:last-child) {
+        border-right: 1px solid var(--border-subtle-01);
+      }
+
+      .progress-multi-item-title {
+        @include typography(label2, var(--text-subtler));
+      }
+
+      .progress-multi-item-description {
+        @include typography(body2, var(--text-disabled));
+      }
+    }
+  }
+}

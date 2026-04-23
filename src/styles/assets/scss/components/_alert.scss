@@ -1,0 +1,134 @@
+@use '../abstracts' as *;
+
+#archive {
+  // alert
+  .ant-alert {
+    display: flex;
+    align-items: flex-start;
+    min-height: 56px;
+    padding: var(--spacing-16) var(--spacing-12);
+    background: var(--layer-02);
+
+    &:not(.vertical) {
+      // 버튼이 있든 없든 align-items: center 적용
+      align-items: center;
+
+      .ant-alert-content {
+        display: flex;
+        gap: var(--spacing-4);
+        align-items: center;
+      }
+    }
+
+    .ant-alert-icon {
+      margin-right: 4px;
+    }
+
+    &:not(.vertical):has(.ant-btn) {
+      align-items: center;
+    }
+
+    // 타이틀
+    .ant-alert-message {
+      @include typography(h3, var(--text-default));
+      margin-bottom: 0;
+    }
+
+    // 설명
+    .ant-alert-description {
+      @include typography(body2, var(--text-default));
+      display: flex;
+      gap: var(--spacing-8);
+      align-items: center;
+
+      span {
+        @include typography(body2, var(--text-default));
+        max-width: 100%;
+      }
+    }
+
+    // 이 외 요소
+    .default-list {
+      padding-left: var(--spacing-12);
+
+      li {
+        padding-left: var(--spacing-8);
+      }
+    }
+
+    // 수직 배치
+    &.vertical {
+      .ant-alert-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+
+        .ant-alert-description {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+
+    // 상태
+    &.ant-alert-error {
+      color: var(--support-red-default);
+      background: var(--support-red-subtler);
+      border: 1px solid var(--support-red-default);
+    }
+
+    &.ant-alert-info {
+      color: var(--support-blue-default);
+      background: var(--support-blue-subtler);
+      border: 1px solid var(--support-blue-default);
+    }
+
+    &.ant-alert-warning {
+      color: var(--support-orange-default);
+      background: var(--support-orange-subtler);
+      border: 1px solid var(--support-orange-default);
+    }
+
+    &.ant-alert-success {
+      color: var(--support-green-default);
+      background: var(--support-green-subtler);
+      border: 1px solid var(--support-green-default);
+    }
+
+    &.ant-alert-default {
+      background: var(--layer-02);
+      border: none;
+
+      .ant-alert-icon {
+        display: none;
+        color: var(--text-default);
+      }
+    }
+  }
+
+  .ant-alert-banner {
+    position: sticky;
+    top: 0;
+    z-index: $z-index-popup;
+
+    &.ant-alert-error {
+      border-bottom: 1px solid var(--support-red-default) !important;
+    }
+
+    &.ant-alert-info {
+      border-bottom: 1px solid var(--support-blue-default) !important;
+    }
+
+    &.ant-alert-warning {
+      border-bottom: 1px solid var(--support-orange-default) !important;
+    }
+
+    &.ant-alert-success {
+      border-bottom: 1px solid var(--support-green-default) !important;
+    }
+
+    &.ant-alert-default {
+      border-bottom: 0 !important;
+    }
+  }
+}

@@ -1,0 +1,179 @@
+@use '../abstracts' as *;
+
+#archive {
+  // 슬라이드 애니메이션
+  $cloudViewEasing: cubic-bezier(0.27, 0.315, 0.255, 1);
+
+  .cloudview-wrap {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: $z-index-cloudview;
+    width: 100%;
+    height: 400px;
+    background: var(--layer-raised);
+    box-shadow: var(--strong);
+
+    .cloudview-box {
+      position: relative;
+      height: 100%;
+
+      .cloudview-bar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: $z-index-cloudview + 20;
+        width: 100%;
+        height: 8px;
+        cursor: ns-resize;
+        border-top: 1px solid transparent;
+        transition: $trans-common-bezier-border-color;
+
+        &::after {
+          position: absolute;
+          right: 50%;
+          bottom: 0;
+          width: 30px;
+          height: 4px;
+          content: '';
+          background: var(--icon-default);
+          border-radius: var(--radius-9999);
+          transform: translateX(-50%);
+          transform: $trans-common-bezier-bg-color;
+        }
+
+        &:hover {
+          border-top-color: var(--border-active);
+
+          &::after {
+            background: var(--icon-brand-hover);
+          }
+        }
+      }
+
+      .cloudview-title {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: $z-index-cloudview + 10;
+        display: flex;
+        align-items: center;
+        height: 56px;
+        padding-left: var(--spacing-16);
+
+        .cloudview-title-text {
+          @include typography(h1, var(--text-default));
+        }
+      }
+
+      .cloudview-btns {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: $z-index-cloudview + 10;
+        display: flex;
+        align-items: center;
+        height: 56px;
+        padding-right: var(--spacing-16);
+
+        .cloudview-btns-close {
+          position: relative;
+          padding-left: var(--spacing-12);
+          margin-left: var(--spacing-12);
+
+          &::before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 1px;
+            height: 32px;
+            content: '';
+            background: var(--border-subtle-01);
+            transform: translateY(-50%);
+          }
+        }
+      }
+
+      .cloudview-prompt {
+        width: 100%;
+        height: 100%;
+
+        .ant-tabs-nav {
+          padding-right: 246px;
+          padding-left: 207px;
+          background: var(--layer-overlay);
+
+          .ant-tabs-nav-list {
+            border-bottom: 0;
+          }
+        }
+
+        .ant-tabs-tab {
+          height: 56px;
+          padding: 20px var(--spacing-16);
+        }
+
+        .ant-tabs-content {
+          height: 100%;
+
+          &:has(.ant-alert) {
+            .section-body {
+              height: calc(100% - 56px);
+            }
+          }
+        }
+
+        .section-header {
+          background: var(--layer-raised);
+        }
+
+        .section-body {
+          height: 100%;
+          padding: var(--spacing-16);
+          background: var(--layer-inverse);
+
+          span {
+            @include typography(code2, var(--text-inverse));
+          }
+        }
+      }
+
+      &.active {
+        .cloudview-bar {
+          border-top: 1px solid var(--border-active);
+
+          &::after {
+            background: var(--icon-brand-hover);
+          }
+        }
+      }
+    }
+  }
+
+  // 슬라이드 애니메이션
+  .cloudview-slide-up-enter-active {
+    transition:
+      transform 0.35s $cloudViewEasing,
+      opacity 0.3s ease;
+  }
+
+  .cloudview-slide-up-leave-active {
+    transition:
+      transform 0.28s $cloudViewEasing,
+      opacity 0.3s ease;
+  }
+
+  .cloudview-slide-up-enter-from,
+  .cloudview-slide-up-leave-to {
+    transform: translateY(100%);
+
+    // opacity: 0;
+  }
+
+  .cloudview-slide-up-enter-to,
+  .cloudview-slide-up-leave-from {
+    transform: translateY(0);
+
+    // opacity: 1;
+  }
+}

@@ -1,0 +1,238 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-form {
+    padding: var(--spacing-16);
+
+    /*
+      form-item-group : 인풋 필드 요소 그룹
+      form-collapse-group : ant-form 내부에 삽입되는 collaspe 그룹 (여백, 너비 조정을 위해 필요)
+    */
+    > .title-group.level-form:first-child {
+      padding-top: 0;
+    }
+
+    .form-item-group {
+      display: flex;
+      flex-flow: column wrap;
+      gap: var(--spacing-24) var(--spacing-16);
+      width: 100%;
+      padding-bottom: var(--spacing-32); // 공통은 32, 템플릿은 24, 확인 필요
+
+      .form-item {
+        display: flex;
+        gap: var(--spacing-6) var(--spacing-16);
+        width: 100%;
+
+        // item-label 타이틀에 * 표시
+        &.required {
+          .item-label {
+            .item-title,
+            .typography-label-3 {
+              position: relative;
+              display: inline-flex;
+              gap: var(--spacing-4);
+              align-items: center;
+              max-width: 100%;
+
+              &::after {
+                display: inline-block;
+                margin: 0;
+                font-family: var(--font-family-default);
+                font-size: var(--font-size-medium);
+                font-weight: var(--font-weight-regular);
+                line-height: var(--line-height-medium);
+                color: var(--support-red-default);
+                content: '*';
+              }
+            }
+          }
+        }
+
+        @media (max-width: $breakpointMd) {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: $breakpointMd) {
+        .ant-form-row {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .form-collapse-group {
+      width: calc(100% + 32px);
+      padding-bottom: var(--spacing-24);
+      margin: 0 calc(var(--spacing-16) * -1);
+    }
+
+    /*
+      item-label : 커스텀 라벨
+      item-ant-form : a-form-item 그룹
+    */
+    .item-label {
+      display: flex;
+      flex: 0 0 auto;
+      flex-direction: column;
+      gap: var(--spacing-2);
+      width: $labelWidthLg;
+      margin-bottom: 0;
+
+      // 축소 기준점 추가
+      @media (max-width: $breakpointLg) {
+        width: $labelWidth;
+      }
+
+      @media (max-width: $breakpointMd) {
+        width: 100%;
+      }
+    }
+
+    .item-ant-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-8);
+      width: 100%;
+      max-width: $inputWidthLg;
+
+      // 사이즈
+      &.md {
+        max-width: $inputWidthMd;
+
+        .add-table {
+          max-width: $inputWidthMd;
+        }
+      }
+
+      // overflow: hidden; // 버튼 및 필드 focus 효과 짤림 방지
+
+      // 풀사이즈 예외처리
+      &:has(.ant-table),
+      &:has(.ant-form-item .md, .ant-form-item .lg, .ant-collapse) {
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      // add-table 예외처리
+      &:has(.add-table.lg) {
+        max-width: 886px;
+      }
+
+      // ant 요소
+      .ant-flex {
+        gap: var(--spacing-8);
+      }
+
+      &:has(.ant-alert, .ant-radio-group) {
+        > .ant-flex {
+          width: 100%;
+
+          // .ant-alert {
+          //   flex: 0;
+          // }
+        }
+      }
+
+      .ant-row {
+        width: 100%;
+      }
+
+      > .table-content {
+        .ant-form {
+          .filter-wrap {
+            border-top: 1px solid var(--border-subtle-01);
+          }
+        }
+      }
+
+      .ant-form-item {
+        margin-bottom: 0;
+
+        &:has(.radio-container) {
+          flex: 1;
+        }
+
+        &:has(.md, .lg) {
+          width: 100%;
+        }
+      }
+
+      .ant-checkbox-group {
+        &.horizontal {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          @media (max-width: $breakpointMd) {
+            display: flex;
+          }
+        }
+      }
+    }
+
+    // input 외 구성 요소
+    .ant-card {
+      .ant-list {
+        width: 100%;
+
+        .ant-list-item {
+          &.horizontal-item {
+            width: 100%;
+
+            .key-area {
+              flex-basis: 120px;
+            }
+          }
+        }
+      }
+
+      &.md {
+        width: $inputWidthMd;
+      }
+
+      &.lg {
+        width: $inputWidthLg;
+      }
+    }
+
+    .ant-alert {
+      flex: 0 0 auto;
+      width: 100%;
+
+      // &:not(.ant-alert-banner) {
+      //   flex: 0 0 100%;
+      //   max-width: $inputWidthMd;
+      // }
+    }
+
+    .alert-wrap {
+      flex: 1 0 100%;
+    }
+
+    .table-content {
+      width: 100%;
+    }
+
+    .ant-table-pagination {
+      margin-bottom: 0;
+    }
+  }
+
+  // 생성 페이지 커스텀 스타일
+  .create {
+    .ant-form {
+      overflow: hidden;
+    }
+
+    .content:has(.content-footer) {
+      position: relative;
+      align-items: stretch;
+      height: 100%;
+      border-bottom: 0;
+
+      .content-body {
+        flex-grow: 1;
+      }
+    }
+  }
+}

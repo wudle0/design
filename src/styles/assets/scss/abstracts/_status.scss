@@ -1,0 +1,40 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+#archive {
+  /* 상태 별 클래스 선언 (컴파일 후)
+    &.status-item-border,
+    .status-item-border {
+      border-color: var(--support-green-default) !important;
+    }
+  */
+
+  // status 별 스타일 변화가 필요한 요소에게 직접 부여하는 클래스 (참고 : Ceph 대시보드 페이지)
+  .status {
+    @each $name, $color in $status-colors {
+      &-#{$name} {
+        &.status-item-color,
+        .status-item-color {
+          color: #{$color} !important;
+        }
+      }
+    }
+    @each $name, $borderColor in $status-border-colors {
+      &-#{$name} {
+        &.status-item-border,
+        .status-item-border {
+          border-color: #{$borderColor} !important;
+        }
+      }
+    }
+
+    @each $name, $bgColor in $status-bg-colors {
+      &-#{$name} {
+        &.status-item-bg,
+        .status-item-bg {
+          background-color: #{$bgColor} !important;
+        }
+      }
+    }
+  }
+}

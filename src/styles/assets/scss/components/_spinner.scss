@@ -1,0 +1,75 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-spin.custom-logo {
+    $stepsX: 9;
+    $stepsY: 9;
+    $moveSec: 3;
+    $toYSec: calc($moveSec / $stepsX);
+
+    // $logoWidth: 150;
+    // $logoHeight: 113;
+    // $sprWidth: calc($logoWidth * ($stepsX + 1));
+    // $sprHeight: calc($logoHeight * ($stepsY + 1));
+
+    $logoWidth: 80;
+    $logoHeight: 60;
+    $sprWidth: calc($logoWidth * ($stepsX + 1));
+    $sprHeight: calc($logoHeight * ($stepsY + 1));
+
+    .lgoo-wrap {
+      //   width: 40px;
+      //   height: 30px;
+      width: auto;
+      height: auto;
+
+      // transform: scale(0.267);
+      transform: scale(0.5);
+    }
+
+    .logo {
+      width: #{$logoWidth}px;
+      height: #{$logoHeight}px;
+      image-rendering: crisp-edges;
+      background: url('../images/img_spr_spinner_logo_downscaled.png') 0 0
+        no-repeat;
+      background-size: #{$sprWidth}px #{$sprHeight}px;
+      animation:
+        ani-spinner-move-y #{$moveSec}s steps($stepsX) infinite,
+        ani-spinner-move-x #{$toYSec}s steps($stepsY) infinite;
+    }
+
+    @keyframes ani-spinner-move-x {
+      0% {
+        background-position-x: 0;
+      }
+
+      100% {
+        background-position-x: 100%;
+      }
+    }
+    @keyframes ani-spinner-move-y {
+      0% {
+        background-position-y: 0;
+      }
+
+      100% {
+        background-position-y: 100%;
+      }
+    }
+  }
+
+  .ant-skeleton {
+    .ant-skeleton-content {
+      .ant-skeleton-title {
+        background: var(--layer-skeleton-background);
+      }
+
+      .ant-skeleton-paragraph {
+        li {
+          background: var(--layer-skeleton-background);
+        }
+      }
+    }
+  }
+}

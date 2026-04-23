@@ -1,0 +1,272 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-modal {
+    .ant-modal-content {
+      display: flex;
+      flex-direction: column;
+      padding: var(--spacing-0);
+      background: var(--layer-01);
+      border-radius: var(--radius-12);
+      box-shadow: var(--strong);
+
+      .ant-modal-header {
+        margin-bottom: var(--spacing-0);
+        color: unset;
+        background: var(--transparent);
+        border-radius: var(--radius-0);
+      }
+
+      .ant-modal-box {
+        @include typography(label3, var(--text-default));
+        @include scrollbars;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-24);
+        min-height: 52px;
+        padding: var(--spacing-16);
+        overflow-y: auto;
+
+        .ant-form {
+          padding: 0;
+        }
+
+        &.is-padding {
+          .ant-form {
+            padding: var(--spacing-8) var(--spacing-16) var(--spacing-24)
+              var(--spacing-16);
+          }
+        }
+
+        .modal-content {
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-6);
+
+          .info-modal-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-8);
+
+            .noti-modal-desc-wrap {
+              display: flex;
+              gap: var(--spacing-8);
+              align-items: center;
+
+              .noti-modal-desc {
+                @include typography(body2, var(--text-default));
+              }
+
+              .noti-modal-desc-bold {
+                font-weight: var(--font-weight-semibold);
+              }
+            }
+
+            .noti-modal-sub-desc-wrap {
+              display: flex;
+              gap: var(--spacing-8);
+              align-items: center;
+              white-space: pre-line;
+
+              .noti-modal-sub-desc {
+                @include typography(body2, var(--text-default));
+                margin: 0;
+              }
+            }
+          }
+
+          // NotiModal 전용 스타일
+          .noti-modal-title {
+            @include typography(h3, var(--text-default));
+            align-items: center;
+          }
+
+          // CheckModal 전용 스타일 (공통 정책 삭제 모달)
+          .check-modal-title {
+            @include typography(h3, var(--text-default));
+            align-items: center;
+          }
+
+          .check-modal-desc {
+            @include typography(body2, var(--text-default));
+          }
+
+          .check-modal-message {
+            @include typography(label5, var(--text-helper));
+            display: flex;
+            gap: var(--spacing-4);
+            align-items: center;
+
+            .material-icon {
+              display: inline-flex;
+              align-self: flex-start;
+
+              &:not(.warning, .error, .success, .info) {
+                color: var(--icon-subtle);
+              }
+            }
+
+            &.error {
+              color: var(--support-red-default);
+            }
+          }
+
+          .check-modal-content-area {
+            .check-modal-list-box {
+              display: flex;
+              flex-direction: column;
+              gap: var(--spacing-6);
+
+              .check-modal-count-text {
+                @include typography(label3, var(--text-default));
+              }
+            }
+
+            .ant-card {
+              overflow: hidden;
+
+              .ant-card-body {
+                min-height: 78px;
+                max-height: 156px;
+                padding: var(--spacing-8) var(--spacing-12);
+                overflow-y: auto;
+              }
+            }
+          }
+        }
+
+        // 패딩 예외 처리
+        &:has(> .editor-view),
+        &:has(.ant-tabs) {
+          padding: 0;
+        }
+      }
+
+      .ant-modal-footer {
+        margin-top: var(--spacing-0);
+      }
+    }
+
+    &.small .ant-modal-box {
+      min-height: 86px;
+      max-height: 292px;
+
+      .ant-form {
+        .ant-form-item {
+          flex: 1;
+
+          .ant-form-item-control-input-content {
+            width: 100%;
+
+            input:not(
+                .ant-radio-input,
+                .ant-input-number-input,
+                .ant-checkbox-input,
+                .ant-select,
+                .ant-select-selection-search-input
+              ),
+            .ant-input-group,
+            .ant-input-affix-wrapper,
+            .ant-input-number,
+            .ant-upload-wrapper {
+              width: 100%;
+              max-width: 100%;
+            }
+
+            .radio-container,
+            .checkbox-container {
+              flex: 1 1 auto;
+              max-width: 100%;
+            }
+          }
+
+          .ant-select:not(.select-group-compact .ant-select) {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+      }
+    }
+
+    &.medium .ant-modal-box,
+    &.large .ant-modal-box {
+      max-height: 60vh;
+    }
+
+    &.full {
+      .ant-modal-content {
+        height: 95vh;
+
+        .ant-modal-body {
+          display: flex;
+          flex-direction: column;
+          height: calc(100% - 114px);
+          overflow-x: scroll;
+
+          .ant-modal-box {
+            @include scrollbars;
+            gap: var(--spacing-0);
+            min-width: 1439px;
+            height: 100%;
+            max-height: 100%;
+            padding: var(--spacing-0);
+            overflow: auto;
+          }
+        }
+      }
+    }
+
+    // 모달 내 요소
+    .listbox-wrap {
+      .listbox-group {
+        .listbox-list {
+          width: 50%;
+        }
+      }
+    }
+
+    // 업로드의 경우 모달 내부에서 100% 너비로 처리
+    .ant-form {
+      .ant-form-item {
+        .ant-upload-wrapper {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+
+      // 모달은 무조건 column으로 처리
+      .form-item-group {
+        .form-item {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .title-group {
+      &.level-form {
+        padding: 36px 0 var(--spacing-12) 0;
+        margin-top: var(--spacing-24);
+        border-top: var(--border-subtle-01) 1px solid;
+
+        &:first-child {
+          padding-top: var(--spacing-12);
+          margin-top: 0;
+          border-top: none;
+        }
+      }
+    }
+
+    .ant-divider.ant-divider-horizontal {
+      margin: var(--spacing-8) 0 var(--spacing-24);
+
+      &.size-large {
+        margin: var(--spacing-0) 0 var(--spacing-4);
+      }
+    }
+  }
+
+  .ant-modal-mask {
+    background: var(--layer-dim);
+  }
+}

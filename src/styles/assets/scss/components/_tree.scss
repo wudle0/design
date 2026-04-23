@@ -1,0 +1,329 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-tree {
+    overflow: hidden;
+    background-color: transparent;
+    border-radius: 0;
+
+    .ant-tree-treenode {
+      position: relative;
+      flex-direction: row;
+      width: 100%;
+      padding: 0 var(--spacing-16);
+      padding-bottom: 0;
+      transition: $trans-common-bezier-bg-color;
+
+      // overflow: hidden;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        content: '';
+      }
+
+      &:hover {
+        background-color: var(--interaction-hover);
+
+        .group-items.items-end {
+          .btn-wrap {
+            pointer-events: auto;
+            opacity: 1;
+          }
+        }
+      }
+
+      // 선택된 노드
+      &.ant-tree-treenode-selected {
+        color: var(--icon-default);
+
+        &::before {
+          bottom: 0;
+          background-color: var(--interaction-selected);
+        }
+      }
+    }
+
+    .ant-tree-node-content-wrapper {
+      display: flex;
+
+      // 말줄임 처리
+      flex: 1 0 0%; // 80% > 0%
+      gap: var(--spacing-6);
+      align-items: center;
+      max-width: 100%;
+      padding: var(--spacing-6) 0;
+      margin-left: calc(var(--spacing-16) * -1);
+      overflow: hidden;
+      color: var(--icon-default);
+      background-color: transparent !important;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    // 스위처
+    .ant-tree-switcher {
+      position: relative;
+      z-index: 1;
+      box-sizing: content-box;
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      width: var(--font-size-large);
+      line-height: 1;
+      background-color: transparent;
+
+      .custom-icon {
+        vertical-align: middle;
+      }
+    }
+
+    .ant-tree-switcher-noop {
+      .ant-tree-switcher-line-icon {
+        display: none;
+      }
+    }
+
+    .ant-tree-switcher-leaf-line {
+      display: none;
+    }
+
+    // 아이콘
+    .ant-tree-iconEle {
+      @include material(xs, var(--icon-default), 'folder');
+      position: relative;
+      display: block;
+      flex: 0;
+      width: var(--font-size-large);
+      height: var(--font-size-large);
+      line-height: 1;
+    }
+
+    .ant-tree-node-content-wrapper-open {
+      .ant-tree-iconEle {
+        @include material(xs, var(--icon-default), 'folder_open');
+      }
+    }
+
+    .ant-tree-switcher-noop + .ant-tree-node-content-wrapper {
+      .ant-tree-iconEle {
+        @include material(xs, var(--icon-default), 'topic');
+      }
+    }
+
+    // 마지막 노드 라인 길이 수정
+    .ant-tree-treenode-leaf-last:last-child {
+      .ant-tree-indent-unit::before {
+        bottom: 15px;
+      }
+    }
+
+    .ant-tree-indent {
+      flex: 0 0 auto;
+
+      // 콜랩스 오픈 시 라인 hidden 및 덜컹거림 방지
+      overflow: hidden !important;
+    }
+
+    .ant-tree-indent-unit {
+      width: var(--font-size-large);
+
+      &::before {
+        right: 8px;
+        bottom: -6px;
+        border-color: var(--border-subtle-01);
+      }
+    }
+
+    .ant-tree-indent-unit-end {
+      &::before {
+        display: block !important;
+      }
+    }
+
+    // 드래그
+    .ant-tree-treenode.ant-tree-treenode-draggable {
+      .ant-tree-switcher::before {
+        display: none;
+      }
+
+      &:has(.ant-tree-indent-unit-start),
+      &:has(.ant-tree-indent-unit-end) {
+        .ant-tree-switcher::before {
+          display: block;
+        }
+      }
+
+      .ant-tree-indent {
+        position: relative;
+        padding-left: 24px; // 드래그 아이콘 너비 + 갭 8
+        cursor: pointer;
+      }
+
+      .ant-tree-indent::before {
+        @include material(xs, var(--icon-default));
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: inline-block;
+        margin-top: -8px;
+        line-height: 1;
+        content: 'drag_indicator';
+      }
+    }
+
+    // 타이틀
+    .ant-tree-title {
+      @include typography(label3, var(--text-default));
+      flex-grow: 1;
+
+      // 말줄임 처리
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .tree-title-group {
+      display: flex;
+      gap: var(--spacing-6);
+      align-items: center;
+      max-width: 100%;
+
+      &:has(.gap-0) {
+        gap: 0;
+      }
+    }
+
+    .group-items {
+      display: flex;
+      gap: var(--spacing-6);
+
+      .ant-typography {
+        @include ellipsis(1);
+        display: block;
+        max-width: 100%;
+      }
+
+      &.items-end {
+        .btn-wrap {
+          display: flex;
+          gap: var(--spacing-6);
+          pointer-events: none;
+          opacity: 0;
+          transition: $trans-common-bezier-opacity;
+
+          .ant-btn {
+            &:focus-visible {
+              outline: none;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+
+      .ant-checkbox-wrapper {
+        flex: 0 0 auto;
+        margin-bottom: 0;
+        line-height: 1;
+
+        &::after {
+          display: none;
+        }
+
+        .ant-checkbox {
+          width: auto;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .ant-tree-directory {
+    .ant-tree-iconEle {
+      svg {
+        display: none;
+      }
+    }
+  }
+
+  // 커스텀 트리 (커스텀 아이콘 노출 시)
+  .custom-arrow-tree {
+    .ant-tree-node-content-wrapper {
+      .ant-tree-iconEle {
+        visibility: hidden;
+      }
+    }
+
+    .ant-tree-switcher {
+      .custom-icon {
+        line-height: 0;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+        transition: $trans-in-out-transform-icon;
+      }
+    }
+
+    .ant-tree-switcher_open {
+      .custom-icon {
+        transform: rotate(0deg);
+      }
+    }
+
+    .ant-tree-switcher-noop {
+      position: relative;
+      vertical-align: middle;
+
+      &::before {
+        display: block;
+        width: 4px;
+        height: 4px;
+        margin: 0 auto;
+        content: '';
+        border: 1px solid var(--icon-default);
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .tree-group,
+  .tree-wrap {
+    .ant-tree {
+      border-bottom: 1px solid var(--border-subtle-01);
+
+      .ant-tree-treenode:has(.root-node) {
+        border-top: 1px solid var(--border-subtle-01);
+      }
+
+      .ant-tree-treenode:has(.empty) {
+        pointer-events: none;
+
+        .ant-tree-switcher {
+          &::before {
+            border-color: var(--icon-disabled);
+          }
+        }
+
+        .ant-tree-title {
+          .item-title {
+            color: var(--text-disabled);
+          }
+        }
+      }
+
+      .ant-tree-treenode:first-child {
+        border-top: 0;
+      }
+    }
+
+    & + .pagination-wrap {
+      border-top: 0;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-notification {
+    top: var(--spacing-8) !important;
+    margin-inline-end: var(--spacing-8);
+
+    .ant-notification-notice {
+      width: 400px;
+      padding: var(--spacing-16) var(--spacing-12);
+      background: var(--layer-notification);
+      box-shadow: var(--strong);
+    }
+
+    .ant-notification-notice-content {
+      padding-right: 36px;
+    }
+
+    .ant-notification-notice-message {
+      display: flex;
+      gap: var(--spacing-4);
+      align-items: flex-start;
+      margin-bottom: var(--spacing-4);
+
+      .title {
+        @include typography(h3, var(--text-default));
+      }
+
+      .description {
+        @include typography(body2, var(--text-default));
+      }
+
+      .title,
+      .description,
+      .ant-btn {
+        position: relative;
+        top: 2px;
+      }
+
+      .ant-btn {
+        margin-left: var(--spacing-4);
+      }
+    }
+
+    .ant-notification-notice-description {
+      @include typography(body2, var(--text-default));
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+      margin-left: var(--spacing-24);
+
+      .description-flex {
+        display: flex;
+        gap: var(--spacing-8);
+        align-items: center;
+      }
+
+      .ant-btn {
+        width: auto;
+      }
+    }
+
+    .ant-notification-notice-close {
+      @include material(md, var(--icon-default), 'close');
+      top: var(--spacing-16);
+      right: var(--spacing-12);
+      width: 20px;
+      height: 20px;
+
+      span {
+        display: none;
+      }
+    }
+  }
+}

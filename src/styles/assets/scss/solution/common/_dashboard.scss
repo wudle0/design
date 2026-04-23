@@ -1,0 +1,17 @@
+@use '../../abstracts' as *;
+
+@include solution-scope {
+  .dashboard {
+    .content-body {
+      padding-bottom: var(--spacing-40);
+    }
+
+    .ant-card {
+      .title-group {
+        .group-items:has(.material-icon) {
+          gap: var(--spacing-4);
+        }
+      }
+    }
+  }
+}

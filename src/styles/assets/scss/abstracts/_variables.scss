@@ -1,0 +1,88 @@
+// 넓이
+$siderWidth: 320px;
+$siderMinWidth: 12px;
+$sideStepWidth: 236px;
+$panelWidthStep: 236px;
+$panelWidthXs: 320px;
+$panelWidthMd: 400px;
+$inputDefaultWidth: 290px;
+$labelWidth: 204px;
+$labelWidthLg: 320px;
+$inputWidthSm: 290px;
+$listWidthSm: 290px;
+$listBoxWidthSm: 294px;
+$listBoxHeight: 370px;
+$inputWidthMd: 2 * $inputWidthSm + 8px;
+$inputWidthLg: 3 * $inputWidthSm + 16px;
+$stepIndiMinWidth: 156px;
+$datePickerWidth: 290px;
+
+// 높이
+$headerHeight: 48px;
+$headerHeightSm: 40px;
+$titleHeight: 56px;
+$footerHeight: 56px;
+$tabHeight: 48px;
+$tabMinHeight: 40px;
+$tabMaxHeight: 56px;
+$paginationHeight: 48px;
+$collapseHeaderHeight: 48px;
+$cardHeaderHeight: 48px; // 56 > 48
+$subTitleHeight: 48px;
+$buttonHeight: 32px;
+$buttonHeightSm: 24px;
+$searchHeight: 48px;
+$cardHeightSm: 108px;
+$breakpointSm: 576px;
+$breakpointMd: 1439px;
+$breakpointLg: 1920px;
+$statusHeight: 36px;
+$containerHeightMd: 392px;
+
+// z-index
+$z-index-cloudview: 300;
+$z-index-popup: 400;
+$z-index-lnb: 400;
+$z-index-gnb: 500;
+
+// 상태
+$status-colors: (
+  info: var(--support-blue-default),
+  success: var(--support-green-default),
+  warning: var(--support-orange-default),
+  error: var(--support-red-default),
+  down: var(--text-disabled),
+);
+$status-border-colors: (
+  info: var(--support-blue-default),
+  success: var(--support-green-default),
+  warning: var(--support-orange-default),
+  error: var(--support-red-default),
+  down: var(--border-subtle-01),
+);
+$status-bg-colors: (
+  info: var(--support-blue-subtler),
+  success: var(--support-green-subtler),
+  warning: var(--support-orange-subtler),
+  error: var(--support-red-subtler),
+  down: var(--interaction-disabled),
+);
+
+// focus
+$focus-visible-in: inset 0 0 0 2px var(--interaction-focus);
+$focus-visible-out: 2px solid var(--interaction-focus);
+
+// easing
+$common-bezier-hover: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+// transition
+$trans-common-bezier-all: all 0.2s $common-bezier-hover;
+$trans-common-bezier-bg-color: background-color 0.2s $common-bezier-hover;
+$trans-common-bezier-border-color: border-color 0.2s $common-bezier-hover;
+$trans-common-bezier-color: color 0.2s $common-bezier-hover;
+$trans-common-bezier-box-shadow: box-shadow 0.2s $common-bezier-hover;
+$trans-common-bezier-opacity: opacity 0.05s $common-bezier-hover;
+$trans-in-out-transform-icon: transform 0.2s ease-in-out;
+
+// solution IDs
+$solution-ids: '#okestro-ceph', '#okestro-viola', '#okestro-contrabass';

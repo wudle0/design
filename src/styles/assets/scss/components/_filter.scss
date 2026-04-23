@@ -1,0 +1,190 @@
+@use '../abstracts' as *;
+
+#archive {
+  .filter-wrap {
+    display: flex;
+    align-items: center;
+    height: calc($headerHeight + 1px); // 타이틀 컴포넌트와의 정렬
+    border-bottom: 1px solid var(--border-subtle-01);
+    transition: $trans-common-bezier-border-color;
+
+    &:has(.ant-input-affix-wrapper-focused, .ant-input:hover) {
+      border-bottom: 1px solid var(--border-active);
+    }
+
+    .filter-wrap-left {
+      display: flex;
+      flex: 1;
+    }
+
+    .filter-center {
+      flex: 1;
+      padding-left: var(--spacing-4);
+
+      .ant-input-affix-wrapper {
+        gap: var(--spacing-8);
+        height: 48px;
+        background-color: var(--transparent);
+        border: 0;
+        border-radius: var(--radius-0);
+
+        .ant-input-prefix {
+          margin-right: var(--spacing-0);
+
+          .filter-select-icon {
+            height: 20px;
+          }
+
+          .filter-tags {
+            display: flex;
+            gap: var(--spacing-4);
+            align-items: center;
+
+            .ant-tag {
+              height: auto;
+              padding: var(--spacing-2) var(--spacing-8);
+              background: var(--layer-02);
+              border: 1px solid var(--border-default-02);
+              border-radius: var(--radius-9999);
+
+              // 필터 검색 태그 close 버튼
+              span svg {
+                width: 12px;
+                height: 12px;
+                color: var(--text-default);
+              }
+            }
+          }
+        }
+
+        .ant-input {
+          @include typography(label3, var(--text-default));
+
+          &::placeholder {
+            @include typography(label3, var(--text-subtler));
+          }
+        }
+
+        .ant-input-suffix {
+          .ant-input-clear-icon {
+            height: 20px;
+          }
+        }
+      }
+
+      &:focus-within {
+        .ant-input-affix-wrapper {
+          outline: none;
+        }
+      }
+
+      &.border-top {
+        border-top: 1px solid var(--border-subtle-01);
+      }
+    }
+
+    .filter-prefix {
+      display: flex;
+      gap: var(--spacing-8);
+      align-items: center;
+      padding-left: var(--spacing-16);
+
+      .filter-prefix-text {
+        @include typography(label3, var(--text-default));
+
+        strong {
+          display: inline-flex;
+          width: 14px;
+        }
+      }
+
+      .filter-prefix-btns {
+        display: flex;
+        gap: var(--spacing-8);
+      }
+    }
+
+    .filter-suffix {
+      display: flex;
+      gap: var(--spacing-8);
+      align-items: center;
+      padding-right: var(--spacing-16);
+
+      .ant-select {
+        width: 128px;
+      }
+
+      .ant-btn {
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .filter-suffix-addbtn {
+        box-sizing: border-box;
+        display: flex;
+        gap: var(--spacing-8);
+        align-items: center;
+        padding-left: var(--spacing-12);
+        margin-left: var(--spacing-4);
+
+        &:has(.custom-icon) {
+          border-left: 1px solid var(--border-subtle-01);
+        }
+      }
+    }
+
+    // double lines
+    &.double {
+      flex-direction: column;
+      gap: var(--spacing-8);
+      align-items: flex-start;
+      height: auto;
+      padding-bottom: var(--spacing-8);
+      border-bottom: 0;
+
+      &:has(.ant-input-affix-wrapper-focused, .ant-input:hover) {
+        border-bottom: 0;
+      }
+
+      .filter-wrap-left:has(.ant-input-affix-wrapper-focused),
+      .filter-wrap-left:has(.ant-input:hover) {
+        border-bottom: 1px solid var(--border-active);
+      }
+
+      .filter-wrap-left {
+        width: 100%;
+        border-bottom: 1px solid var(--border-subtle-01);
+      }
+
+      .filter-suffix {
+        justify-content: flex-end;
+        width: 100%;
+        padding-left: var(--spacing-16);
+      }
+    }
+
+    // small
+    &.small {
+      height: 40px;
+
+      .ant-input-affix-wrapper {
+        height: 40px;
+      }
+    }
+
+    &.xSmall {
+      height: 40px;
+
+      .filter-wrap-left {
+        height: 100%;
+      }
+
+      .ant-input-affix-wrapper {
+        height: 100%;
+        padding: var(--spacing-8) var(--spacing-4);
+      }
+    }
+  }
+}

@@ -1,0 +1,331 @@
+@use '../abstracts' as *;
+
+#archive {
+  .tag-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .ant-tag {
+    box-sizing: border-box;
+    display: flex;
+    gap: var(--spacing-2);
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: var(--spacing-6) var(--spacing-12);
+    margin: var(--spacing-0);
+    vertical-align: middle;
+    border: 1px solid var(--border-default-01);
+    border-radius: 9999px;
+
+    .tag-wrap-text {
+      @include typography(label2, var(--text-default));
+    }
+
+    .material-icon {
+      font-size: 20px;
+
+      // line-height: 18px;
+      &.btn-close {
+        cursor: pointer;
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    // 크기별 클래스
+    &.large {
+      height: 32px;
+      padding: var(--spacing-6) var(--spacing-12);
+
+      .material-icon {
+        font-size: 20px;
+      }
+    }
+
+    &.medium {
+      height: 24px;
+      padding: var(--spacing-4) var(--spacing-8);
+
+      .tag-wrap-text {
+        @include typography(label4, var(--text-default));
+      }
+
+      .material-icon {
+        font-size: 16px;
+      }
+    }
+
+    &.small {
+      height: 18px;
+      padding: var(--spacing-0) var(--spacing-8);
+
+      .tag-wrap-text {
+        @include typography(label6, var(--text-default));
+      }
+
+      .material-icon {
+        font-size: 16px;
+      }
+    }
+
+    // 클릭가능한 태그
+    &.ant-tag-checkable {
+      @include focus-visible(out, 1px);
+      cursor: pointer;
+
+      &.large {
+        .tag-wrap-text {
+          @include typography(label3, var(--text-default));
+        }
+      }
+
+      &.medium {
+        .tag-wrap-text {
+          @include typography(label5, var(--text-default));
+        }
+      }
+
+      &:hover {
+        background: linear-gradient(
+            0deg,
+            var(--interaction-hover) 0%,
+            var(--interaction-hover) 100%
+          ),
+          var(--tag-selectable-unselected);
+      }
+
+      &:active {
+        background: linear-gradient(
+            0deg,
+            var(--interaction-pressed) 0%,
+            var(--interaction-pressed) 100%
+          ),
+          var(--tag-selectable-unselected);
+      }
+
+      &.disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+        background: linear-gradient(
+            0deg,
+            var(--interaction-disabled) 0%,
+            var(--interaction-disabled) 100%
+          ),
+          var(--tag-selectable-unselected);
+
+        p {
+          color: var(--text-on-color-disabled);
+        }
+
+        .material-icon {
+          color: var(--text-on-color-disabled);
+        }
+      }
+
+      &.ant-tag-checkable-checked {
+        background: var(--tag-selectable-selected);
+        border: 1px solid var(--border-active);
+
+        .tag-wrap-text {
+          color: var(--text-brand);
+        }
+
+        .material-icon {
+          color: var(--text-brand);
+        }
+
+        &:hover {
+          background: linear-gradient(
+              0deg,
+              var(--interaction-hover) 0%,
+              var(--interaction-hover) 100%
+            ),
+            var(--tag-selectable-selected);
+        }
+
+        &:active {
+          background: linear-gradient(
+              0deg,
+              var(--interaction-pressed) 0%,
+              var(--interaction-pressed) 100%
+            ),
+            var(--tag-selectable-selected);
+        }
+
+        &.disabled {
+          pointer-events: none;
+          cursor: not-allowed;
+          background: linear-gradient(
+              0deg,
+              var(--interaction-disabled) 0%,
+              var(--interaction-disabled) 100%
+            ),
+            var(--tag-selectable-selected);
+          border: 1px solid var(--border-disabled);
+
+          p {
+            color: var(--text-on-color-disabled);
+          }
+
+          .material-icon {
+            color: var(--text-on-color-disabled);
+          }
+        }
+      }
+    }
+
+    // 삭제 태그
+    &.close {
+      background: var(--layer-02);
+      border: 1px solid var(--border-default-02);
+
+      .tag-wrap-text {
+        font-weight: 400; // 토큰 문의? 필요
+      }
+
+      &.disabled {
+        background: linear-gradient(
+            0deg,
+            var(--interaction-disabled) 0%,
+            var(--interaction-disabled) 100%
+          ),
+          var(--layer-02);
+
+        .tag-wrap-text,
+        .material-icon {
+          color: var(--text-on-color-disabled);
+        }
+      }
+    }
+
+    // bullet
+    &.bullet {
+      position: relative;
+      display: inline-block;
+      height: auto;
+      padding: var(--spacing-0) var(--spacing-0) var(--spacing-0)
+        var(--spacing-12);
+      background: none;
+      border: 0;
+
+      .tag-wrap-text {
+        @include typography(label3, var(--text-default));
+      }
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        content: '';
+        border: 3px solid var(--tag-read-only-blue);
+        border-radius: var(--radius-9999);
+        transform: translateY(-50%);
+      }
+
+      &.fill {
+        padding-left: 10px;
+
+        &::before {
+          width: 6px;
+          height: 6px;
+          border: 0;
+        }
+        @each $color in 'blue', 'green', 'orange', 'red', 'gray' {
+          &.#{$color}::before {
+            background: var(--support-#{$color}-default);
+          }
+        }
+      }
+      @each $color in 'blue', 'green', 'orange', 'red', 'gray' {
+        &.#{$color}::before {
+          border-color: var(--support-#{$color}-default);
+        }
+      }
+    }
+
+    // traffic
+    &.traffic {
+      position: relative;
+      display: inline-block;
+      height: auto;
+      padding: 0;
+      background: none;
+      border: 0;
+
+      .tag-wrap-text {
+        @include typography(label6, var(--text-default));
+        padding-left: var(--spacing-8);
+      }
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 4px;
+        height: 14px;
+        content: '';
+        background: var(--tag-traffic-color);
+        border-radius: var(--radius-9999);
+        transform: translateY(-50%);
+      }
+      @each $color in 'blue', 'green', 'orange', 'red', 'gray' {
+        &.#{$color}::before {
+          background: var(--support-#{$color}-default);
+        }
+      }
+    }
+
+    // dot
+    &.dot {
+      position: relative;
+      display: inline-block;
+      height: auto;
+      padding: var(--spacing-0) var(--spacing-0) var(--spacing-0)
+        var(--spacing-12);
+      background: none;
+      border: 0;
+
+      .tag-wrap-text {
+        @include typography(label3, var(--text-default));
+      }
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        content: '';
+        background-color: var(--tag-read-only-blue);
+        border-radius: var(--radius-9999);
+        transform: translateY(-50%);
+      }
+      @each $color in 'blue', 'green', 'orange', 'red', 'gray' {
+        &.#{$color}::before {
+          background-color: var(--support-#{$color}-default);
+        }
+      }
+    }
+
+    // 색상별 클래스
+    @each $color in 'blue', 'green', 'orange', 'red', 'down', 'gray' {
+      &.#{$color}:not(.bullet, .dot, .traffic) {
+        background: var(--tag-read-only-#{$color}-background);
+        border: 1px solid var(--tag-read-only-#{$color}-background);
+
+        .tag-wrap-text,
+        .material-icon {
+          color: var(--tag-read-only-#{$color});
+        }
+      }
+    }
+  }
+}

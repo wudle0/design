@@ -1,0 +1,15 @@
+@use '../../abstracts' as *;
+
+#okestro-contrabass {
+  .dashboard {
+    .flex-row {
+      @media (max-width: $breakpointLg) {
+        .ant-col-8,
+        .ant-col-16 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+    }
+  }
+}

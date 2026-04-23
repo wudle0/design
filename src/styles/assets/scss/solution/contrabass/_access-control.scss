@@ -1,0 +1,20 @@
+@use '../../abstracts' as *;
+
+#okestro-contrabass {
+  .access-control {
+    .panel-body {
+      .tree-wrap {
+        .listbox-wrap {
+          .filter-wrap {
+            border: none;
+            border-bottom: 1px solid var(--border-subtle-01);
+          }
+
+          .listbox-group {
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}

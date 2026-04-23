@@ -1,0 +1,343 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-btn {
+    // 공통 스타일
+    @include focus-visible(out, 1px);
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: var(--spacing-4);
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: $buttonHeight;
+    padding: var(--spacing-6) var(--spacing-8);
+    cursor: pointer;
+    background: none;
+    border: 0;
+    border-radius: var(--radius-6);
+    box-shadow: none;
+
+    span:not(.material-icon) {
+      @include typography(label3, inherit);
+    }
+
+    // 아이콘 삽입 시
+    .material-icon {
+      line-height: 1;
+    }
+
+    &:has(> .material-icon:only-child),
+    &:has(> .custom-icon:only-child) {
+      min-width: 0;
+      padding: var(--spacing-0) 5px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    // 크기별 클래스
+    &.small {
+      height: $buttonHeightSm;
+      padding: var(--spacing-4) var(--spacing-8);
+      line-height: 16px;
+      border-radius: var(--radius-4);
+
+      span:not(.material-icon) {
+        @include typography(label5);
+      }
+    }
+
+    // 타입별 클래스
+    &.primary {
+      background: var(--button-primary-default);
+      border: 1px solid var(--button-primary-default);
+
+      span {
+        color: var(--text-on-color);
+      }
+
+      &:hover {
+        background: var(--button-primary-hover);
+        border-color: var(--button-primary-hover);
+      }
+
+      &:active {
+        background: var(--button-primary-pressed);
+        border-color: var(--button-primary-pressed);
+      }
+
+      &:disabled {
+        background: var(--button-primary-disabled);
+        border-color: var(--button-primary-disabled);
+
+        span {
+          color: var(--text-on-color-disabled);
+        }
+      }
+    }
+
+    &.secondary {
+      background: var(--button-secondary-default);
+      border: 1px solid var(--border-default-01);
+
+      span:not(.material-icon) {
+        color: var(--text-default);
+      }
+
+      &:hover {
+        background: var(--interaction-hover);
+        border-color: var(--border-default-01);
+      }
+
+      &:active {
+        background: var(--interaction-pressed);
+        border-color: var(--border-default-01);
+      }
+
+      // &:focus:not(.danger) {
+      //   background: linear-gradient(
+      //       0deg,
+      //       var(--interaction-selected) 0%,
+      //       var(--interaction-selected) 100%
+      //     ),
+      //     var(--button-secondary-default);
+      //   border-color: var(--border-active);
+      // }
+
+      &:disabled {
+        background: var(--button-secondary-default);
+        border-color: var(--border-disabled);
+
+        span {
+          color: var(--text-disabled);
+        }
+      }
+    }
+
+    &.tertiary {
+      background: var(--button-tertiary-default);
+      border-color: var(--button-tertiary-default);
+
+      span:not(.material-icon) {
+        color: var(--text-default);
+      }
+
+      &:hover {
+        background: var(--button-tertiary-hover);
+        border-color: var(--button-tertiary-hover);
+      }
+
+      &:active {
+        background: var(--button-tertiary-pressed);
+        border-color: var(--button-tertiary-pressed);
+      }
+
+      // &:focus {
+      //   background: linear-gradient(
+      //       0deg,
+      //       var(--interaction-selected) 0%,
+      //       var(--interaction-selected) 100%
+      //     ),
+      //     var(--button-tertiary-default);
+      // }
+
+      &:disabled {
+        background: var(--button-tertiary-default);
+
+        span {
+          color: var(--text-on-color-disabled);
+        }
+      }
+    }
+
+    &.ghost {
+      background: transparent;
+      border-color: transparent;
+
+      span:not(.material-icon) {
+        color: var(--text-default);
+      }
+
+      &:hover {
+        background: var(--interaction-hover);
+      }
+
+      &:active {
+        background: var(--interaction-pressed);
+      }
+
+      // &:focus:not(.danger) {
+      //   background: var(--interaction-selected);
+      // }
+
+      &:disabled {
+        background: transparent;
+
+        span {
+          color: var(--text-disabled);
+        }
+      }
+    }
+
+    &.danger:is(.secondary, .ghost) {
+      span {
+        color: var(--button-danger);
+      }
+
+      &:hover {
+        background: var(--button-danger-hover);
+      }
+
+      &:active {
+        background: var(--button-danger-pressed);
+      }
+
+      &:disabled {
+        background: transparent;
+
+        span {
+          color: var(--text-disabled);
+        }
+      }
+    }
+
+    &.link {
+      min-width: 0;
+      height: 18px;
+      padding: var(--spacing-0);
+
+      span:not(.material-icon) {
+        color: var(--link-default);
+        text-align: left;
+        text-decoration: underline;
+
+        // dashboard.scss에 추가하면 우선순위 안먹어서 여기로..
+        &.typography-display-1 {
+          @include typography(display1, inherit);
+        }
+      }
+
+      .material-icon {
+        font-size: 16px;
+      }
+
+      &:not(.material-icon) {
+        justify-content: flex-start;
+      }
+
+      &:disabled {
+        span:not(.material-icon) {
+          color: var(--text-disabled);
+        }
+      }
+
+      &.accent {
+        span:not(.material-icon) {
+          color: var(--button-primary-default);
+        }
+
+        &:disabled {
+          span:not(.material-icon) {
+            color: var(--text-disabled);
+          }
+        }
+      }
+
+      &.small {
+        height: 18px;
+      }
+    }
+
+    &.auto {
+      width: auto;
+      min-width: 0;
+      height: auto;
+      padding: 0;
+
+      span:not(.material-icon) {
+        font: unset;
+        color: var(--text-default);
+      }
+    }
+
+    .anticon {
+      display: none;
+    }
+  }
+
+  // 드롭다운 버튼
+  .btn-dropdown {
+    .ant-btn {
+      border-radius: var(--radius-6) var(--radius-0) var(--radius-0)
+        var(--radius-6);
+
+      // 드롭다운 버튼
+      &.ant-dropdown-trigger {
+        border-left: 0 !important;
+        border-radius: var(--radius-0) var(--radius-6) var(--radius-6)
+          var(--radius-0);
+      }
+
+      &:focus-visible {
+        position: relative;
+        z-index: 1;
+        border-radius: var(--radius-6);
+      }
+
+      // 색상 별 타입
+      &.primary {
+        border-right: 1px solid var(--border-subtle-01);
+      }
+
+      &.secondary {
+        border-right: 1px solid var(--border-default-01);
+
+        // &:focus:not(.danger) {
+        //   background: var(--button-secondary-default);
+        //   border: 1px solid var(--border-default-01);
+        // }
+      }
+    }
+
+    &.small {
+      .ant-btn {
+        height: 24px;
+        border-radius: var(--radius-4) var(--radius-0) var(--radius-0)
+          var(--radius-4);
+
+        &.primary {
+          span {
+            @include typography(label5, var(--text-on-color));
+          }
+        }
+
+        &.secondary {
+          span {
+            @include typography(label5, var(--text-default));
+          }
+        }
+
+        // 드롭다운 버튼
+        &.ant-dropdown-trigger {
+          border-radius: var(--radius-0) var(--radius-4) var(--radius-4)
+            var(--radius-0);
+        }
+
+        &:focus-visible {
+          border-radius: var(--radius-4);
+        }
+      }
+    }
+  }
+
+  // 복사하기 버튼
+  .ant-btn.btn-copy {
+    height: fit-content;
+    padding: 0 !important;
+    border-radius: var(--radius-2); // radius 값 확인 필요
+  }
+}

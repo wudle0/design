@@ -1,0 +1,64 @@
+@use '../../abstracts' as *;
+
+@include solution-scope {
+  .ant-table {
+    .multi-data-group {
+      strong {
+        &.item-ellipsis-text,
+        &.item-text {
+          @include typography(table1, var(--text-default));
+        }
+      }
+
+      .item-text {
+        @include typography(table2, var(--text-default));
+      }
+
+      .material-icon:last-child {
+        margin-left: auto;
+      }
+
+      .item-ellipsis-text {
+        @include typography(table2, var(--text-default));
+        @include ellipsis(1);
+        display: block;
+        max-width: 150px;
+      }
+
+      .ant-divider-vertical {
+        height: 20px;
+      }
+
+      .item-icon {
+        &:last-child {
+          margin-left: auto;
+        }
+      }
+
+      // 텍스트 너비 커스텀
+      .width-md {
+        width: 94px;
+      }
+
+      .width-lg {
+        width: 114px;
+      }
+
+      .min-width-md {
+        min-width: 76px;
+      }
+
+      .max-width-md {
+        max-width: 116px;
+      }
+
+      .max-width-lg {
+        max-width: 226px;
+      }
+
+      .min-width-lg {
+        min-width: 140px;
+      }
+    }
+  }
+}

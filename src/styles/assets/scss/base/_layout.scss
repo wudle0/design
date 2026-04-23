@@ -1,0 +1,461 @@
+@use '../abstracts' as *;
+
+body {
+  overflow: hidden;
+}
+
+#archive {
+  font-family: var(--font-family-default) !important;
+  color: var(--text-default);
+  background-color: var(--layer-00);
+
+  // 0. 컨테이너 (모든 요소를 포함한 부모 컨테이너)
+  .container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  // 1. main : 헤더, 컨텐츠 영역
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    padding-left: var(--spacing-16);
+    overflow: hidden;
+
+    // 하단 스크롤 위치 조정을 위한 컨테이너
+    .inner-scroll-container {
+      width: 100%;
+      height: calc(100% - $headerHeight);
+      padding-right: var(--spacing-16);
+      padding-bottom: var(--spacing-16);
+
+      @media (max-width: $breakpointMd) {
+        overflow-x: auto;
+      }
+    }
+  }
+
+  // 2. page : 패널(페이지) 타이틀, 패널(main, right-fix)을 포함하는 부모
+  .page-container {
+    display: flex;
+    gap: var(--spacing-16);
+    align-items: stretch;
+    width: 100%;
+
+    @media (max-width: $breakpointMd) {
+      // 1440px 기준 16px(*3) 여백과 LNB 너비값을 제외한 값
+      min-width: 1352px;
+    }
+  }
+
+  // 3. panel : 중앙 컨텐츠 패널, 우측 사이드 패널
+  .main-panel {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 50%; // width: 100%;
+    overflow: hidden;
+    background-color: var(--layer-01);
+    border-color: 1px solid var(--border-default-01);
+    border-radius: var(--radius-8);
+    box-shadow: var(--panel);
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .panel-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-16);
+    overflow: hidden;
+
+    &:has(.sider-content),
+    &:has(.side-view-content),
+    &:has(.main-content) {
+      padding: 0;
+    }
+
+    // 해당 요소 없을 경우 탭 높이 조정 (패널 타이틀 바로 하위로 노출될 경우)
+    &:not(.sider-content, .side-view-content, .side-step-content) {
+      > .ant-tabs:only-child {
+        .ant-tabs-tab {
+          height: $tabMinHeight;
+        }
+      }
+    }
+
+    @media (max-width: $breakpointMd) {
+      // 패널 내부에 사이드 스텝(생성 페이지 한정) 존재할 경우 direction 변경
+      &:has(.side-step-content) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .right-fix-panel {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: $panelWidthXs;
+    height: 100%;
+    background-color: var(--layer-01);
+    border-color: 1px solid var(--border-default-01);
+    border-radius: var(--radius-8);
+    box-shadow: var(--panel);
+
+    &.panel-size-md {
+      width: $panelWidthMd;
+    }
+  }
+
+  /*
+    4. panel 내 삽입되는 사이브 뷰 영역
+    sider-content : 좌측 sider
+    side-view-content : 스텝, 필터 영역
+  */
+  .sider-content {
+    // sider on/off toogle button
+    $btnToggleTop: 14px;
+    position: relative;
+    flex: 0 0 auto;
+    height: 100%;
+    border-right: 1px solid var(--border-subtle-01);
+
+    .ant-layout-sider {
+      position: relative;
+      flex: 0 0 auto !important;
+      width: $siderWidth;
+      height: 100%;
+      overflow: hidden;
+      transition:
+        all 0.2s,
+        background-color 0s;
+
+      &.ant-layout-sider-collapsed {
+        .content-header,
+        .content-body {
+          width: $siderWidth;
+          pointer-events: none;
+          opacity: 0;
+        }
+
+        .btn-toggle-sider {
+          display: inline-flex !important;
+
+          // .material-icon {
+          //   position: relative;
+          //   top: 20px;
+          // }
+
+          &.open {
+            // width: 12px;
+            pointer-events: auto;
+          }
+        }
+      }
+    }
+
+    .ant-layout-sider-children {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      width: $siderWidth;
+      height: 100%;
+    }
+
+    // .level-content {
+    //   .group-items:first-child {
+    //     .row::before {
+    //       display: inline-block;
+    //       flex: 0 0 20px;
+    //       width: 20px;
+    //       height: 20px;
+    //       font-size: 0;
+    //       content: 'btn-toggle-sider';
+    //     }
+    //   }
+    // }
+
+    .btn-toggle-sider.ant-btn-icon-only {
+      // position: absolute;
+      // top: $btnToggleTop;
+      // left: var(--spacing-16);
+      box-sizing: border-box;
+      display: inline-flex;
+      flex: 0 0 auto;
+      height: auto;
+      padding: 0;
+      border-radius: 0;
+
+      &::after {
+        display: none;
+      }
+
+      &.open {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        align-items: start;
+        width: $siderMinWidth;
+        height: 100%;
+        padding: 20px 0;
+        background-color: var(--layer-02);
+      }
+
+      &.close {
+        padding: 0;
+      }
+    }
+
+    // .content-header:has(.tag-wrap) {
+    //   .btn-toggle-sider {
+    //     top: calc($btnToggleTop + 2px);
+    //   }
+    // }
+  }
+
+  .side-view-content {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: $siderWidth;
+    height: 100%;
+    border-right: 1px solid var(--border-subtle-01);
+  }
+
+  .sider-content,
+  .side-view-content {
+    // 사이드 영역 공통 예외 스타일
+    .ant-list:not(.horizontal-list) {
+      width: 100%;
+    }
+
+    .listbox-wrap {
+      .listbox-group {
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+
+        .listbox-list-body {
+          height: auto;
+        }
+      }
+    }
+  }
+
+  .side-step-content {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    width: $sideStepWidth;
+    height: 100%;
+    border-right: 1px solid var(--border-subtle-01);
+
+    .content-header {
+      display: none;
+    }
+
+    @media (max-width: $breakpointMd) {
+      width: 100%;
+      height: auto;
+
+      .content-body {
+        padding: 0;
+      }
+    }
+  }
+
+  // 4. main-content (컨텐트를 감싸는 부모 객체)
+  // 4-1. content (content : 단일, content-group : content가 2개 이상 삽입될 경우)
+  .main-content {
+    @include scrollbars;
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+
+    // padding 제거 예외 케이스
+    &:has(.content, .content-body) {
+      padding: 0;
+    }
+
+    // 컨텐츠 최상위 객체가 탭일 경우 해당 탭은 16px 좌측 여백을 가짐
+    &:has(.ant-tabs) {
+      > .ant-tabs:first-child {
+        .ant-tabs-nav {
+          padding-left: var(--spacing-16);
+        }
+      }
+    }
+
+    // tab panel 내부에 side-view-content 존재 시 해당 탭 패널 display flex 적용
+    // &:has(.ant-tabs .side-view-content, .ant-tabs .sider-content) {
+    .ant-tabs {
+      .ant-tabs-tabpane:has(.side-view-content, .sider-content) {
+        display: flex;
+
+        // flex 추가 처리
+        .side-view-content + .ant-flex {
+          flex: 1;
+        }
+
+        .sider-content + .scroll-container {
+          flex: 1;
+        }
+      }
+    }
+
+    // }
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-16);
+
+    // padding 제거 예외 케이스
+    &:has(> .content-body),
+    &:has(> .ant-form),
+    &:has(> .ant-collapse),
+    &:has(> .nodata-wrap) {
+      padding: 0;
+    }
+
+    // scroll-container 삽입 시
+    &:has(> .scroll-container) {
+      height: 100%;
+    }
+
+    // scroll-container 가 페이지 일부로 사용될 경우
+    &:has(.scroll-container.md) {
+      height: auto;
+
+      .content-body {
+        padding: 0;
+
+        .scroll-container {
+          padding: var(--spacing-16);
+        }
+      }
+    }
+  }
+
+  .content-group {
+    .divide-column-group {
+      .ant-col {
+        overflow: hidden;
+      }
+
+      > .ant-col:not(:first-child) {
+        border-left: 1px solid var(--border-subtle-01);
+      }
+
+      .ant-table,
+      .ant-table-cell {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .content-header {
+    display: block;
+    flex: 0 0 auto;
+    transition: opacity 0.1s ease-in-out;
+  }
+
+  .content-body {
+    position: relative;
+    display: block;
+    padding: var(--spacing-16);
+    transition: opacity 0.1s ease-in-out;
+
+    // padding 제거 예외 케이스
+    &:has(.section),
+    &:has(> .ant-tabs),
+    &:has(> .ant-form),
+    &:has(> .table-content),
+    &:has(> .tree-group, .tree-wrap),
+    &:has(> .listbox-wrap),
+    &:has(> .side-view-content) {
+      padding: 0;
+    }
+
+    // &:has(> .level-card:first-child, > .ant-row:first-child .level-card) {
+    //   padding-top: 0;
+    // }
+
+    &:has(> .side-view-content) {
+      display: flex;
+
+      .side-view-content {
+        height: inherit;
+      }
+    }
+  }
+
+  .content-footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: var(--layer-01);
+
+    .footer-group {
+      padding: var(--spacing-16);
+    }
+  }
+
+  // 5. section : 컨텐츠를 구성하는 섹션 영역
+  .section {
+    padding: var(--spacing-16);
+    background-color: inherit;
+
+    // padding 제거 예외 케이스
+    &:has(.section-body) {
+      padding: 0;
+    }
+  }
+
+  .section-header {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  .section-body {
+    display: block;
+    padding: var(--spacing-16);
+
+    .ant-space {
+      width: 100%;
+
+      .ant-space-item {
+        display: flex;
+      }
+    }
+
+    // padding 제거 예외 케이스
+    &:has(> .ant-tree, > .tree-group),
+    &:has(> .ant-form),
+    &:has(> .table-content),
+    &:has(> .yaml),
+    &:has(> .tree-group, > .tree-wrap) {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@use '../../abstracts' as *;
+
+#archive {
+  // 테이블 내 리스트 사용시
+  .table-object-list {
+    & > div {
+      display: flex;
+
+      &:not(:last-child) {
+        margin-bottom: var(--spacing-4);
+      }
+
+      dt {
+        @include typography(table1, var(--text-default));
+        position: relative;
+        margin-right: 12px;
+
+        &::after {
+          position: absolute;
+          top: 50%;
+          right: -6.5px;
+          width: 1px;
+          height: 12px;
+          content: '';
+          background: var(--border-subtle-01);
+          transform: translateY(-50%);
+        }
+      }
+
+      dd {
+        @include typography(table2, var(--text-default));
+      }
+    }
+  }
+
+  // 단위 문구가 밖으로 나와있는 input number
+  .text-max-width {
+    .input-number-unit {
+      .ant-typography {
+        width: 56px;
+      }
+    }
+  }
+}

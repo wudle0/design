@@ -1,0 +1,201 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:list';
+@use 'variables' as *;
+@use 'font' as *;
+
+// typography: font + color 컬러 정의 안할 경우 null
+@mixin typography($key, $color: null, $include-font-family: true) {
+  $style: map.get($typography, $key);
+
+  @if $style {
+    font: $style;
+
+    @if $color {
+      color: $color;
+    }
+  }
+}
+
+// material 아이콘
+@mixin material($size-key, $color, $icon-name: null, $fill: false) {
+  $size-map: (
+    xs: 16px,
+    sm: 18px,
+    md: 20px,
+    lg: 22px,
+    xl: 24px,
+  );
+  $resolved-size: map.get($size-map, $size-key);
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-size: $resolved-size;
+  font-variation-settings:
+    'FILL' if($fill, 1, 0),
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 48;
+  color: $color;
+
+  // 가상선택자 아이콘 요소
+  &::before {
+    display: block;
+
+    @if $icon-name {
+      content: '#{$icon-name}';
+    }
+  }
+
+  @if not $resolved-size {
+    $resolved-size: $size-key;
+  }
+}
+
+// 말줄임
+@mixin ellipsis($line: 1) {
+  @if ($line == 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+  }
+}
+
+// 스크롤바
+@mixin scrollbars() {
+  &::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    color: var(--border-default-01);
+    outline: none;
+    border: 4px solid transparent;
+    border-radius: var(--radius-9999);
+
+    /* box-shadow 색상은 지정 안했을 경우 기본적으로 color 값을 따라감 */
+    box-shadow: inset 8px 8px 0;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: var(--radius-0);
+
+    &:vertical {
+      border-left: 1px solid var(--border-subtle-01);
+    }
+
+    &:horizontal {
+      border-top: 1px solid var(--border-subtle-01);
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+    border-radius: var(--radius-0);
+  }
+}
+
+@mixin scrollbarsthin($size: 4px) {
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--layer-05);
+    border-radius: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-subtle-01);
+    border-radius: 4px;
+  }
+}
+
+// 스크롤바 비주얼 숨김
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+// 메뉴 아이템 스타일
+@mixin item-style() {
+  position: relative;
+  display: flex;
+  column-gap: var(--spacing-8);
+  align-items: flex-start;
+  width: auto;
+  height: auto;
+  padding: var(--spacing-8) !important;
+  margin: 0;
+  line-height: inherit;
+  white-space: normal;
+  cursor: pointer;
+  outline: 0;
+  background: transparent;
+  border-radius: var(--radius-6);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &:hover {
+    background: var(--interaction-hover);
+  }
+
+  &:active {
+    background: var(--interaction-pressed);
+  }
+
+  &.ant-menu-item-selected {
+    background: var(--interaction-selected);
+  }
+}
+
+// 메뉴 아이템 하위 요소 스타일
+@mixin border-line() {
+  position: absolute;
+  top: 0;
+  left: 19.5px;
+  width: 1px;
+  height: 100%;
+  content: '';
+  background: var(--border-subtle-01);
+}
+
+// 포커스 스타일 (in/out)
+@mixin focus-visible($mode: out, $offset: 0, $color: null) {
+  &:focus-visible {
+    @if $mode == in {
+      outline: none;
+      box-shadow: if(
+        $color != null,
+        inset 0 0 0 2px #{$color},
+        $focus-visible-in
+      );
+    } @else if $mode == out {
+      outline: if($color != null, 2px solid #{$color}, $focus-visible-out);
+      outline-offset: $offset;
+      box-shadow: none;
+    }
+  }
+}
+
+// Solution Scope Mixin (솔루션 공통 스타일 적용을 위한 믹스인)
+@mixin solution-scope {
+  #okestro-ceph,
+  #okestro-viola,
+  #okestro-contrabass {
+    @content;
+  }
+}

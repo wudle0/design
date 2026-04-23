@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-badge-dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    min-width: 6px;
+    height: 6px;
+    background: var(--support-red-default);
+    border-radius: var(--radius-9999);
+    transform: translate(50%, -50%);
+    transform-origin: 100% 0%;
+  }
+}

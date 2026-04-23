@@ -1,0 +1,249 @@
+@use '../../../abstracts' as *;
+
+#archive {
+  #okestro-contrabass {
+    .controls {
+      // position: absolute;
+      position: sticky;
+      top: 0;
+      right: 0;
+      left: auto;
+      z-index: $z-index-popup;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 52px;
+      padding: 0 var(--spacing-16);
+      margin: 0;
+      background-color: var(--layer-overay);
+      border: 1px solid var(--border-subtle-01);
+      border-radius: var(--radius-8);
+      box-shadow: var(--strong);
+
+      .control-group {
+        &.sort-filter {
+          flex: 1 1 auto;
+          width: 60%;
+
+          .scroll-area {
+            position: relative;
+
+            &.dim-left-on {
+              &::before {
+                display: block;
+              }
+            }
+
+            &.dim-right-on {
+              &::after {
+                display: block;
+              }
+            }
+
+            &::before,
+            &::after {
+              position: absolute;
+              top: 0;
+              z-index: 2;
+              display: none;
+              width: 60px;
+              height: 100%;
+              pointer-events: none;
+              content: '';
+            }
+
+            &::before {
+              left: 0;
+              background: linear-gradient(
+                90deg,
+                var(--layer-overlay) 0%,
+                transparent 100%
+              );
+            }
+
+            &::after {
+              right: 0;
+              background: linear-gradient(
+                90deg,
+                transparent 0%,
+                var(--layer-overlay) 100%
+              );
+
+              // html[data-theme='dark'] & {
+              //   background: linear-gradient(
+              //     90deg,
+              //     rgb(51 51 51 / 0%) 0%,
+              //     rgb(51 51 51 / 100%) 100%
+              //   );
+              // }
+            }
+          }
+
+          .scroll-container {
+            @include scrollbarsthin(4px);
+            display: flex;
+            width: 100%;
+            padding: var(--spacing-8) 0; // 12
+            overflow-x: auto;
+
+            .ant-checkbox-group {
+              overflow: visible;
+            }
+
+            .ant-radio-group {
+              width: auto;
+              padding: 0;
+              margin: 0 auto;
+            }
+          }
+        }
+
+        &.legend {
+          flex: 0 0 auto;
+          gap: var(--spacing-4);
+        }
+
+        .monitoring-status {
+          &::before {
+            display: none;
+          }
+
+          &.down {
+            color: var(--text-default);
+          }
+        }
+
+        .ant-checkbox-group {
+          flex-flow: row nowrap;
+          gap: var(--spacing-8);
+          width: auto;
+          margin: 0 auto;
+          text-align: center;
+          white-space: nowrap;
+          cursor: auto;
+
+          .focus-area {
+            position: relative;
+            border-radius: 999px;
+
+            &:focus-visible {
+              @include focus-visible(out, 2px, var(--interaction-focus));
+            }
+          }
+
+          label {
+            padding: var(--spacing-2) var(--spacing-8);
+            border: 2px solid var(--border-default-01);
+            border-radius: 999px;
+
+            .ant-checkbox {
+              display: none;
+            }
+
+            span {
+              @include typography(label4, var(--text-default));
+              padding: 0;
+            }
+
+            &.ant-checkbox-wrapper {
+              height: 24px;
+              margin: 0;
+
+              // &.running {
+              //   border-color: var(--support-green-subtle);
+              // }
+
+              // &.down {
+              //   border-color: var(--support-neutral-subtle-hover);
+              // }
+
+              // &.error {
+              //   border-color: var(--support-red-subtle);
+              // }
+
+              // &.warning {
+              //   border-color: var(--support-orange-subtle);
+              // }
+
+              &.ant-checkbox-wrapper-checked {
+                border-width: 2px;
+
+                &.running {
+                  border-color: var(--support-green-default);
+                }
+
+                &.down {
+                  border-color: var(--support-gray-default);
+                }
+
+                &.error {
+                  border-color: var(--support-red-default);
+                }
+
+                &.warning {
+                  border-color: var(--support-orange-default);
+                }
+              }
+            }
+
+            &.inactive {
+              pointer-events: none !important;
+              background-color: var(--interaction-disabled) !important;
+              border-color: var(--border-default-01) !important;
+
+              span {
+                color: var(--text-subtler);
+              }
+            }
+
+            // &:has(.ant-checkbox:focus-visible) {
+            //   @include focus-visible(out, 2px, var(--focus-default));
+            // }
+          }
+        }
+      }
+
+      .sort-filter {
+        margin: 0 auto;
+      }
+
+      .legend {
+        display: flex;
+        align-items: center;
+
+        .ant-btn {
+          &.ant-btn-icon-only {
+            min-width: 28px;
+            height: 28px;
+          }
+        }
+
+        .type-icons {
+          padding: 2px;
+          background: var(--border-default-01);
+          border-radius: 1px;
+        }
+
+        .zoom-controls {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+
+  // 내부 툴팁 (Unit)
+  .control-filter-tooltip {
+    .ant-tooltip-content {
+      .ant-tooltip-head {
+        display: none;
+      }
+
+      .ant-tooltip-inner {
+        gap: var(--spacing-0);
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use '../../abstracts' as *;
+
+#okestro-viola {
+  .ant-card {
+    &.service-card {
+      height: 132px;
+
+      .ant-card-head {
+        .group-items {
+          .ant-flex {
+            min-width: 0;
+
+            .ant-typography {
+              min-width: 0;
+            }
+          }
+        }
+      }
+
+      .ant-card-body {
+        .divider-list {
+          li {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+          }
+        }
+      }
+    }
+  }
+
+  .progress-wrap {
+    display: flex;
+    gap: var(--spacing-8);
+    align-items: center;
+    max-width: $inputWidthMd;
+
+    .progress-content {
+      flex: 1;
+
+      .ant-progress {
+        .ant-progress-outer,
+        .ant-progress-inner {
+          border-radius: var(--radius-6);
+        }
+
+        .ant-progress-bg {
+          border-radius: var(--radius-6) 0 0 var(--radius-6);
+        }
+      }
+    }
+  }
+}

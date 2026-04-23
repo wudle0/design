@@ -1,0 +1,38 @@
+// @use '../themes/tokens' as *;
+
+/*
+display : 대시보드의 숫자 하이라이트 등
+h1 : 페이지 타이틀 
+h2 : 컨테이너(컨텐츠) 타이틀, 패널 타이틀
+h3 : 본문 내 섹션 타이틀, 콜랩스 타이틀
+body1 : 본문에서 강조가 필요한 부분 (strong 동일)
+body2 : 본문 기본 텍스트
+label1 : 큰 사이즈의 필드 내 텍스트
+label2 : 큰 사이즈의 태그 내 텍스트
+label3 : 버튼 내 텍스트 (button 동일)
+label4 : 태그 내 텍스트
+label5 : 도움말 텍스트, 작은 사이즈의 필드 내 텍스트 (caption 동일)
+label6 : 툴팁 텍스트, 캡션 하위 단계
+*/
+
+// boxy5,6은 모니터링을 위한 전용 폰트
+$typography: (
+  display1: var(--typo-display-01),
+  h1: var(--typo-heading-01),
+  h2: var(--typo-heading-02),
+  h3: var(--typo-heading-03),
+  body1: var(--typo-body-01),
+  body2: var(--typo-body-02),
+  body5: 400 12px 'Pretendard JP',
+  body6: 600 11px 'Pretendard JP',
+  label1: var(--typo-label-01),
+  label2: var(--typo-label-02),
+  label3: var(--typo-label-03),
+  label4: var(--typo-label-04),
+  label5: var(--typo-label-05),
+  label6: var(--typo-label-06),
+  code1: var(--typo-code-01),
+  code2: var(--typo-code-02),
+  table1: var(--typo-table-01),
+  table2: var(--typo-table-02),
+);

@@ -1,0 +1,268 @@
+@use '../abstracts' as *;
+
+#archive {
+  /*
+    공통
+  */
+  .title-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-8);
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: $headerHeight;
+
+    // padding: var(--spacing-16);
+    padding: var(--spacing-12) var(--spacing-16);
+    border-bottom: 1px solid var(--border-subtle-01);
+  }
+
+  // 타이틀 내부 그룹 (여러 요소 배치를 위한 컴포넌트 묶음)
+  .group-items {
+    display: flex;
+    flex-grow: 1;
+    gap: var(--spacing-6) var(--spacing-8); // 2->6
+    align-items: center;
+    overflow: hidden;
+
+    // 타이틀 그룹 내부 요소 정의
+    .item-title {
+      // ant-typography 제거
+      @include ellipsis(1);
+      display: block;
+      max-width: 100%;
+    }
+
+    .item-desc {
+      @include typography(label5, var(--text-helper));
+      display: block;
+      max-width: 100%;
+      white-space: pre-line;
+
+      &.error {
+        color: var(--support-red-default);
+      }
+
+      &.info {
+        color: var(--support-blue-default);
+      }
+
+      &.warning {
+        color: var(--support-orange-default);
+      }
+
+      &.success {
+        color: var(--support-green-default);
+      }
+
+      &.with-icon {
+        display: flex;
+        gap: 4px;
+        align-items: center;
+      }
+
+      @media (max-width: $breakpointMd) {
+        white-space: normal;
+      }
+    }
+
+    .item-num {
+      @include typography(label5, var(--text-helper));
+      flex: 0 0 auto;
+    }
+
+    .tag-wrap {
+      flex-wrap: nowrap;
+    }
+
+    .ant-btn {
+      @include focus-visible(in);
+    }
+
+    .ant-btn:has(.material-icon:only-child) {
+      // 드롭다운 버튼이 아닐 경우만 패딩 예외 처리
+      &:not(.ant-dropdown-trigger) {
+        padding: 0;
+      }
+    }
+
+    .ant-form {
+      padding: 0;
+    }
+
+    // 우측 (extra)
+    &.items-end {
+      flex: 0 0 auto;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-self: stretch;
+      justify-content: center;
+      max-width: 100%;
+      height: fit-content;
+      overflow: hidden;
+
+      .ant-btn + .ant-divider-vertical {
+        height: $buttonHeight;
+      }
+
+      .ant-btn.small + .ant-divider-vertical {
+        height: $buttonHeightSm;
+      }
+
+      .ant-btn.link + .ant-divider-vertical {
+        height: 16px;
+      }
+    }
+
+    // 정렬
+    &.ant-flex-vertical {
+      align-items: start;
+    }
+
+    // wrap (확장되지 않는 요소)
+    &.ant-flex-wrap-wrap {
+      flex: 0 0 auto;
+      max-width: 100%;
+    }
+
+    // 내부 row (타이틀, 디스크립션 행 분리)
+    .row {
+      display: flex;
+      gap: var(--spacing-8);
+      align-items: center;
+      max-width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  /*
+    타이틀 컴포넌트 레벨 스타일
+    title-group.level-{panel, content, section}
+  */
+  .level-panel {
+    min-height: $titleHeight;
+
+    // padding: var(--spacing-16);
+
+    .group-items {
+      .item-title {
+        @include typography(h1, var(--text-default));
+      }
+    }
+  }
+
+  .level-content {
+    // padding: var(--spacing-16);
+
+    .group-items {
+      .item-title {
+        @include typography(h2, var(--text-default));
+      }
+    }
+  }
+
+  .level-section {
+    min-height: $headerHeightSm;
+    padding: var(--spacing-8) var(--spacing-16);
+
+    .item-title {
+      @include typography(h3, var(--text-default));
+    }
+  }
+
+  .level-modal {
+    min-height: $titleHeight;
+    padding: var(--spacing-8) var(--spacing-16);
+
+    .item-title {
+      @include typography(h3, var(--text-default));
+    }
+  }
+
+  .level-popover {
+    border-bottom: 0;
+
+    .item-title {
+      @include typography(h3, var(--text-default));
+    }
+  }
+
+  .level-form {
+    min-height: $headerHeightSm;
+    padding: var(--spacing-16) 0; // 템플릿 버전 적용 8 -> 16
+    border-bottom: 0;
+
+    .item-title {
+      @include typography(h3, var(--text-default));
+    }
+  }
+
+  .level-label {
+    min-height: auto;
+
+    // required 는 폼 레이아웃에서 처리
+    padding: 0;
+    border-bottom: 0;
+
+    .item-title {
+      @include typography(label3, var(--text-default));
+      display: flex;
+      gap: var(--spacing-4);
+      align-items: center;
+    }
+  }
+
+  .level-card {
+    flex: 0 0 auto;
+    min-height: $cardHeaderHeight;
+
+    // min-height: 0;
+    padding: var(--spacing-12) 0 var(--spacing-12); // 위 여백 제거
+    border-bottom: 0;
+
+    .item-title {
+      @include typography(h3, var(--text-default));
+    }
+  }
+
+  .level-path {
+    min-height: min-content;
+    background-color: var(--layer-00);
+    border-bottom: 1px solid var(--border-subtle-01);
+
+    .item-title {
+      @include typography(label3, var(--link-default));
+      display: flex;
+      gap: var(--spacing-2);
+
+      &:has(.item-path) {
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+    }
+
+    .item-path {
+      display: flex;
+      gap: var(--spacing-2);
+      align-items: flex-start;
+      max-width: 100%;
+    }
+  }
+
+  // 예외 케이스 타이틀 그룹 border-bottom:0
+  &:not(.cloudview-wrap) {
+    .main-panel {
+      // 메인 패널에 side-content, side-view-content 없이 main-content 단독 일 경우 탭 사이 border 제거
+      &:has(.main-content:first-child > .ant-tabs:first-child) {
+        .level-panel {
+          border-bottom: 0;
+        }
+
+        .level-panel:has(.btn-back) {
+          border-bottom: 1px solid var(--border-subtle-01);
+        }
+      }
+    }
+  }
+}

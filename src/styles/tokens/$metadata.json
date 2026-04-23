@@ -1,0 +1,13 @@
+{
+  "tokenSetOrder": [
+    "global",
+    "cmpbf-light",
+    "cmpbf-dark",
+    "viola-light",
+    "viola-dark",
+    "contrabass-light",
+    "contrabass-dark",
+    "ceph-light",
+    "ceph-dark"
+  ]
+}

@@ -1,0 +1,209 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-tooltip {
+    // padding: var(--spacing-0);
+    max-width: 320px;
+
+    .ant-tooltip-arrow {
+      display: none !important;
+    }
+
+    // 툴팁 기본은 max 320이지만, 태그는 max-width 없이 무조건 한줄로 처리해야함.
+    &:has(.ant-tag),
+    &:has(.material-icon) {
+      max-width: 360px;
+    }
+
+    .ant-tooltip-inner {
+      @include typography(label5, var(--text-inverse));
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: unset;
+      padding: var(--spacing-8) var(--spacing-0) var(--spacing-8)
+        var(--spacing-8);
+      background: var(--layer-inverse);
+      border-radius: var(--radius-4);
+    }
+
+    &:not(:has(.ant-tooltip-body, .ant-tooltip-list)) {
+      .ant-tooltip-inner {
+        padding-right: var(--spacing-8);
+      }
+    }
+
+    &:has(.ant-tooltip-head),
+    &:has(.no-head) {
+      .ant-tooltip-inner {
+        background: var(--layer-raised);
+      }
+    }
+
+    &.ant-tooltip-placement-rightTop,
+    &.ant-tooltip-placement-right,
+    &.ant-tooltip-placement-rightBottom {
+      padding-left: var(--spacing-4);
+    }
+
+    &.ant-tooltip-placement-leftTop,
+    &.ant-tooltip-placement-left,
+    &.ant-tooltip-placement-leftBottom {
+      padding-right: var(--spacing-4);
+    }
+
+    &.ant-tooltip-placement-topLeft,
+    &.ant-tooltip-placement-top,
+    &.ant-tooltip-placement-topRight {
+      padding-bottom: var(--spacing-4);
+    }
+
+    &.ant-tooltip-placement-bottomLeft,
+    &.ant-tooltip-placement-bottom,
+    &.ant-tooltip-placement-bottomRight {
+      padding-top: var(--spacing-4);
+    }
+
+    &.plain {
+      .ant-tooltip-inner {
+        @include typography(label5, var(--text-inverse));
+        background: var(--layer-inverse);
+      }
+    }
+
+    &.ant-menu-inline-collapsed-tooltip {
+      a {
+        color: inherit;
+      }
+
+      .ant-btn,
+      .ant-switch {
+        display: none;
+      }
+    }
+
+    .ant-tooltip-head {
+      @include typography(label4, var(--text-default));
+      margin-bottom: var(--spacing-4);
+    }
+
+    .ant-tooltip-body {
+      @include typography(label5, var(--text-default));
+      @include ellipsis(4);
+      margin-right: var(--spacing-8);
+    }
+
+    .ant-tooltip-list {
+      @include scrollbars;
+      max-width: none;
+      max-height: 400px;
+      overflow-y: auto;
+
+      .ant-tooltip-list-item {
+        display: flex;
+        gap: var(--spacing-16);
+        align-items: center;
+        justify-content: flex-start;
+        padding: var(--spacing-4) var(--spacing-0);
+        margin-right: var(--spacing-8);
+
+        dt {
+          @include typography(label6, var(--text-subtle));
+          flex: 0 0 auto;
+          width: 120px;
+        }
+
+        dd {
+          @include typography(label6, var(--text-default));
+
+          span:not(.material-icon) {
+            @include typography(label6, var(--text-default));
+          }
+        }
+
+        &.default {
+          justify-content: space-between;
+
+          dt {
+            width: auto;
+          }
+        }
+      }
+    }
+
+    &:has(.ant-tooltip-reverse-list) {
+      box-shadow: inset 0 0 0 1px var(--strong);
+
+      .ant-tooltip-inner {
+        background: var(--layer-raised);
+      }
+
+      .ant-tooltip-reverse-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+        padding: var(--spacing-4) var(--spacing-0);
+        background: var(--layer-raised);
+
+        .ant-tooltip-reverse-list-item {
+          @include typography(label6, var(--text-default));
+          display: flex;
+          gap: var(--spacing-16);
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .chart-tooltip {
+    padding-right: 0 !important;
+
+    .tooltip-item-wrap {
+      @include scrollbars;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .tooltip-title {
+      @include typography(label4, var(--text-default));
+      margin-bottom: var(--spacing-4);
+    }
+
+    .tooltip-item {
+      @include typography(label6, var(--text-default));
+      display: flex;
+      align-items: flex-start;
+      padding: var(--spacing-4) var(--spacing-8) var(--spacing-4) 0;
+
+      .tooltip-item-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .series-name {
+          @include typography(label6, var(--text-subtle));
+          max-width: 180px;
+          word-wrap: break-word;
+          white-space: normal;
+        }
+
+        .value {
+          @include typography(label6, var(--text-default));
+          max-width: 180px;
+          margin-left: var(--spacing-16);
+          text-align: right;
+        }
+      }
+
+      & > span {
+        width: 4px !important;
+        height: 18px !important;
+        margin-right: var(--spacing-4) !important;
+        border-radius: var(--radius-9999) !important;
+      }
+    }
+  }
+}

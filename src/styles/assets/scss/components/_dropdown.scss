@@ -1,0 +1,194 @@
+@use '../abstracts' as *;
+
+// selector dropdown
+#archive {
+  // overflow: visible;
+  .ant-select-dropdown {
+    // display: block !important;
+    @include typography(label3, var(--text-default));
+    background-color: var(--layer-raised);
+    box-shadow: var(--strong);
+
+    .rc-virtual-list-holder-inner {
+      gap: var(--spacing-4);
+
+      .ant-select-item {
+        @include typography(label3, var(--text-default));
+        align-items: center;
+        min-height: 32px;
+        padding: var(--spacing-6) var(--spacing-8);
+        background-color: transparent;
+
+        .ant-select-item-option-content {
+          span {
+            @include ellipsis(2);
+            white-space: break-spaces;
+          }
+
+          .description {
+            @include typography(label5, var(--text-helper));
+            @include ellipsis(1);
+            display: block;
+          }
+        }
+
+        &.ant-select-item-option-active {
+          background: var(--interaction-hover);
+        }
+
+        &:active {
+          background: var(--interaction-selected);
+        }
+
+        &.ant-select-item-option-selected:not(
+            .ant-select-item-option-disabled
+          ) {
+          background-color: var(--interaction-selected);
+
+          .ant-select-item-option-state {
+            position: relative;
+            width: 20px;
+            height: 20px;
+
+            // 기존 아이콘 숨김
+            svg,
+            .anticon {
+              display: none;
+            }
+
+            &::before {
+              display: inline-block;
+              font-family: 'Material Symbols Outlined', sans-serif;
+              font-size: 20px;
+              font-variation-settings:
+                'FILL' 0,
+                'wght' 300,
+                'GRAD' 0,
+                'opsz' 48;
+              color: var(--icon-brand-default);
+              content: 'check';
+            }
+          }
+        }
+
+        // option disabled 추가
+        &.ant-select-item-option-disabled {
+          .ant-select-item-option-content {
+            color: var(--text-disabled);
+          }
+        }
+      }
+    }
+
+    // multiple
+    // 공통 스타일
+    .multiple-content {
+      @include typography(label3, var(--text-default));
+      display: flex;
+      gap: var(--spacing-6);
+      align-items: center;
+      padding: var(--spacing-6) var(--spacing-8);
+      cursor: pointer;
+      border-radius: var(--radius-6);
+
+      span:not(.ant-checkbox) {
+        @include ellipsis(2);
+        white-space: break-spaces;
+      }
+
+      &:hover {
+        background: var(--interaction-hover);
+      }
+
+      .ant-checkbox-wrapper {
+        margin-bottom: 0;
+      }
+
+      &:has(.ant-checkbox-wrapper-checked) {
+        background: var(--interaction-selected);
+      }
+    }
+
+    .multiple-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+
+    .ant-typography-disabled {
+      padding: var(--spacing-8);
+    }
+
+    .multiple-footer {
+      gap: var(--spacing-4);
+      margin: var(--spacing-8);
+
+      .ant-flex {
+        flex: 1 1 0;
+      }
+
+      .ant-input {
+        @include typography(label5, var(--text-default));
+        height: 24px;
+        padding: var(--spacing-4) var(--spacing-8);
+        background: var(--field-default);
+        border: 1px solid var(--border-default-01);
+        border-radius: var(--radius-6);
+
+        &:focus {
+          outline: $focus-visible-out;
+          outline-offset: -1px;
+          box-shadow: none;
+        }
+
+        &-disabled {
+          cursor: not-allowed;
+          background: var(--field-disabled);
+          border-color: var(--border-disabled);
+        }
+      }
+    }
+
+    .material-icon:not(.md) {
+      font-family: 'Material Symbols Outlined', sans-serif;
+      font-size: 16px;
+    }
+
+    .ant-select-item-empty {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .ant-dropdown {
+    .ant-dropdown-menu {
+      min-width: 128px;
+      max-width: 400px;
+      padding: var(--spacing-6) var(--spacing-8);
+      background-color: var(--layer-raised);
+      box-shadow: var(--strong);
+    }
+
+    .ant-dropdown-menu-item {
+      @include typography(label3, var(--text-default));
+      padding: var(--spacing-6) var(--spacing-8);
+
+      &:hover {
+        background: var(--interaction-hover);
+      }
+
+      &:active {
+        background: var(--interaction-selected);
+      }
+
+      &-disabled {
+        color: var(--text-disabled);
+
+        &:hover,
+        &:active {
+          background: transparent;
+        }
+      }
+    }
+  }
+}

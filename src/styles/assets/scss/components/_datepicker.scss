@@ -1,0 +1,384 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-picker {
+    @include typography(label3, var(--text-default));
+    width: $datePickerWidth;
+
+    // max-width: 328px;
+    min-width: 128px;
+    height: 32px;
+    padding: var(--spacing-6) var(--spacing-12);
+    background: var(--field-default);
+    border: 1px solid var(--border-default-01);
+    border-radius: var(--radius-6);
+    box-shadow: none;
+    transition: $trans-common-bezier-border-color;
+
+    &.ant-picker-small {
+      @include typography(label5, var(--text-default));
+      height: 24px;
+      padding: var(--spacing-4) var(--spacing-8);
+    }
+
+    &.ant-picker-large {
+      @include typography(label1, var(--text-default));
+      height: 40px;
+      padding: var(--spacing-8) var(--spacing-12);
+    }
+
+    &-status-error:not(.ant-input-disabled) {
+      border-color: var(--support-red-default);
+    }
+
+    &-status-success:not(.ant-input-disabled) {
+      border-color: var(--support-green-default);
+    }
+
+    &.ant-picker-disabled {
+      cursor: not-allowed;
+      background: var(--field-disabled);
+      border-color: var(--border-disabled);
+    }
+
+    &:not(.ant-picker-disabled):hover {
+      border-color: var(--border-default-03);
+    }
+
+    &:not(.ant-picker-disabled).ant-picker-focused {
+      outline: $focus-visible-out;
+      outline-offset: -1px;
+    }
+
+    .ant-picker-input {
+      input {
+        font-size: inherit;
+        line-height: inherit;
+        color: var(--text-default);
+
+        &::placeholder {
+          color: var(--text-subtler);
+        }
+      }
+    }
+
+    .ant-picker-active-bar {
+      opacity: 0;
+    }
+
+    // clear button
+    .ant-picker-clear {
+      svg,
+      .anticon {
+        display: none;
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        padding: var(--spacing-2) 0;
+        margin-top: -1px;
+        font-family: 'Material Symbols Outlined', sans-serif;
+        font-size: 20px;
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 48;
+        color: var(--text-default);
+        white-space: nowrap;
+        content: 'close';
+        background: var(--layer-raised);
+        transform: translateY(-50%);
+      }
+    }
+
+    .ant-picker-range-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 var(--spacing-4);
+      font-family: 'Material Symbols Outlined', sans-serif;
+      font-size: 20px;
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 48;
+      color: var(--icon-default);
+
+      &::before {
+        display: block;
+        content: 'east';
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+
+  // Floating label 포함 구조
+  .ant-picker-container.is-include-label {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+
+    .floating-label {
+      @include typography(label6, var(--text-subtle));
+      position: absolute;
+      top: -7px;
+      left: 12px;
+      z-index: 1;
+      padding: 0 var(--spacing-2);
+      pointer-events: none;
+      background-color: transparent;
+
+      &::before {
+        position: absolute;
+        top: 6px;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 4px;
+        content: '';
+        background-color: var(--layer-raised);
+      }
+    }
+
+    .ant-picker {
+      padding-top: var(--spacing-8);
+      padding-bottom: var(--spacing-6);
+    }
+
+    .ant-picker-input > input {
+      padding: 0;
+    }
+  }
+}
+
+// picker dropdown
+.ant-picker-dropdown {
+  @include typography(label3, var(--text-default));
+  padding: var(--spacing-8) 0;
+
+  .ant-picker-panel-container {
+    background: var(--layer-raised);
+
+    .ant-picker-presets {
+      ul {
+        padding: 0;
+
+        li {
+          height: 42px;
+          padding: var(--spacing-12) var(--spacing-16);
+        }
+      }
+    }
+  }
+
+  // range Arrow 제거
+  .ant-picker-range-arrow {
+    opacity: 0;
+  }
+
+  // wrapper
+  .ant-picker-range-wrapper {
+    border-radius: var(--radius-6);
+    box-shadow: var(--subtle);
+  }
+
+  // ───────────── HEADER ───────────── //
+  .ant-picker-header {
+    align-items: baseline;
+    height: 42px;
+    border-bottom: 1px solid var(--border-subtle-01);
+
+    button {
+      line-height: 35px;
+      color: var(--text-default);
+    }
+
+    .ant-picker-header-view {
+      font-weight: inherit;
+      color: var(--text-default);
+    }
+
+    // 양 옆 화살표 커스텀 (Material Icon)
+    .ant-picker-header-super-prev-btn,
+    .ant-picker-header-super-next-btn,
+    .ant-picker-header-prev-btn,
+    .ant-picker-header-next-btn {
+      span {
+        display: none;
+      }
+
+      &::before {
+        position: relative;
+        top: 3px;
+        display: inline-block;
+        font-family: 'Material Symbols Outlined', sans-serif;
+        font-size: 20px;
+        font-variation-settings:
+          'FILL' 0,
+          'wght' 300,
+          'GRAD' 0,
+          'opsz' 48;
+        color: var(--icon-default);
+      }
+    }
+
+    .ant-picker-header-super-prev-btn::before {
+      content: 'keyboard_double_arrow_left';
+    }
+
+    .ant-picker-header-prev-btn::before {
+      content: 'keyboard_arrow_left';
+    }
+
+    .ant-picker-header-next-btn::before {
+      content: 'keyboard_arrow_right';
+    }
+
+    .ant-picker-header-super-next-btn::before {
+      content: 'keyboard_double_arrow_right';
+    }
+  }
+
+  // ───────────── BODY (캘린더 영역) ───────────── //
+
+  .ant-picker-date-panel,
+  .ant-picker-month-panel {
+    width: $datePickerWidth;
+  }
+
+  .ant-picker-date-panel {
+    .ant-picker-body {
+      max-height: 226px;
+      padding: var(--spacing-8) var(--spacing-16);
+
+      .ant-picker-content {
+        th {
+          @include typography(label3, var(--text-default));
+          height: 30px;
+        }
+      }
+
+      .ant-picker-cell {
+        padding: 3px 0;
+        color: var(--text-subtler);
+      }
+
+      .ant-picker-cell-in-view {
+        padding: 3px 0;
+        color: var(--text-default);
+
+        .ant-picker-cell-inner {
+          &::before {
+            border-color: var(--icon-brand-default);
+          }
+        }
+
+        &.ant-picker-cell-selected,
+        &.ant-picker-cell-range-end,
+        &.ant-picker-cell-range-start {
+          .ant-picker-cell-inner {
+            color: var(--text-on-color);
+            background: var(--icon-brand-default);
+          }
+        }
+      }
+
+      .ant-picker-cell-in-range {
+        &::before {
+          background: var(--interaction-selected);
+        }
+      }
+    }
+  }
+
+  // ───────────── TIME PANEL ───────────── //
+  .ant-picker-time-panel {
+    border-left: 1px solid var(--border-subtle-01);
+
+    .ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+      background: var(--interaction-selected);
+      border-radius: 0;
+    }
+
+    .ant-picker-time-panel-column {
+      @include hide-scrollbar;
+      width: 56px;
+      max-width: 56px;
+      margin: 0;
+      overflow-y: auto;
+
+      &:not(:first-child) {
+        border-left: 0;
+      }
+
+      .ant-picker-time-panel-cell {
+        display: flex;
+        margin: 0;
+
+        .ant-picker-time-panel-cell-inner {
+          @include typography(label3, var(--text-default));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 56px;
+          height: 28px;
+          padding: 0;
+        }
+
+        &.ant-picker-time-panel-cell-selected {
+          .ant-picker-time-panel-cell-inner {
+            background: var(--interaction-selected);
+          }
+        }
+      }
+    }
+  }
+
+  // ───────────── month PANEL ───────────── //
+  .ant-picker-month-panel {
+    .ant-picker-cell-inner {
+      @include typography(label3, var(--text-default));
+    }
+  }
+
+  // ───────────── FOOTER ───────────── //
+  .ant-picker-panel {
+    border: 0;
+
+    .ant-picker-footer {
+      line-height: 39px;
+      border-top: 1px solid var(--border-subtle-01);
+    }
+  }
+
+  .ant-picker-footer,
+  .ant-picker-ranges {
+    .ant-btn-primary {
+      @include typography(label5, var(--text-on-color));
+      height: 24px !important;
+      background: var(--button-primary-default) !important;
+
+      &:hover {
+        background: var(--button-primary-hover) !important;
+      }
+
+      &:active {
+        background: var(--button-primary-pressed) !important;
+      }
+    }
+  }
+
+  // TODAY/NOW 텍스트 스타일
+  .ant-picker-today-btn,
+  a {
+    color: var(--link-default);
+    text-decoration: underline;
+  }
+}

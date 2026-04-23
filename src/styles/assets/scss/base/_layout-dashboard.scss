@@ -1,0 +1,8 @@
+@use '../abstracts' as *;
+
+#archive {
+  .date-info-refresh {
+    display: flex;
+    align-items: center;
+  }
+}

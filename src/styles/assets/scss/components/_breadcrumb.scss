@@ -1,0 +1,100 @@
+@use '../abstracts' as *;
+
+#archive {
+  .breadcrumb-wrap {
+    flex-shrink: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+
+    .ant-breadcrumb {
+      display: inline-block;
+      width: 100%;
+      max-width: 100%;
+      white-space: nowrap;
+
+      ol {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      li {
+        flex-shrink: 0;
+        white-space: nowrap;
+
+        &:last-child {
+          .ant-breadcrumb-link:hover {
+            text-decoration: none;
+          }
+        }
+      }
+
+      .ant-breadcrumb-link {
+        @include typography(label3, var(--text-default));
+        vertical-align: middle;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &:has(.disabled):hover {
+          text-decoration: none;
+        }
+
+        .linked-item,
+        a {
+          @include typography(label3, var(--text-default));
+          height: auto;
+          white-space: nowrap;
+          border-radius: var(--radius-0);
+
+          &:hover {
+            text-decoration: underline;
+            background: none;
+          }
+
+          &.disabled {
+            color: var(--text-subtler);
+            cursor: default;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .selected-item,
+        span {
+          @include typography(label2, var(--text-default));
+          white-space: nowrap;
+          cursor: default;
+        }
+
+        .more-depth {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          vertical-align: middle;
+          background: url('../images/icon/icon_more_btn.svg') no-repeat center /
+            cover;
+          border-radius: var(--radius-4);
+
+          &:hover {
+            background-color: var(--interaction-selected);
+          }
+        }
+      }
+
+      .ant-breadcrumb-separator {
+        @include typography(label3, var(--text-subtler));
+        flex-shrink: 0;
+        margin: var(--spacing-0) var(--spacing-8);
+        white-space: nowrap;
+      }
+    }
+  }
+}

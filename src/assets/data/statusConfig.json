@@ -1,0 +1,1448 @@
+{
+  "contrabass": {
+    "image": [
+      { "key": 1, "title": "삭제됨", "stat": "default", "text": "DELETED" },
+      {
+        "key": 2,
+        "title": "사용 불가",
+        "stat": "default",
+        "text": "DEACTIVATED"
+      },
+      { "key": 3, "title": "업로드 에러", "stat": "error", "text": "KILLED" },
+      { "key": 4, "title": "업로드 대기 중", "stat": "info", "text": "QUEUED" },
+      { "key": 5, "title": "업로드 중", "stat": "info", "text": "UPLOADING" },
+      { "key": 6, "title": "저장 중", "stat": "info", "text": "SAVING" },
+      {
+        "key": 7,
+        "title": "사용 준비 중",
+        "stat": "info",
+        "text": "IMPORTING"
+      },
+      {
+        "key": 8,
+        "title": "삭제 중",
+        "stat": "info",
+        "text": "PENDING_DELETE"
+      },
+      { "key": 9, "title": "준비 완료", "stat": "success", "text": "ACTIVE" }
+    ],
+    "instance": [
+      { "key": 1, "title": "영구 삭제", "stat": "default", "text": "DELETED" },
+      {
+        "key": 2,
+        "title": "강제 재부팅",
+        "stat": "default",
+        "text": "HARD_REBOOT"
+      },
+      { "key": 3, "title": "재부팅", "stat": "default", "text": "REBOOT" },
+      {
+        "key": 4,
+        "title": "삭제 대기",
+        "stat": "default",
+        "text": "SOFT_DELETED"
+      },
+      { "key": 5, "title": "정상 종료", "stat": "default", "text": "SHUTOFF" },
+      {
+        "key": 6,
+        "title": "저장 후 종료",
+        "stat": "default",
+        "text": "SHELVED_OFFLOAD"
+      },
+      { "key": 7, "title": "에러", "stat": "error", "text": "ERROR" },
+      { "key": 8, "title": "확인 필요", "stat": "error", "text": "UNKNOWN" },
+      {
+        "key": 9,
+        "title": "크기 조정",
+        "stat": "error",
+        "text": "REVERT_RESIZE"
+      },
+      { "key": 10, "title": "생성 중", "stat": "info", "text": "BUILD" },
+      {
+        "key": 11,
+        "title": "마이그레이션 중",
+        "stat": "info",
+        "text": "MIGRATING"
+      },
+      {
+        "key": 12,
+        "title": "이미지 재구성",
+        "stat": "info",
+        "text": "REBUILD"
+      },
+      {
+        "key": 13,
+        "title": "리소스 조정 중",
+        "stat": "info",
+        "text": "RESIZE"
+      },
+      {
+        "key": 14,
+        "title": "조정 확인 중",
+        "stat": "info",
+        "text": "VERIFY_RESIZED"
+      },
+      { "key": 15, "title": "정상 작동", "stat": "success", "text": "ACTIVE" },
+      {
+        "key": 16,
+        "title": "작업 성공",
+        "stat": "success",
+        "text": "FINISHED"
+      },
+      {
+        "key": 17,
+        "title": "일시 정지",
+        "stat": "warning",
+        "text": "SUSPENDED"
+      }
+    ],
+    "instancePower": [
+      { "key": 1, "title": "정지", "stat": "default", "text": "PAUSED" },
+      { "key": 2, "title": "정상 종료", "stat": "down", "text": "SHUTDOWN" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "CRASHED" },
+      { "key": 4, "title": "상태 없음", "stat": "error", "text": "NOSTATE" },
+      { "key": 5, "title": "작동 중", "stat": "success", "text": "RUNNING" },
+      { "key": 6, "title": "일시 정지", "stat": "warning", "text": "SUSPENDED" }
+    ],
+    "instanceProject": [
+      { "key": 1, "title": "활성", "stat": "success", "text": "ENABLED" },
+      { "key": 2, "title": "비활성", "stat": "default", "text": "DISABLED" }
+    ],
+    "segment": [
+      { "key": 1, "title": "사용불가", "stat": "down", "text": "DOWN" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "생성 중", "stat": "info", "text": "BUILD" },
+      { "key": 4, "title": "정상 작동", "stat": "success", "text": "ACTIVE" }
+    ],
+    "router": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "생성 중", "stat": "info", "text": "BUILD" },
+      { "key": 4, "title": "활성", "stat": "success", "text": "ACTIVE" }
+    ],
+    "fluid": [
+      { "key": 1, "title": "연결 안 됨", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "연결 끊김", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "연결됨", "stat": "success", "text": "ACTIVE" }
+    ],
+    "operating": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "OFFLINE" },
+      { "key": 2, "title": "수신 중지", "stat": "error", "text": "DRAINING" },
+      { "key": 3, "title": "제한적 작동", "stat": "error", "text": "DEGRADED" },
+      { "key": 4, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 5, "title": "활성", "stat": "success", "text": "ONLINE" },
+      {
+        "key": 6,
+        "title": "관리 설정 필요",
+        "stat": "warning",
+        "text": "NO_MONITOR"
+      }
+    ],
+    "provisioning": [
+      { "key": 1, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      {
+        "key": 2,
+        "title": "생성 중",
+        "stat": "info",
+        "text": "PENDING_CREATE"
+      },
+      {
+        "key": 3,
+        "title": "적용 중",
+        "stat": "info",
+        "text": "PENDING_UPDATE"
+      },
+      {
+        "key": 4,
+        "title": "삭제 중",
+        "stat": "info",
+        "text": "PENDING_DELETE"
+      },
+      { "key": 5, "title": "활성", "stat": "success", "text": "ACTIVE" }
+    ],
+    "admin": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "활성", "stat": "success", "text": "UP" }
+    ],
+    "volume": [
+      { "key": 1, "title": "작업 대기", "stat": "default", "text": "RESERVED" },
+      { "key": 2, "title": "사용 중", "stat": "default", "text": "IN_USE" },
+      { "key": 3, "title": "오류", "stat": "error", "text": "ERROR" },
+      {
+        "key": 4,
+        "title": "삭제 오류",
+        "stat": "error",
+        "text": "ERROR_DELETING"
+      },
+      {
+        "key": 5,
+        "title": "백업 오류",
+        "stat": "error",
+        "text": "ERROR_BACKING_UP"
+      },
+      {
+        "key": 6,
+        "title": "복원 오류",
+        "stat": "error",
+        "text": "ERROR_RESTORING"
+      },
+      {
+        "key": 7,
+        "title": "확장 오류",
+        "stat": "error",
+        "text": "ERROR_EXTENDING"
+      },
+      { "key": 8, "title": "생성 중", "stat": "info", "text": "CREATING" },
+      { "key": 9, "title": "연결 중", "stat": "info", "text": "ATTACHING" },
+      { "key": 10, "title": "분리 중", "stat": "info", "text": "DETACHING" },
+      { "key": 11, "title": "삭제 중", "stat": "info", "text": "DELETING" },
+      {
+        "key": 12,
+        "title": "전송 준비 완료",
+        "stat": "info",
+        "text": "AWAITING_TRANSFER"
+      },
+      { "key": 13, "title": "백업 중", "stat": "info", "text": "BACKING_UP" },
+      {
+        "key": 14,
+        "title": "복원 중",
+        "stat": "info",
+        "text": "RESTORING_BACKUP"
+      },
+      { "key": 15, "title": "받는 중", "stat": "info", "text": "DOWNLOADING" },
+      {
+        "key": 16,
+        "title": "유형 변경 중",
+        "stat": "info",
+        "text": "RETYPING"
+      },
+      { "key": 17, "title": "확장 중", "stat": "info", "text": "EXTENDING" },
+      { "key": 18, "title": "업로드 중", "stat": "info", "text": "UPLOADING" },
+      {
+        "key": 19,
+        "title": "사용 가능",
+        "stat": "success",
+        "text": "AVAILABLE"
+      },
+      {
+        "key": 20,
+        "title": "유지 보수 모드",
+        "stat": "warning",
+        "text": "MAINTENANCE"
+      }
+    ],
+    "volumeSnap": [
+      { "key": 1, "title": "삭제됨", "stat": "default", "text": "DELETED" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      {
+        "key": 3,
+        "title": "삭제 오류",
+        "stat": "error",
+        "text": "ERROR_DELETING"
+      },
+      { "key": 4, "title": "생성 중", "stat": "info", "text": "CREATING" },
+      { "key": 5, "title": "백업 중", "stat": "info", "text": "BACKING_UP" },
+      { "key": 6, "title": "삭제 중", "stat": "info", "text": "DELETING" },
+      { "key": 7, "title": "복원 중", "stat": "info", "text": "RESTORING" },
+      {
+        "key": 8,
+        "title": "준비 완료",
+        "stat": "success",
+        "text": "AVAILABLE"
+      },
+      {
+        "key": 9,
+        "title": "관리 범위 밖",
+        "stat": "warning",
+        "text": "UNMANAGING"
+      }
+    ],
+    "volumeGroup": [
+      {
+        "key": 1,
+        "title": "사용 가능",
+        "stat": "success",
+        "text": "AVAILABLE"
+      },
+      { "key": 2, "title": "사용 중", "stat": "default", "text": "IN_USE" },
+      { "key": 3, "title": "오류", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "업로드 중", "stat": "info", "text": "UPLOADING" },
+      { "key": 5, "title": "삭제 중", "stat": "info", "text": "DELETING" }
+    ],
+    "replica": [
+      { "key": 1, "title": "가능", "stat": "success", "text": "AVAILABLE" },
+      { "key": 2, "title": "진행 중", "stat": "info", "text": "PROCESSING" },
+      { "key": 3, "title": "불가능", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "비활성", "stat": "default", "text": "DISABLED" }
+    ],
+    "volumeGroupSnap": [
+      {
+        "key": 1,
+        "title": "사용 가능",
+        "stat": "success",
+        "text": "AVAILABLE"
+      },
+      { "key": 2, "title": "사용 중", "stat": "default", "text": "IN_USE" },
+      { "key": 3, "title": "오류", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "업로드 중", "stat": "info", "text": "UPLOADING" },
+      { "key": 5, "title": "삭제 중", "stat": "info", "text": "DELETING" }
+    ],
+    "volumeBackup": [
+      { "key": 1, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      {
+        "key": 2,
+        "title": "삭제 오류",
+        "stat": "error",
+        "text": "ERROR_DELETING"
+      },
+      { "key": 3, "title": "생성 중", "stat": "info", "text": "CREATING" },
+      { "key": 4, "title": "삭제 중", "stat": "info", "text": "DELETING" },
+      { "key": 5, "title": "복원 중", "stat": "info", "text": "RESTORING" },
+      { "key": 6, "title": "준비 완료", "stat": "success", "text": "AVAILABLE" }
+    ],
+    "share": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "INACTIVE" },
+      { "key": 2, "title": "삭제", "stat": "default", "text": "DELETED" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      {
+        "key": 4,
+        "title": "삭제 오류",
+        "stat": "error",
+        "text": "ERROR_DELETING"
+      },
+      {
+        "key": 5,
+        "title": "복원 오류",
+        "stat": "error",
+        "text": "ERROR_BACKUP_RESTORING"
+      },
+      {
+        "key": 6,
+        "title": "관리 오류",
+        "stat": "error",
+        "text": "ERROR_MANAGE"
+      },
+      {
+        "key": 7,
+        "title": "관리 제외 오류",
+        "stat": "error",
+        "text": "ERROR_UNMANAGE"
+      },
+      {
+        "key": 8,
+        "title": "확장 오류",
+        "stat": "error",
+        "text": "ERROR_EXTENDING"
+      },
+      {
+        "key": 9,
+        "title": "축소 오류",
+        "stat": "error",
+        "text": "ERROR_SHRINKING"
+      },
+      {
+        "key": 10,
+        "title": "축소 오류(데이터 손실 위험)",
+        "stat": "error",
+        "text": "ERROR_SHRINKING_POSSIBLE_DATA_LOSS"
+      },
+      {
+        "key": 11,
+        "title": "복원 오류",
+        "stat": "error",
+        "text": "ERROR_REVERTING"
+      },
+      {
+        "key": 12,
+        "title": "백업 중",
+        "stat": "info",
+        "text": "BACKUP_CREATING"
+      },
+      {
+        "key": 13,
+        "title": "복원 중",
+        "stat": "info",
+        "text": "BACKUP_RESTORING"
+      },
+      { "key": 14, "title": "생성 중", "stat": "info", "text": "CREATING" },
+      {
+        "key": 15,
+        "title": "스냅샷 생성 중",
+        "stat": "info",
+        "text": "CREATING_FROM_SNAPSHOT"
+      },
+      { "key": 16, "title": "삭제 중", "stat": "info", "text": "DELETING" },
+      {
+        "key": 17,
+        "title": "관리 시작 중",
+        "stat": "info",
+        "text": "MANAGE_STARTING"
+      },
+      {
+        "key": 18,
+        "title": "관리 중단 중",
+        "stat": "info",
+        "text": "UNMANAGE_STARTING"
+      },
+      { "key": 19, "title": "확장 중", "stat": "info", "text": "EXTENDING" },
+      { "key": 20, "title": "축소 중", "stat": "info", "text": "SHRINKING" },
+      {
+        "key": 21,
+        "title": "마이그레이션 중",
+        "stat": "info",
+        "text": "MIGRATING"
+      },
+      { "key": 22, "title": "복원 중", "stat": "info", "text": "REVERTING" },
+      {
+        "key": 23,
+        "title": "마이그레이션 대상",
+        "stat": "info",
+        "text": "MIGRATING_TO"
+      },
+      {
+        "key": 24,
+        "title": "전송 중",
+        "stat": "info",
+        "text": "AWAITING_TRANSFER"
+      },
+      {
+        "key": 25,
+        "title": "복제 변경 중",
+        "stat": "info",
+        "text": "REPLICATION_CHANGE"
+      },
+      {
+        "key": 26,
+        "title": "사용 가능",
+        "stat": "success",
+        "text": "AVAILABLE"
+      },
+      {
+        "key": 27,
+        "title": "관리 제외",
+        "stat": "warning",
+        "text": "UNMANAGED"
+      }
+    ],
+    "stack": [
+      {
+        "key": 1,
+        "title": "일시 정지",
+        "stat": "default",
+        "text": "SUSPEND_COMPLETE"
+      },
+      {
+        "key": 2,
+        "title": "생성 실패",
+        "stat": "error",
+        "text": "CREATE_FAILED"
+      },
+      {
+        "key": 3,
+        "title": "삭제 실패",
+        "stat": "error",
+        "text": "DELETE_FAILED"
+      },
+      {
+        "key": 4,
+        "title": "업데이트 실패",
+        "stat": "error",
+        "text": "UPDATE_FAILED"
+      },
+      {
+        "key": 5,
+        "title": "롤백 실패",
+        "stat": "error",
+        "text": "ROLLBACK_FAILED"
+      },
+      {
+        "key": 6,
+        "title": "정지 실패",
+        "stat": "error",
+        "text": "SUSPENDED_FAILED"
+      },
+      {
+        "key": 7,
+        "title": "생성 중",
+        "stat": "info",
+        "text": "CREATE_IN_PROGRESS"
+      },
+      {
+        "key": 8,
+        "title": "삭제 중",
+        "stat": "info",
+        "text": "DELETE_IN_PROGRESS"
+      },
+      {
+        "key": 9,
+        "title": "업데이트 중",
+        "stat": "info",
+        "text": "UPDATE_IN_PROGRESS"
+      },
+      {
+        "key": 10,
+        "title": "정지 중",
+        "stat": "info",
+        "text": "SUSPEND_IN_PROGRESS"
+      },
+      {
+        "key": 11,
+        "title": "롤백 중",
+        "stat": "info",
+        "text": "ROLLBACK_IN_PROGRESS"
+      },
+      {
+        "key": 12,
+        "title": "작동 중",
+        "stat": "info",
+        "text": "RESUME_IN_PROGRESS"
+      },
+      {
+        "key": 13,
+        "title": "점검 중",
+        "stat": "info",
+        "text": "CHECK_IN_PROGRESS"
+      },
+      {
+        "key": 14,
+        "title": "생성 완료",
+        "stat": "success",
+        "text": "CREATE_COMPLETE"
+      },
+      {
+        "key": 15,
+        "title": "작업 완료",
+        "stat": "success",
+        "text": "SIGNAL_COMPLETE"
+      },
+      {
+        "key": 16,
+        "title": "삭제 완료",
+        "stat": "success",
+        "text": "DELETE_COMPLETE"
+      },
+      {
+        "key": 17,
+        "title": "업데이트 완료",
+        "stat": "success",
+        "text": "UPDATE_FAILED"
+      },
+      {
+        "key": 18,
+        "title": "점검 완료",
+        "stat": "success",
+        "text": "CHECK_COMPLETE"
+      },
+      {
+        "key": 19,
+        "title": "롤백 완료",
+        "stat": "success",
+        "text": "ROLLBACK_COMPLETE"
+      }
+    ],
+    "resource": [
+      {
+        "key": 1,
+        "title": "생성 중",
+        "stat": "info",
+        "text": "CREATE_IN_PROGRESS"
+      },
+      {
+        "key": 2,
+        "title": "생성 성공",
+        "stat": "success",
+        "text": "CREATE_COMPLETE"
+      },
+      {
+        "key": 3,
+        "title": "생성 실패",
+        "stat": "error",
+        "text": "CREATE_FAILED"
+      },
+      {
+        "key": 4,
+        "title": "업데이트 성공",
+        "stat": "success",
+        "text": "UPDATE_COMPLETE"
+      },
+      {
+        "key": 5,
+        "title": "삭제 성공",
+        "stat": "success",
+        "text": "DELETE_COMPLETE"
+      },
+      {
+        "key": 6,
+        "title": "점검 완료",
+        "stat": "success",
+        "text": "CHECK_COMPLETE"
+      }
+    ],
+    "event": [
+      {
+        "key": 1,
+        "title": "생성 실패",
+        "stat": "error",
+        "text": "CREATE_FAILED"
+      },
+      {
+        "key": 2,
+        "title": "업데이트 실패",
+        "stat": "error",
+        "text": "UPDATE_FAILED"
+      },
+      {
+        "key": 3,
+        "title": "삭제 실패",
+        "stat": "error",
+        "text": "DELETE_FAILED"
+      },
+      { "key": 4, "title": "초기화 시작", "stat": "info", "text": "INIT" },
+      {
+        "key": 5,
+        "title": "생성 중",
+        "stat": "info",
+        "text": "CREATE_IN_PROGRESS"
+      },
+      {
+        "key": 6,
+        "title": "업데이트 중",
+        "stat": "info",
+        "text": "UPDATE_IN_PROGRESS"
+      },
+      {
+        "key": 7,
+        "title": "삭제 중",
+        "stat": "info",
+        "text": "DELETE_IN_PROGRESS"
+      },
+      {
+        "key": 8,
+        "title": "일시 중지 중",
+        "stat": "info",
+        "text": "SUSPEND_IN_PROGRESS"
+      },
+      {
+        "key": 9,
+        "title": "재개 중",
+        "stat": "info",
+        "text": "RESUME_IN_PROGRESS"
+      },
+      {
+        "key": 10,
+        "title": "점검 시작",
+        "stat": "info",
+        "text": "CHECK_IN_PROGRESS"
+      },
+      {
+        "key": 11,
+        "title": "생성 완료",
+        "stat": "success",
+        "text": "CREATE_COMPLETE"
+      },
+      {
+        "key": 12,
+        "title": "업데이트 완료",
+        "stat": "success",
+        "text": "UPDATE_COMPLETE"
+      },
+      {
+        "key": 13,
+        "title": "삭제 완료",
+        "stat": "success",
+        "text": "DELETE_COMPLETE"
+      },
+      {
+        "key": 14,
+        "title": "일시 중지 완료",
+        "stat": "success",
+        "text": "SUSPEND_COMPLETE"
+      },
+      {
+        "key": 15,
+        "title": "재개 완료",
+        "stat": "success",
+        "text": "RESUME_COMPLETE"
+      },
+      {
+        "key": 16,
+        "title": "점검 완료",
+        "stat": "success",
+        "text": "CHECK_COMPLETE"
+      }
+    ],
+    "rack": [
+      { "key": 1, "title": "사용", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "미사용", "stat": "default", "text": "DOWN" }
+    ],
+    "server": [
+      { "key": 1, "title": "사용", "stat": "success", "text": "RUNNING/OPEN" },
+      { "key": 2, "title": "미사용", "stat": "default", "text": "DOWN/CLOSE" },
+      { "key": 3, "title": "에러", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "주의", "stat": "warning", "text": "WARNNING" },
+      {
+        "key": 5,
+        "title": "상태 없음",
+        "stat": "default",
+        "text": "NON_STATUS"
+      }
+    ],
+    "hypervisor": [
+      { "key": 1, "title": "작동 중", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "정지", "stat": "down", "text": "DOWN" }
+    ],
+    "baremetal": [
+      { "key": 1, "title": "작동 중", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "정지", "stat": "down", "text": "DOWN" }
+    ],
+    "switch": [
+      { "key": 1, "title": "작동 중", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "정지", "stat": "down", "text": "DOWN" }
+    ],
+    "storage": [
+      { "key": 1, "title": "작동 중", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "정지", "stat": "down", "text": "DOWN" }
+    ],
+    "rackStatus": [
+      { "key": 1, "title": "정지", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "에러", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "작동 중", "stat": "info", "text": "RUNNING" },
+      {
+        "key": 4,
+        "title": "작동 중(스위치)",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      { "key": 5, "title": "주의", "stat": "warning", "text": "WARNING" },
+      {
+        "key": 6,
+        "title": "상태 없음",
+        "stat": "default",
+        "text": "NON_STATUS"
+      }
+    ],
+    "physical": [
+      { "key": 1, "title": "사용", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "미사용", "stat": "default", "text": "DOWN" },
+      {
+        "key": 3,
+        "title": "상태 없음",
+        "stat": "default",
+        "text": "NON_STATUS"
+      }
+    ],
+    "virtual": [
+      { "key": 1, "title": "사용", "stat": "success", "text": "RUNNING" },
+      { "key": 2, "title": "미사용", "stat": "default", "text": "DOWN" },
+      {
+        "key": 3,
+        "title": "상태 없음",
+        "stat": "default",
+        "text": "NON_STATUS"
+      }
+    ],
+    "hostBackup": [
+      { "key": 1, "title": "예정", "stat": "info", "text": "SCHEDULED" },
+      { "key": 2, "title": "진행 중", "stat": "info", "text": "IN_PROGRESS" },
+      { "key": 3, "title": "성공", "stat": "success", "text": "SUCCESS" },
+      { "key": 4, "title": "실패", "stat": "error", "text": "FAIL" },
+      { "key": 5, "title": "취소", "stat": "default", "text": "CANCELED" },
+      { "key": 6, "title": "삭제", "stat": "default", "text": "DELETED" }
+    ],
+    "hostUsage": [
+      { "key": 1, "title": "사용 불가", "stat": "default", "text": "DISABLED" },
+      { "key": 2, "title": "사용 가능", "stat": "success", "text": "ENABLED" }
+    ],
+    "hostOperate": [
+      { "key": 2, "title": "비활성", "stat": "default", "text": "DOWN" },
+      { "key": 1, "title": "활성", "stat": "success", "text": "UP" }
+    ],
+    "project": [
+      { "key": 1, "title": "사용 가능", "stat": "success", "text": "ENABLED" },
+      { "key": 2, "title": "사용 불가", "stat": "default", "text": "DISABLED" }
+    ],
+    "ipRange": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "생성 중", "stat": "info", "text": "BUILD" },
+      { "key": 3, "title": "활성", "stat": "success", "text": "ACTIVE" }
+    ],
+    "port": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "생성 중", "stat": "info", "text": "BUILD" },
+      { "key": 4, "title": "활성", "stat": "success", "text": "ACTIVE" }
+    ],
+    "interface": [
+      { "key": 1, "title": "비활성", "stat": "default", "text": "DOWN" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "설정 중", "stat": "info", "text": "BUILD" },
+      { "key": 4, "title": "활성", "stat": "success", "text": "ACTIVE" }
+    ]
+  },
+  "viola": {
+    "cluster": [
+      { "key": 1, "title": "양호", "stat": "success", "text": "GOOD" },
+      {
+        "key": 2,
+        "title": "엔진 업그레이드 중",
+        "stat": "info",
+        "text": "UPGRADING"
+      },
+      {
+        "key": 3,
+        "title": "엔진 롤백 중",
+        "stat": "info",
+        "text": "REVERTING"
+      },
+      { "key": 4, "title": "주의 필요", "stat": "warning", "text": "WARNING" },
+      {
+        "key": 5,
+        "title": "업그레이드/롤백 실패",
+        "stat": "error",
+        "text": "FAILED"
+      },
+      { "key": 6, "title": "점검 필요", "stat": "error", "text": "CRITICAL" }
+    ],
+    "node": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "READY" },
+      {
+        "key": 2,
+        "title": "엔진 업그레이드 중",
+        "stat": "info",
+        "text": "UPGRADING"
+      },
+      {
+        "key": 3,
+        "title": "엔진 롤백 중",
+        "stat": "info",
+        "text": "REVERTING"
+      },
+      {
+        "key": 4,
+        "title": "신규 파드 배치 제한",
+        "stat": "info",
+        "text": "CORDON"
+      },
+      {
+        "key": 5,
+        "title": "업그레이드/롤백 실패",
+        "stat": "error",
+        "text": "FAILED"
+      },
+      { "key": 6, "title": "장애 발생", "stat": "error", "text": "NOT READY" },
+      { "key": 7, "title": "전원 종료", "stat": "down", "text": "DOWN" },
+      { "key": 8, "title": "알 수 없음", "stat": "down", "text": "UNKNOWN" }
+    ],
+    "clusterConnection": [
+      {
+        "key": 1,
+        "title": "클러스터 연결 완료",
+        "stat": "success",
+        "text": "SUCCESS"
+      },
+      {
+        "key": 2,
+        "title": "클러스터 연결 중",
+        "stat": "info",
+        "text": "PENDING"
+      },
+      {
+        "key": 3,
+        "title": "클러스터 구성 중",
+        "stat": "info",
+        "text": "PROVISIONING"
+      },
+      {
+        "key": 4,
+        "title": "클러스터 구성/삭제 실패",
+        "stat": "error",
+        "text": "FAILED"
+      },
+      {
+        "key": 5,
+        "title": "클러스터 삭제 중",
+        "stat": "down",
+        "text": "DELETING"
+      }
+    ],
+    "nodeDetail": [
+      { "key": 1, "title": "양호", "stat": "success", "text": "GOOD" },
+      { "key": 2, "title": "주의 필요", "stat": "warning", "text": "WARNING" }
+    ],
+    "namespace": [
+      { "key": 1, "title": "활성화", "stat": "success", "text": "ACTIVE" },
+      { "key": 2, "title": "삭제 중", "stat": "down", "text": "TERMINATING" }
+    ],
+    "backup": [
+      { "key": 1, "title": "신규 생성", "stat": "default", "text": "New" },
+      {
+        "key": 2,
+        "title": "백업 진행 중",
+        "stat": "info",
+        "text": "InProgress"
+      },
+      {
+        "key": 3,
+        "title": "백업 부분 실패",
+        "stat": "warning",
+        "text": "ParticallyFailed"
+      },
+      { "key": 4, "title": "백업 실패", "stat": "error", "text": "Failed" },
+      {
+        "key": 5,
+        "title": "백업 완료",
+        "stat": "success",
+        "text": "COMPLETED"
+      },
+      { "key": 6, "title": "알 수 없음", "stat": "down", "text": "Unknown" }
+    ],
+    "backupRestore": [
+      { "key": 1, "title": "신규 생성", "stat": "default", "text": "New" },
+      {
+        "key": 2,
+        "title": "복원 진행 중",
+        "stat": "info",
+        "text": "InProgress"
+      },
+      {
+        "key": 3,
+        "title": "복원 부분 실패",
+        "stat": "warning",
+        "text": "ParticallyFailed"
+      },
+      { "key": 4, "title": "복원 실패", "stat": "error", "text": "Failed" },
+      {
+        "key": 5,
+        "title": "복원 완료",
+        "stat": "success",
+        "text": "COMPLETED"
+      },
+      { "key": 6, "title": "알 수 없음", "stat": "down", "text": "Unknown" }
+    ],
+    "pod": [
+      {
+        "key": 1,
+        "title": "정상 실행 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      {
+        "key": 2,
+        "title": "파드 실행 완료",
+        "stat": "success",
+        "text": "SUCCEEDED"
+      },
+      {
+        "key": 3,
+        "title": "컨테이너 정상 종료",
+        "stat": "success",
+        "text": "COMPLETED"
+      },
+      { "key": 4, "title": "생성 중", "stat": "info", "text": "PENDING" },
+      {
+        "key": 5,
+        "title": "컨테이너 생성 중",
+        "stat": "info",
+        "text": "ContainerCreating"
+      },
+      {
+        "key": 6,
+        "title": "파드 시작 중",
+        "stat": "info",
+        "text": "PodInitializing"
+      },
+      {
+        "key": 7,
+        "title": "이미지 다운로드 실패",
+        "stat": "error",
+        "text": "ImagePullBackOff"
+      },
+      {
+        "key": 8,
+        "title": "컨테이너 시작 실패",
+        "stat": "error",
+        "text": "CrashLoopBackOff"
+      },
+      {
+        "key": 9,
+        "title": "이미지 오류",
+        "stat": "error",
+        "text": "ErrImagePull"
+      },
+      {
+        "key": 10,
+        "title": "컨테이너 설정 오류",
+        "stat": "error",
+        "text": "CreateContainerConfigError"
+      },
+      {
+        "key": 11,
+        "title": "컨테이너 생성 실패",
+        "stat": "error",
+        "text": "CreateContainerError"
+      },
+      {
+        "key": 12,
+        "title": "이미지 이름 오류",
+        "stat": "error",
+        "text": "InvalidImageName"
+      },
+      {
+        "key": 13,
+        "title": "메모리 부족",
+        "stat": "error",
+        "text": "OOMKilled"
+      },
+      { "key": 14, "title": "비정상 종료", "stat": "error", "text": "ERROR" },
+      {
+        "key": 15,
+        "title": "컨테이너 실행 불가",
+        "stat": "error",
+        "text": "ContainerCannotRun"
+      },
+      {
+        "key": 16,
+        "title": "실행 시간 초과",
+        "stat": "error",
+        "text": "DeadlineExceeded"
+      },
+      {
+        "key": 17,
+        "title": "컨테이너 비정상 종료",
+        "stat": "error",
+        "text": "FAILED"
+      },
+      {
+        "key": 18,
+        "title": "삭제 중",
+        "stat": "default",
+        "text": "TERMINATING"
+      },
+      { "key": 19, "title": "알 수 없음", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "container": [
+      {
+        "key": 1,
+        "title": "정상 실행 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      { "key": 2, "title": "생성 중", "stat": "info", "text": "WAITING" },
+      { "key": 3, "title": "종료됨", "stat": "down", "text": "TERMINATED" }
+    ],
+    "podDetail": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "READY" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" }
+    ],
+    "deployment": [
+      {
+        "key": 1,
+        "title": "배포 완료",
+        "stat": "success",
+        "text": "DEPLOYED"
+      },
+      { "key": 2, "title": "배포 중", "stat": "info", "text": "PENDING" },
+      { "key": 3, "title": "배포 실패", "stat": "error", "text": "FAILED" },
+      { "key": 4, "title": "삭제 중", "stat": "down", "text": "DELETING" },
+      { "key": 5, "title": "알 수 없음", "stat": "down", "text": "UNKNOWN" }
+    ],
+    "deploymentDetail": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "TRUE" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "FALSE" }
+    ],
+    "daemonset": [
+      {
+        "key": 1,
+        "title": "파드 정상 실행 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      { "key": 2, "title": "파드 준비 중", "stat": "info", "text": "UPDATING" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "중지", "stat": "down", "text": "STOPPED" }
+    ],
+    "statefulset": [
+      {
+        "key": 1,
+        "title": "파드 정상 실행 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      { "key": 2, "title": "파드 준비 중", "stat": "info", "text": "UPDATING" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "중지", "stat": "down", "text": "STOPPED" }
+    ],
+    "replicaset": [
+      {
+        "key": 1,
+        "title": "파드 정상 실행 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      { "key": 2, "title": "파드 준비 중", "stat": "info", "text": "UPDATING" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "중지", "stat": "down", "text": "STOPPED" }
+    ],
+    "job": [
+      {
+        "key": 1,
+        "title": "작업 완료",
+        "stat": "success",
+        "text": "COMPLETED"
+      },
+      { "key": 2, "title": "작업 중", "stat": "info", "text": "RUNNING" },
+      {
+        "key": 3,
+        "title": "일시 중지",
+        "stat": "warning",
+        "text": "SUSPENDED"
+      },
+      { "key": 4, "title": "작업 실패", "stat": "error", "text": "FAILED" },
+      { "key": 5, "title": "알 수 없음", "stat": "down", "text": "UNKNOWN" }
+    ],
+    "jobDetail": [
+      { "key": 1, "title": "성공", "stat": "success", "text": "TRUE" },
+      { "key": 2, "title": "실패", "stat": "error", "text": "FALSE" }
+    ],
+    "hpaDetail": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "TRUE" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "FALSE" }
+    ],
+    "vpaDetail": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "TRUE" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "FALSE" }
+    ],
+    "hpaSchedule": [
+      {
+        "key": 1,
+        "title": "HPA 작동 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      {
+        "key": 2,
+        "title": "정상 완료",
+        "stat": "success",
+        "text": "COMPLETED"
+      },
+      { "key": 3, "title": "실행 예정", "stat": "info", "text": "SCHEDULED" },
+      { "key": 4, "title": "오류 발생", "stat": "error", "text": "ERROR" }
+    ],
+    "pvclaim": [
+      { "key": 1, "title": "정상 작동 중", "stat": "success", "text": "BOUND" },
+      { "key": 2, "title": "연결 중", "stat": "info", "text": "PENDING" },
+      { "key": 3, "title": "작동 불가", "stat": "error", "text": "LOST" },
+      { "key": 4, "title": "삭제 중", "stat": "down", "text": "TERMINATING" }
+    ],
+    "pvolume": [
+      {
+        "key": 1,
+        "title": "사용 가능",
+        "stat": "success",
+        "text": "AVAILABLE"
+      },
+      { "key": 2, "title": "사용 중", "stat": "info", "text": "BOUND" },
+      {
+        "key": 3,
+        "title": "초기화 필요",
+        "stat": "warning",
+        "text": "Released"
+      },
+      { "key": 4, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 5, "title": "삭제 중", "stat": "down", "text": "TERMINATING" }
+    ],
+    "release": [
+      { "key": 1, "title": "배포 완료", "stat": "success", "text": "DEPLOYED" },
+      { "key": 2, "title": "배포 중", "stat": "info", "text": "PENDING" },
+      { "key": 3, "title": "배포 실패", "stat": "error", "text": "FAILED" },
+      { "key": 4, "title": "삭제 중", "stat": "down", "text": "DELETING" },
+      { "key": 5, "title": "알 수 없음", "stat": "down", "text": "UNKNOWN" }
+    ]
+  },
+  "ceph": {
+    "cluster": [
+      { "key": 1, "title": "X", "stat": "success", "text": "HEALTH_OK" },
+      { "key": 2, "title": "X", "stat": "warning", "text": "HEALTH_WARN" },
+      { "key": 3, "title": "X", "stat": "error", "text": "HEALTH_ERR" }
+    ],
+    "pg": [
+      { "key": 1, "title": "X", "stat": "success", "text": "CLEAN" },
+      { "key": 2, "title": "X", "stat": "info", "text": "WORKING" },
+      { "key": 3, "title": "X", "stat": "warning", "text": "WARNING" },
+      { "key": 4, "title": "X", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "scrubbing": [
+      { "key": 1, "title": "X", "stat": "success", "text": "ACTIVE" },
+      { "key": 2, "title": "X", "stat": "default", "text": "INACTIVE" }
+    ],
+    "host": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "AVAILABLE" },
+      { "key": 2, "title": "연결 끊김", "stat": "error", "text": "OFFLINE" },
+      {
+        "key": 3,
+        "title": "유지 관리 모드",
+        "stat": "default",
+        "text": "MAINTENANCE"
+      }
+    ],
+    "hostDevice": [
+      {
+        "key": 1,
+        "title": "수명 예측 정보 없음",
+        "stat": "default",
+        "text": "UNKNOWN"
+      },
+      {
+        "key": 2,
+        "title": "수명 정보 오래됨",
+        "stat": "error",
+        "text": "STALE"
+      },
+      {
+        "key": 3,
+        "title": "최대 수명 2주 이하",
+        "stat": "error",
+        "text": "BAD"
+      },
+      {
+        "key": 4,
+        "title": "최소 수명 4주 이하",
+        "stat": "warning",
+        "text": "WARNING"
+      },
+      { "key": 5, "title": "수명 상태 양호", "stat": "success", "text": "GOOD" }
+    ],
+    "hostDaemon": [
+      {
+        "key": 1,
+        "title": "정상 실행 중",
+        "stat": "success",
+        "text": "RUNNING"
+      },
+      {
+        "key": 2,
+        "title": "미실행 또는 비정상",
+        "stat": "error",
+        "text": "DOWN"
+      },
+      {
+        "key": 3,
+        "title": "시작(초기화) 중",
+        "stat": "info",
+        "text": "STARTING"
+      },
+      { "key": 4, "title": "오류 발생", "stat": "error", "text": "FAILED" },
+      {
+        "key": 5,
+        "title": "작업 미처리 상태",
+        "stat": "default",
+        "text": "IDLE"
+      },
+      { "key": 6, "title": "정상 실행 중", "stat": "success", "text": "UP" },
+      {
+        "key": 7,
+        "title": "활성화 대기 중",
+        "stat": "info",
+        "text": "STANDBY"
+      },
+      { "key": 8, "title": "알 수 없음", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "osdInOut": [
+      { "key": 1, "title": "활성화", "stat": "info", "text": "IN" },
+      { "key": 2, "title": "제거됨", "stat": "error", "text": "OUT" }
+    ],
+    "osdUpDown": [
+      { "key": 1, "title": "실행 중", "stat": "success", "text": "UP" },
+      { "key": 2, "title": "중지", "stat": "default", "text": "DOWN" }
+    ],
+    "osdDevice": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "HEALTHY" },
+      { "key": 2, "title": "성능 저하", "stat": "warning", "text": "WARNING" },
+      { "key": 3, "title": "알 수 없음", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "physicalDisk": [
+      { "key": 1, "title": "사용 가능", "stat": "success", "text": "YES" },
+      { "key": 2, "title": "사용 불가", "stat": "error", "text": "NO" }
+    ],
+    "osdMap": [
+      { "key": 1, "title": "존재함", "stat": "default", "text": "EXISTS" },
+      { "key": 2, "title": "실행 중", "stat": "success", "text": "UP" },
+      { "key": 3, "title": "자동 제외", "stat": "warning", "text": "AUTOOUT" },
+      { "key": 4, "title": "신규 추가", "stat": "info", "text": "NEW" },
+      { "key": 5, "title": "용량 초과", "stat": "error", "text": "FULL" },
+      { "key": 6, "title": "용량 부족", "stat": "warning", "text": "NEARFULL" },
+      {
+        "key": 7,
+        "title": "재배치 불가",
+        "stat": "error",
+        "text": "BACKFILLFULL"
+      },
+      { "key": 8, "title": "삭제됨", "stat": "default", "text": "DESTROYED" },
+      { "key": 9, "title": "실행 불가", "stat": "default", "text": "NOUP" },
+      { "key": 10, "title": "중지 불가", "stat": "default", "text": "NODOWN" },
+      { "key": 11, "title": "활성화 불가", "stat": "default", "text": "NOIN" },
+      { "key": 12, "title": "제거 불가", "stat": "default", "text": "NOOUT" },
+      { "key": 13, "title": "정지", "stat": "default", "text": "STOP" }
+    ],
+    "monitorQuorum": [
+      { "key": 1, "title": "쿼럼 참여", "stat": "info", "text": "IN" },
+      { "key": 2, "title": "쿼럼 제외", "stat": "error", "text": "OUT" }
+    ],
+    "imageMirroring": [
+      { "key": 1, "title": "활성화", "stat": "success", "text": "ENABLED" },
+      { "key": 2, "title": "비활성화", "stat": "default", "text": "DISABLED" },
+      { "key": 3, "title": "동기화 완료", "stat": "info", "text": "PEERED" }
+    ],
+    "imageSnapshot": [
+      {
+        "key": 1,
+        "title": "생성 중",
+        "stat": "success",
+        "text": "IN-PROGRESS"
+      },
+      {
+        "key": 2,
+        "title": "보호 중(삭제 불가)",
+        "stat": "info",
+        "text": "PROTECTED"
+      },
+      {
+        "key": 3,
+        "title": "미보호 중(삭제 가능)",
+        "stat": "default",
+        "text": "UNPROTECTED"
+      },
+      {
+        "key": 4,
+        "title": "동기화 중",
+        "stat": "info",
+        "text": "SYNCING"
+      },
+      {
+        "key": 5,
+        "title": "동기화 완료",
+        "stat": "success",
+        "text": "SYNCED"
+      },
+      { "key": 6, "title": "삭제 중", "stat": "error", "text": "DELETING" },
+      { "key": 7, "title": "오류 발생", "stat": "error", "text": "ERROR" }
+    ],
+    "mirroringDaemon": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "OK" },
+      { "key": 2, "title": "경고", "stat": "warning", "text": "WARNING" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "알 수 없음", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "mirroringPool": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "OK" },
+      { "key": 2, "title": "경고", "stat": "warning", "text": "WARNING" },
+      { "key": 3, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 4, "title": "비활성화", "stat": "default", "text": "DISABLED" },
+      { "key": 5, "title": "알 수 없음", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "mirroringImageCheck": [
+      { "key": 1, "title": "경고", "stat": "warning", "text": "WARNING" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "알 수 없음", "stat": "default", "text": "UNKNOWN" }
+    ],
+    "mirroringImageSync": [
+      {
+        "key": 1,
+        "title": "이미지 복사 중",
+        "stat": "info",
+        "text": "SYNCING"
+      },
+      {
+        "key": 2,
+        "title": "복제 반영 준비 중",
+        "stat": "info",
+        "text": "STARTING"
+      },
+      {
+        "key": 3,
+        "title": "복제 반영 중",
+        "stat": "success",
+        "text": "REPLAYING"
+      }
+    ],
+    "mirroringImageSyncComplete": [
+      {
+        "key": 1,
+        "title": "미러링 종료 중",
+        "stat": "info",
+        "text": "STOPPED"
+      },
+      {
+        "key": 2,
+        "title": "미러링 중단",
+        "stat": "warning",
+        "text": "STOPPING"
+      }
+    ],
+    "syncPolicy": [
+      { "key": 1, "title": "활성화", "stat": "success", "text": "ENABLED" },
+      { "key": 2, "title": "허용", "stat": "info", "text": "ALLOWED" },
+      { "key": 3, "title": "차단", "stat": "error", "text": "FORBIDDEN" }
+    ],
+    "filesystem": [
+      { "key": 1, "title": "활성화", "stat": "success", "text": "ENABLED" },
+      { "key": 2, "title": "비활성화", "stat": "default", "text": "DISABLED" }
+    ],
+    "filesystemRank": [
+      { "key": 1, "title": "활성", "stat": "success", "text": "ACTIVE" },
+      { "key": 2, "title": "대기 중", "stat": "default", "text": "STANDBY" },
+      {
+        "key": 3,
+        "title": "복제 대기 중",
+        "stat": "info",
+        "text": "STANDBY-REPLAY"
+      },
+      { "key": 4, "title": "초기화 중", "stat": "warning", "text": "BOOT" },
+      { "key": 5, "title": "생성 중", "stat": "warning", "text": "CREATING" },
+      { "key": 6, "title": "시작 중", "stat": "info", "text": "STARTING" },
+      { "key": 7, "title": "정지 중", "stat": "warning", "text": "STOPPING" },
+      { "key": 8, "title": "복구 중", "stat": "info", "text": "REPLAY" },
+      { "key": 9, "title": "정리 중", "stat": "info", "text": "RESOLVE" },
+      {
+        "key": 10,
+        "title": "재연결 중",
+        "stat": "info",
+        "text": "RECONNECT"
+      },
+      { "key": 11, "title": "재합류 중", "stat": "info", "text": "REJOIN" },
+      {
+        "key": 12,
+        "title": "요청 재처리 중",
+        "stat": "info",
+        "text": "CLIENTREPLAY"
+      },
+      { "key": 13, "title": "운영 실패", "stat": "error", "text": "FAILED" },
+      { "key": 14, "title": "오류 발생", "stat": "error", "text": "DAMAGED" },
+      { "key": 15, "title": "정지", "stat": "default", "text": "STOPPED" }
+    ],
+    "filesystemClient": [
+      { "key": 1, "title": "정상", "stat": "success", "text": "OPEN" },
+      { "key": 2, "title": "응답 없음", "stat": "error", "text": "STALE" },
+      { "key": 3, "title": "연결 종료", "stat": "default", "text": "CLOSED" }
+    ],
+    "activeAlert": [
+      { "key": 1, "title": "활성", "stat": "success", "text": "ACTIVE" },
+      { "key": 2, "title": "비활성", "stat": "default", "text": "SUPPRESSED" }
+    ],
+    "hiddenAlert": [
+      { "key": 1, "title": "활성", "stat": "success", "text": "ACTIVE" },
+      { "key": 2, "title": "대기", "stat": "warning", "text": "PENDING" },
+      { "key": 3, "title": "삭제", "stat": "error", "text": "EXPIRED" }
+    ],
+    "alertSeverity": [
+      { "key": 1, "title": "심각", "stat": "error", "text": "CRITICAL" },
+      { "key": 2, "title": "경고", "stat": "warning", "text": "WARNING" }
+    ],
+    "daemon": [
+      { "key": 1, "title": "경고", "stat": "warning", "text": "UNKNOWN" },
+      { "key": 2, "title": "오류 발생", "stat": "error", "text": "ERROR" },
+      { "key": 3, "title": "정지", "stat": "default", "text": "STOPPED" },
+      { "key": 4, "title": "작동 중", "stat": "success", "text": "RUNNING" },
+      { "key": 5, "title": "시작 중", "stat": "info", "text": "STARTING" }
+    ]
+  }
+}

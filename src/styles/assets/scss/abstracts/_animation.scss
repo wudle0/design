@@ -1,0 +1,35 @@
+@use 'variables' as *;
+
+#archive {
+  // class
+  .trans-rotate {
+    transform-origin: center;
+    animation: motion-rotate 1.8s linear infinite;
+  }
+
+  // animation
+  @keyframes motion-fade-in-out {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  // animation
+  @keyframes motion-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@use '../../abstracts' as *;
+
+#okestro-viola {
+  .create-error-modal-content {
+    gap: var(--spacing-24);
+
+    & > .ant-flex:not(:last-child) {
+      margin-bottom: 0;
+    }
+
+    .create-error-modal-desc {
+      display: flex;
+
+      & > div {
+        display: flex;
+        gap: var(--spacing-4);
+        align-items: center;
+
+        dt {
+          @include typography(body2, var(--text-default));
+        }
+
+        dd {
+          @include typography(body1, var(--text-default));
+        }
+      }
+
+      & > div:not(:last-child) {
+        position: relative;
+        margin-right: var(--spacing-16);
+
+        &::after {
+          position: absolute;
+          top: 50%;
+          right: -8px;
+          width: 1px;
+          height: 18px;
+          content: '';
+          background-color: var(--border-subtle-01);
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+}

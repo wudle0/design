@@ -1,0 +1,27 @@
+@use '../abstracts' as *;
+
+#archive {
+  // wrap or group 통일 필요
+  .footer-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-8);
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: $footerHeight;
+    padding: var(--spacing-16);
+    background: var(--transparent);
+    border-top: 1px solid var(--border-subtle-01);
+
+    .group-items {
+      .ant-btn {
+        margin: var(--spacing-0);
+      }
+    }
+
+    .items-end {
+      margin-left: auto;
+    }
+  }
+}

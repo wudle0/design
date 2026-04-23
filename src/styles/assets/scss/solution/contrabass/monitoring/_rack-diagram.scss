@@ -1,0 +1,207 @@
+@use '../../../abstracts' as *;
+
+#archive {
+  #okestro-contrabass {
+    .rack-diagram {
+      height: 100%;
+      background: radial-gradient(
+          circle,
+          var(--border-subtle-01) 10%,
+          transparent 11%
+        )
+        repeat;
+      background-size: 12px 12px;
+
+      .frame-devide {
+        .left-devide-data {
+          align-self: flex-start;
+          width: 600px;
+          height: auto;
+
+          .ant-steps {
+            padding: var(--spacing-16);
+            background: var(--layer-02);
+            border-bottom: 1px solid var(--border-subtle-01);
+          }
+
+          .devide-data-inner {
+            .content-body {
+              max-height: calc(100vh - 221px);
+              overflow-y: auto;
+            }
+          }
+        }
+
+        .right-devide-view {
+          .controls {
+            background: var(--layer-overlay);
+          }
+        }
+      }
+
+      // reset
+      .ant-card {
+        .ant-table {
+          .ant-btn {
+            border-radius: var(--radius-6);
+          }
+        }
+      }
+
+      .main-panel {
+        background: none;
+      }
+    }
+  }
+
+  .rack-diagram-modal {
+    .ant-modal-body {
+      .ant-modal-box {
+        gap: var(--spacing-0);
+        padding: var(--spacing-0);
+      }
+    }
+
+    .rack-diagram-modal-content {
+      height: 100%;
+      padding: var(--spacing-16);
+
+      .bot-buttons {
+        margin-top: var(--spacing-24);
+      }
+
+      .ant-row:not(:first-child) {
+        margin-top: 24px;
+      }
+
+      .title-group + .ant-row {
+        margin-top: 0;
+      }
+    }
+
+    // 유닛 체크
+    .unit-check-wrap {
+      .ant-checkbox-group {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-2);
+        padding-bottom: 50px;
+        cursor: default;
+
+        .ant-checkbox-wrapper {
+          position: relative;
+          gap: var(--spacing-0);
+          margin-bottom: var(--spacing-0);
+
+          & > span:not(.ant-checkbox) {
+            @include typography(label5, var(--text-default));
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%, -50%);
+          }
+
+          .ant-checkbox {
+            gap: var(--spacing-0);
+            width: 26px;
+            height: 26px;
+
+            .ant-checkbox-inner {
+              width: 100%;
+              height: 100%;
+              background: var(--button-tertiary-default, #f1f2f4);
+              border: 0;
+              border-radius: var(--radius-4, 4px);
+            }
+
+            &.ant-checkbox-checked {
+              .ant-checkbox-inner {
+                background: var(--icon-brand-default);
+              }
+            }
+
+            // 기존 체크박스 체크표시 커스텀 (지우기)
+            &.ant-checkbox-checked:not(.ant-checkbox-indeterminate)
+              .ant-checkbox-inner {
+              &::after {
+                display: none !important;
+              }
+            }
+          }
+
+          &.ant-checkbox-wrapper-checked {
+            & > span:not(.ant-checkbox) {
+              color: var(--text-on-color);
+            }
+
+            .ant-checkbox-inner {
+              background: var(--icon-brand-default);
+            }
+          }
+
+          &:hover {
+            & > span:not(.ant-checkbox) {
+              color: var(--text-on-color);
+            }
+
+            .ant-checkbox-inner {
+              background: var(--icon-brand-hover);
+            }
+          }
+        }
+      }
+    }
+
+    // add-table
+    .add-table {
+      .ant-table {
+        .ant-table-inner
+          .ant-form-item
+          .ant-row
+          .ant-form-item-control
+          .ant-form-item-control-input {
+          // width: calc(100% - 2px);
+        }
+      }
+    }
+
+    // 장비 추가
+    .nic-label {
+      display: flex;
+      justify-content: space-between;
+
+      .nic-label-text {
+        @include typography(label3, var(--text-default));
+      }
+    }
+  }
+
+  .rack-popover {
+    z-index: $z-index-popup;
+
+    // 팝오버 화살표
+    .ant-popover-arrow {
+      position: absolute;
+      left: -4px;
+      transform: translateY(-50%);
+      transition: opacity 0.2s;
+
+      .ant-popover-arrow-content {
+        display: block;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-bottom: 1px solid #d9d9d9;
+        border-left: 1px solid #d9d9d9;
+        transform: rotate(45deg);
+      }
+    }
+
+    // 팝오버 제목
+    .ant-popover-title {
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: rgb(0 0 0 / 85%);
+    }
+  }
+}

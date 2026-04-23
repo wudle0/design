@@ -1,0 +1,234 @@
+@use '../abstracts' as *;
+
+#archive {
+  .listbox-wrap {
+    width: auto;
+
+    .listbox-group {
+      display: flex;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle-01);
+    }
+
+    .listbox-list {
+      flex: 1;
+      min-width: $listBoxWidthSm;
+      background: var(--layer-01);
+      border-top: 0;
+      border-left: 1px solid var(--border-subtle-01);
+
+      &:first-child {
+        border-left: 0;
+      }
+    }
+
+    .listbox-list-body {
+      @include scrollbars;
+      height: $listBoxHeight;
+      overflow: hidden auto;
+    }
+
+    .ant-collapse {
+      .ant-collapse-item {
+        border-bottom: 0;
+      }
+
+      .ant-collapse-item-disabled {
+        .ant-collapse-header {
+          cursor: default;
+        }
+
+        .ant-collapse-expand-icon {
+          display: none;
+        }
+      }
+
+      .ant-collapse-header {
+        gap: var(--spacing-6);
+        min-height: auto;
+        padding: var(--spacing-6) var(--spacing-16);
+        background: var(--layer-02);
+        border-bottom: 1px solid var(--border-subtle-01) !important;
+      }
+
+      .ant-collapse-header-text {
+        @include typography(label5, var(--text-default));
+        gap: var(--spacing-6);
+        justify-content: flex-start;
+
+        .number {
+          color: var(--text-brand);
+        }
+      }
+
+      .ant-checkbox-group {
+        width: 100%;
+      }
+
+      .ant-radio-group {
+        gap: 0;
+        width: 100%;
+      }
+
+      :is(.ant-checkbox-wrapper),
+      :is(.ant-radio-wrapper) {
+        gap: var(--spacing-4);
+        align-items: flex-start;
+        width: 100%;
+        padding: var(--spacing-8) var(--spacing-16);
+        margin: 0;
+        transition: $trans-common-bezier-bg-color;
+
+        &::after {
+          display: none;
+        }
+
+        &.ant-radio-wrapper-checked {
+          background: var(--interaction-selected);
+        }
+
+        .ant-checkbox {
+          flex: 0 0 auto;
+          align-self: flex-start;
+
+          & + span {
+            justify-content: space-between;
+            width: 100%;
+            min-width: 0;
+          }
+        }
+
+        .ant-radio {
+          display: none;
+
+          & + span {
+            justify-content: space-between;
+            width: 100%;
+            min-width: 0;
+          }
+        }
+      }
+
+      .title-box {
+        border-bottom: 1px solid var(--border-subtle-01);
+
+        &:has(.spacing-indent) {
+          padding: 1px 0;
+        }
+
+        .ant-checkbox-wrapper {
+          .ant-checkbox + span {
+            @include typography(label2, var(--text-default));
+          }
+
+          &:hover {
+            background: var(--interaction-hover);
+          }
+
+          &.ant-checkbox-wrapper-checked {
+            &:has(.ant-checkbox-checked) {
+              background: var(--interaction-selected);
+            }
+          }
+        }
+
+        .spacing-indent {
+          @include typography(label2, var(--text-default));
+          display: inline-flex;
+          gap: var(--spacing-4);
+          align-items: flex-end;
+          width: 100%;
+          padding: var(--spacing-8) var(--spacing-16);
+          margin: 0;
+        }
+
+        .description {
+          @include typography(label5, var(--text-helper));
+        }
+      }
+
+      .item-box {
+        .ant-checkbox-wrapper {
+          &:hover {
+            background: var(--interaction-hover);
+          }
+
+          &:has(.ant-checkbox-checked) {
+            background: var(--interaction-selected);
+          }
+        }
+
+        :is(.ant-checkbox-wrapper, .ant-radio-wrapper) {
+          :is(.ant-checkbox + span),
+          :is(.ant-radio + span) {
+            display: flex;
+            gap: var(--spacing-6);
+            align-items: center;
+          }
+        }
+
+        .spacing-indent {
+          display: flex;
+          gap: var(--spacing-6);
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          min-width: 0;
+          padding: var(--spacing-8) var(--spacing-16);
+        }
+
+        .ellipsis-box {
+          min-width: 0;
+
+          .label {
+            @include typography(label3, var(--text-default));
+            @include ellipsis(1);
+            display: block;
+          }
+
+          .description {
+            @include typography(label5, var(--text-helper));
+            @include ellipsis(1);
+            display: block;
+            margin-top: var(--spacing-2);
+          }
+        }
+      }
+    }
+
+    .nodata-wrap {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:has(.filter-wrap) {
+      .filter-wrap {
+        border: 1px solid var(--border-subtle-01);
+        border-top-left-radius: var(--radius-8);
+        border-top-right-radius: var(--radius-8);
+      }
+
+      .listbox-group {
+        border-top: 0;
+        border-bottom-right-radius: var(--radius-8);
+        border-bottom-left-radius: var(--radius-8);
+      }
+    }
+
+    // custom size
+    &.size-small {
+      .listbox-list {
+        width: $listBoxWidthSm;
+      }
+    }
+
+    // 생성화면 크기 대응
+    &.md {
+      width: $inputWidthMd;
+    }
+
+    &.lg {
+      width: $inputWidthLg;
+    }
+  }
+}

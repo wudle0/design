@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+#archive {
+  header {
+    .inner-header {
+      height: $headerHeight;
+      padding-right: var(--spacing-16);
+    }
+
+    .header-group {
+      gap: var(--spacing-16);
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .group-items {
+      &.items-end {
+        gap: var(--spacing-4);
+      }
+
+      .btn-cloudview {
+        margin-left: var(--spacing-16);
+
+        &.btn-cloudview-active {
+          background-color: var(--interaction-selected);
+        }
+
+        &::before {
+          position: absolute;
+          top: 0;
+          left: calc(var(--spacing-4) * -1);
+          display: block;
+          width: 1px;
+          height: 100%;
+          content: '';
+          background-color: var(--border-subtle-00);
+        }
+      }
+
+      // .btn-navigator {
+      //   padding-right: var(--spacing-16);
+      //   border-right: 1px solid var(--border-subtle-00);
+      // }
+    }
+  }
+}

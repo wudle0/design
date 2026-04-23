@@ -1,0 +1,348 @@
+@use '../abstracts' as *;
+@use 'sass:list';
+
+#archive {
+  // legend list
+  .chart-legend {
+    width: 100%;
+    height: auto;
+
+    // 전체 선택, 해제
+    .chart-legend-controls {
+      padding: var(--spacing-4) var(--spacing-8);
+      border-top: 1px solid var(--border-subtle-01);
+    }
+
+    .chart-legend-container {
+      @include scrollbars;
+      display: flex;
+      height: 100%;
+      overflow-y: auto;
+      border-top: 1px solid var(--border-subtle-01);
+
+      .chart-legend-list {
+        width: 100%;
+        height: 100%;
+
+        &:not(:last-child) {
+          li {
+            border-right: 1px solid var(--border-subtle-01);
+          }
+        }
+
+        .chart-legend-item {
+          @include typography(label6, var(--text-default));
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          min-height: 32px;
+          padding: var(--spacing-4) var(--spacing-8);
+          cursor: pointer;
+          background: var(--layer-01);
+
+          &:nth-child(even) {
+            background: var(--layer-01-accent);
+          }
+
+          &.inactive {
+            .chart-color-box {
+              filter: grayscale(80%);
+            }
+          }
+
+          .chart-legend-item-key {
+            display: flex;
+            align-items: center;
+          }
+
+          .chart-legend-item-value {
+            white-space: nowrap;
+          }
+        }
+      }
+
+      // 사이즈별 클래스
+      &.small {
+        max-height: 56px;
+      }
+
+      &.medium {
+        max-height: 128px;
+      }
+
+      &.large {
+        max-height: 218px;
+      }
+    }
+  }
+
+  // legend chart
+  .chart-table {
+    width: 100%;
+    height: 100%;
+
+    .ant-table,
+    .ant-table-container,
+    .ant-table-header {
+      border-radius: var(--radius-0);
+    }
+
+    .ant-table-container {
+      @include scrollbars;
+      overflow: auto;
+
+      .chart-color-box.inactive {
+        filter: grayscale(80%);
+      }
+    }
+
+    // 사이즈별 속성
+
+    &.medium {
+      .ant-table-container {
+        max-height: 146px; // 헤더 포함
+        .ant-table-body {
+          max-height: 114px; // 스크롤 영역
+        }
+      }
+
+      &:has(.filter-wrap) {
+        .ant-table-container {
+          max-height: 186px;
+        }
+      }
+    }
+
+    &.large {
+      .ant-table-container {
+        max-height: 224px;
+
+        .ant-table-body {
+          max-height: 192px; // 스크롤 영역
+        }
+      }
+
+      &:has(.filter-wrap) {
+        .ant-table-container {
+          max-height: 264px;
+        }
+      }
+    }
+
+    // 기존 table 속성 reset
+    table tbody tr {
+      cursor: pointer;
+
+      td {
+        min-height: 32px;
+        padding: var(--spacing-0) var(--spacing-8);
+      }
+    }
+
+    .ant-table-cell {
+      @include typography(label6, var(--text-default));
+      padding: var(--spacing-8);
+      border: 0 1px solid var(--border-subtle-01) 0 0;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    .chart-table-cell {
+      display: flex;
+      gap: var(--spacing-8);
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .chart-table-text {
+        display: flex;
+        gap: var(--spacing-4);
+        align-items: center;
+      }
+    }
+  }
+
+  //  color box
+  .chart-color-box {
+    width: 10px;
+    min-width: 10px;
+    height: 10px;
+    margin-right: 4px;
+    background: var(--chart-default-01); // 기본값
+    border-radius: var(--radius-2);
+
+    @for $i from 1 through 20 {
+      $num: if($i < 10, '0#{$i}', '#{$i}');
+      &.color#{$i} {
+        background: var(--chart-default-#{$num});
+      }
+    }
+  }
+
+  .chart-list {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    .unit {
+      @include typography(label6, var(--text-subtle));
+    }
+
+    .unit-number {
+      @include typography(label6, var(--text-default));
+    }
+  }
+
+  // 레이아웃
+  .chart-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    height: 100%;
+
+    &.ant-flex-vertical {
+      flex-direction: column;
+    }
+
+    &:not(.ant-flex-vertical) {
+      .chart-legend,
+      .chart-table {
+        height: 100%;
+
+        .chart-legend-container {
+          height: 100%;
+          max-height: none;
+          border-top: 0;
+          border-left: 1px solid var(--border-subtle-01);
+        }
+
+        .ant-form,
+        .ant-table,
+        .ant-table-wrapper,
+        .ant-spin-nested-loading,
+        .ant-spin-container,
+        .ant-table-container {
+          height: 100%;
+        }
+
+        .ant-table {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          border-left: 1px solid var(--border-subtle-01);
+        }
+
+        .ant-table-header {
+          flex-shrink: 0;
+        }
+
+        .ant-table-body {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+        }
+
+        .ant-table-container {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .chart-area {
+    position: relative;
+    width: 100%;
+
+    &:has(.chart-area-unit) {
+      position: relative;
+      padding-left: var(--spacing-8);
+
+      .chart-area-unit {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        font-family: 'Pretendard JP', sans-serif;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        color: var(--text-default);
+        text-align: center;
+        white-space: nowrap;
+        transform: translate(-50%, -50%) rotate(-90deg);
+      }
+    }
+  }
+
+  // 단일 차트 카드 (차트에 범례가 아닌 읽기 전용으로 나올 경우)
+  .chart-card {
+    & > .ant-card-body {
+      overflow: hidden !important;
+
+      & > .ant-flex {
+        border-top: 1px solid var(--border-subtle-01);
+
+        .ant-card:has(.chart-wrap) {
+          border: 0;
+          border-radius: var(--radius-0);
+        }
+
+        .chart-wrap {
+          height: 100%;
+        }
+
+        .table-content {
+          // 테이블 기본 radius reset
+          .ant-table,
+          .ant-table-container,
+          .ant-table-header {
+            border-radius: var(--radius-0);
+          }
+
+          tbody td {
+            @include typography(label6, var(--text-default));
+
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // no-title-border 스타일 (traffic 차트용)
+  .no-title-border {
+    .ant-card-head {
+      border-bottom: none !important;
+    }
+
+    > .ant-card-body > .ant-flex {
+      border-top: none !important;
+    }
+  }
+
+  // 범례 높이 커스텀 (160px)
+  .inout-chart-legend-height {
+    .chart-legend {
+      .chart-legend-container.medium {
+        max-height: 161px;
+      }
+    }
+  }
+}

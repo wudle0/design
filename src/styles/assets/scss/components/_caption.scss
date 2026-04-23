@@ -1,0 +1,52 @@
+@use '../abstracts' as *;
+
+#archive {
+  .caption-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    align-items: baseline;
+
+    &:has(.material-icon) {
+      padding-left: 20px;
+    }
+
+    &:has(.ant-input, .ant-select, .ant-input-number) {
+      width: 100%;
+    }
+
+    .caption-wrap-text {
+      @include typography(label5, var(--text-helper));
+
+      // white-space: pre-line;
+    }
+
+    &:has(.ant-flex) {
+      padding-left: 0;
+
+      .material-icon {
+        position: relative;
+        margin-right: var(--spacing-4);
+      }
+    }
+
+    .material-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &.error {
+      .caption-wrap-text {
+        color: var(--support-red-default);
+      }
+    }
+
+    &.success {
+      .caption-wrap-text {
+        color: var(--support-green-default);
+      }
+    }
+  }
+}

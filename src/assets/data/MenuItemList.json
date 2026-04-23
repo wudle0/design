@@ -1,0 +1,341 @@
+[
+  {
+    "key": "menu-overview",
+    "link": "overview",
+    "name": "overview",
+    "meta": {
+      "title": "Overview",
+      "icon": "grid_view"
+    }
+  },
+  {
+    "key": "menu-component",
+    "name": "component",
+    "meta": {
+      "title": "기본 컴포넌트",
+      "icon": "face"
+    },
+    "subMenuItems": [
+      {
+        "key": "menu-button",
+        "link": "button",
+        "name": "button",
+        "meta": { "title": "Button" }
+      },
+      {
+        "key": "menu-caption",
+        "link": "caption",
+        "name": "caption",
+        "meta": { "title": "Caption" }
+      },
+      {
+        "key": "menu-card",
+        "link": "card",
+        "name": "card",
+        "meta": { "title": "Card" }
+      },
+      {
+        "key": "menu-card-dashboard",
+        "link": "cardDashboard",
+        "name": "cardDashboard",
+        "meta": { "title": "Card Dashboard" }
+      },
+      {
+        "key": "menu-collapse",
+        "link": "collapse",
+        "name": "collapse",
+        "meta": { "title": "Collapse" }
+      },
+      {
+        "key": "menu-icon",
+        "link": "icon",
+        "name": "icon",
+        "meta": { "title": "Icon" }
+      },
+      {
+        "key": "menu-modal",
+        "link": "modal",
+        "name": "modal",
+        "meta": { "title": "Modal" }
+      },
+      {
+        "key": "menu-noData",
+        "link": "noData",
+        "name": "noData",
+        "meta": { "title": "No Data" }
+      },
+      {
+        "key": "menu-popover",
+        "link": "popover",
+        "name": "popover",
+        "meta": { "title": "Popover" }
+      },
+      {
+        "key": "menu-progress",
+        "link": "progress",
+        "name": "progress",
+        "meta": { "title": "Progress" }
+      },
+      {
+        "key": "menu-filter",
+        "link": "filter",
+        "name": "filter",
+        "meta": { "title": "Filter" }
+      },
+      {
+        "key": "menu-segment",
+        "link": "segment",
+        "name": "segment",
+        "meta": { "title": "Segment" }
+      },
+      {
+        "key": "menu-slider",
+        "link": "slider",
+        "name": "slider",
+        "meta": { "title": "Slider" }
+      },
+      {
+        "key": "menu-spinner",
+        "link": "spinner",
+        "name": "spinner",
+        "meta": { "title": "Spinner / Skeleton" }
+      },
+      {
+        "key": "menu-step",
+        "link": "step",
+        "name": "step",
+        "meta": { "title": "Step" }
+      },
+      {
+        "key": "menu-stepIndicator",
+        "link": "stepIndicator",
+        "name": "stepIndicator",
+        "meta": { "title": "Step Indicator" }
+      },
+      {
+        "key": "menu-tag",
+        "link": "tag",
+        "name": "tag",
+        "meta": { "title": "Tag" }
+      },
+      {
+        "key": "menu-tab",
+        "link": "tab",
+        "name": "tab",
+        "meta": { "title": "Tab" }
+      },
+      {
+        "key": "menu-title",
+        "link": "title",
+        "name": "title",
+        "meta": { "title": "Title" }
+      },
+      {
+        "key": "menu-tooltip",
+        "link": "tooltip",
+        "name": "tooltip",
+        "meta": { "title": "Tooltip" }
+      },
+      {
+        "key": "menu-typography",
+        "link": "typography",
+        "name": "typography",
+        "meta": { "title": "Typography" }
+      }
+    ]
+  },
+  {
+    "key": "menu-component-navigation",
+    "name": "navigation",
+    "meta": {
+      "title": "네비게이션",
+      "icon": "face_2"
+    },
+    "subMenuItems": [
+      {
+        "key": "menu-breadCrumb",
+        "link": "breadCrumb",
+        "name": "breadCrumb",
+        "meta": { "title": "Bread Crumb" }
+      },
+      {
+        "key": "menu-cloudView",
+        "link": "cloudView",
+        "name": "cloudView",
+        "meta": { "title": "Cloud View" }
+      },
+      {
+        "key": "menu-navigator",
+        "link": "navigator",
+        "name": "navigator",
+        "meta": { "title": "Navigator" }
+      }
+    ]
+  },
+  {
+    "key": "menu-component-form",
+    "name": "form",
+    "meta": {
+      "title": "Form",
+      "icon": "face_3"
+    },
+    "subMenuItems": [
+      {
+        "key": "menu-checkbox",
+        "link": "checkbox",
+        "name": "checkbox",
+        "meta": { "title": "Checkbox" }
+      },
+      {
+        "key": "menu-datePicker",
+        "link": "datePicker",
+        "name": "datePicker",
+        "meta": { "title": "Date Picker" }
+      },
+      {
+        "key": "menu-dropdown",
+        "link": "dropdown",
+        "name": "dropdown",
+        "meta": { "title": "Dropdown" }
+      },
+      {
+        "key": "menu-field",
+        "link": "field",
+        "name": "field",
+        "meta": { "title": "Field" }
+      },
+      {
+        "key": "menu-radio",
+        "link": "radio",
+        "name": "radio",
+        "meta": { "title": "Radio" }
+      },
+      {
+        "key": "menu-switch",
+        "link": "switch",
+        "name": "switch",
+        "meta": { "title": "Switch" }
+      },
+      {
+        "key": "menu-uploader",
+        "link": "uploader",
+        "name": "uploader",
+        "meta": { "title": "Uploader" }
+      }
+    ]
+  },
+  {
+    "key": "menu-component-alim",
+    "name": "alim",
+    "meta": {
+      "title": "알림",
+      "icon": "face_4"
+    },
+    "subMenuItems": [
+      {
+        "key": "menu-alert",
+        "link": "alert",
+        "name": "alert",
+        "meta": { "title": "Alert" }
+      },
+      {
+        "key": "menu-notification",
+        "link": "notification",
+        "name": "notification",
+        "meta": { "title": "Notification" }
+      }
+    ]
+  },
+  {
+    "key": "menu-component-tables",
+    "name": "tables",
+    "meta": {
+      "title": "테이블 관련 컴포넌트",
+      "icon": "table"
+    },
+    "subMenuItems": [
+      {
+        "key": "menu-list",
+        "link": "list",
+        "name": "list",
+        "meta": { "title": "List" }
+      },
+      {
+        "key": "menu-solutionList",
+        "link": "solutionList",
+        "name": "solutionList",
+        "meta": { "title": "List (Solution)" }
+      },
+      {
+        "key": "menu-listbox",
+        "link": "listbox",
+        "name": "listbox",
+        "meta": { "title": "List Box" }
+      },
+      {
+        "key": "menu-pagination",
+        "link": "pagination",
+        "name": "pagination",
+        "meta": { "title": "Pagination" }
+      },
+      {
+        "key": "menu-table",
+        "link": "table",
+        "name": "table",
+        "meta": { "title": "Table" }
+      },
+      {
+        "key": "menu-tree",
+        "link": "tree",
+        "name": "tree",
+        "meta": { "title": "Tree" }
+      }
+    ]
+  },
+  {
+    "key": "menu-chart",
+    "name": "chart",
+    "meta": {
+      "title": "Chart",
+      "icon": "insert_chart"
+    },
+    "subMenuItems": [
+      {
+        "key": "menu-chartLayout",
+        "link": "chartLayout",
+        "name": "chartLayout",
+        "meta": { "title": "Layout" }
+      },
+      {
+        "key": "menu-barChart",
+        "link": "barChart",
+        "name": "barChart",
+        "meta": { "title": "Bar" }
+      },
+      {
+        "key": "menu-lineChart",
+        "link": "lineChart",
+        "name": "lineChart",
+        "meta": { "title": "Line" }
+      },
+      {
+        "key": "menu-pieChart",
+        "link": "pieChart",
+        "name": "pieChart",
+        "meta": { "title": "Pie" }
+      },
+      {
+        "key": "menu-areaChart",
+        "link": "areaChart",
+        "name": "areaChart",
+        "meta": { "title": "Area" }
+      },
+      {
+        "key": "menu-DoughnutChart",
+        "link": "doughnutChart",
+        "name": "doughnutChart",
+        "meta": { "title": "Doughnut" }
+      }
+    ]
+  }
+]

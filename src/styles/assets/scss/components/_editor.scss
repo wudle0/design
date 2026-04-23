@@ -1,0 +1,29 @@
+@use '../abstracts' as *;
+
+#archive {
+  .editor-view {
+    @include typography(code2, var(--text-inverse));
+    width: 100%;
+    min-height: 396px;
+    background-color: var(--layer-inverse);
+
+    .inner-editor {
+      padding: var(--spacing-16);
+
+      // 아래 텍스트 클래스 있을 경우 폰트 스타일 재정의
+      .label {
+        @include typography(h3, var(--text-default));
+      }
+
+      .text {
+        @include typography(body2, var(--text-default));
+      }
+    }
+
+    &.yaml {
+      @include typography(code2, var(--text-default));
+      min-height: auto;
+      background-color: var(--layer-02);
+    }
+  }
+}

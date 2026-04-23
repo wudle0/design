@@ -1,0 +1,427 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    // overflow: hidden; // 차트 툴팁 안보여서 일단 주석
+    background-color: var(--layer-01);
+    box-shadow: none;
+
+    // ant card head 슬롯 정의
+    .ant-card-head {
+      @include typography(h3, var(--text-default));
+      min-height: $cardHeaderHeight;
+      padding: var(--spacing-12) var(--spacing-16);
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border-subtle-01);
+
+      .ant-card-head-wrapper {
+        gap: var(--spacing-12);
+      }
+
+      .ant-card-head-title {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+      }
+
+      .title-group {
+        .group-items:not(.items-end) {
+          gap: var(--spacing-8);
+        }
+      }
+
+      .ant-card-extra {
+        display: flex;
+        gap: var(--spacing-4);
+      }
+
+      .item-desc {
+        @include typography(body2, var(--text-subtle));
+        @include ellipsis(2);
+        white-space: normal;
+      }
+    }
+
+    // ant card body 슬롯 정의
+    .ant-card-body {
+      @include typography(body2, var(--text-default));
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      row-gap: var(--spacing-12);
+      padding: var(--spacing-16);
+      overflow: hidden;
+
+      &:has(.chart-area) {
+        overflow: visible;
+      }
+
+      &::before,
+      &::after {
+        all: unset;
+      }
+
+      .ant-flex {
+        overflow: hidden;
+
+        &:has(.chart-area) {
+          overflow: visible;
+        }
+      }
+
+      // 타이포 정의
+      .ant-typography {
+        @include ellipsis(1);
+      }
+
+      .item-desc {
+        @include ellipsis(2);
+        white-space: normal;
+      }
+
+      // 차트 삽입 시 여백 예외 처리
+      &:has(.table-content) {
+        padding: 0;
+
+        .ant-table {
+          border-radius: 0;
+
+          .ant-table-container {
+            &::before {
+              box-shadow: none;
+            }
+          }
+
+          .ant-table-body {
+            tr:last-child {
+              td {
+                border-bottom: 0;
+              }
+            }
+          }
+
+          *[class^='ant-table-'] {
+            border-radius: 0;
+          }
+        }
+
+        // 테이블이 마지막 요소일 경우 제일 마지막 td border-bottom 제거거
+        .table-content:last-child {
+          .ant-table-tbody {
+            .ant-table-row:last-child {
+              td {
+                border-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &:has(.chart-legend, .chart-area, .chart-table) {
+        padding: 0;
+
+        // chart legend 에서 보더 직접적으로 바꿀 것
+        .chart-area + .chart-legend {
+          margin-top: 0;
+        }
+
+        .chart-table {
+          position: relative;
+          padding-top: 1px;
+        }
+      }
+
+      // 카드 내부에 카드 그룹 삽입 시 보더 및 여백 예외 처리
+      &:has(.card-group) {
+        padding: 0;
+
+        .card-group {
+          background-color: transparent;
+          border: 0;
+        }
+      }
+    }
+
+    // ant card cover 슬롯 정의
+    .ant-card-cover {
+      border-bottom: 1px solid var(--border-subtle-01);
+    }
+
+    // ant card meta 슬롯 정의
+    .ant-card-meta {
+      margin: 0;
+
+      .ant-card-meta-avatar {
+        padding-right: var(--spacing-12);
+
+        .ant-avatar {
+          width: 40px;
+          height: 40px;
+          background-color: var(--layer-03);
+          border-radius: 0;
+        }
+      }
+
+      .ant-card-meta-detail {
+        display: flex;
+      }
+
+      .ant-card-meta-title {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+
+    // 커스텀 요소 스타일 (공통 클래스 수정될 수 있어 중복 선언)
+    .title-group {
+      display: flex;
+      flex-wrap: unset;
+      gap: var(--spacing-8);
+      row-gap: var(--spacing-6);
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: auto;
+      padding: 0;
+      border-bottom: 0;
+    }
+
+    .extra-group {
+      display: flex;
+      gap: 4px;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .group-items {
+      display: flex;
+      flex: 1 1 0; // 균등 배분 위해 추가
+      flex-grow: 1;
+      gap: var(--spacing-4);
+
+      // align-items: flex-start;
+      align-items: center;
+      min-height: $buttonHeightSm;
+      overflow: hidden;
+
+      .item-title {
+        @include typography(h3, var(--text-default));
+      }
+
+      .item-desc {
+        @include typography(body2, var(--text-default));
+
+        // @include ellipsis(2);
+      }
+
+      &.items-end {
+        align-items: flex-end;
+        justify-content: flex-end;
+        text-align: right;
+      }
+    }
+
+    .footer-group {
+      width: calc(100% + (var(--spacing-16) * 2));
+      padding: var(--spacing-12) var(--spacing-16);
+      margin: auto calc(var(--spacing-16) * -1) calc(var(--spacing-16) * -1);
+    }
+
+    // 조합 요소 정의
+    .ant-btn {
+      flex: 0 0 auto;
+    }
+
+    .divider-list {
+      width: auto;
+    }
+
+    .ant-flex:has(.ant-progress) {
+      flex-grow: 1;
+    }
+
+    .progress-box {
+      flex-grow: 1;
+    }
+
+    .ant-progress + .ant-typography,
+    .ant-progress + span {
+      flex: 0 0 auto;
+    }
+
+    .ant-form {
+      padding: 0;
+    }
+
+    // bordered
+    &.ant-card-bordered {
+      border: 1px solid var(--border-subtle-01);
+      border-radius: var(--radius-8);
+    }
+
+    // size small
+    &.ant-card-small {
+      // min-height: $cardHeightSm;
+
+      .ant-card-head {
+        height: auto;
+        min-height: 0;
+        padding-top: var(--spacing-16);
+        padding-bottom: 0;
+        margin: 0;
+        border-bottom: 0;
+      }
+
+      .ant-card-head + .ant-card-body {
+        padding-top: var(--spacing-12);
+      }
+    }
+
+    // vertical
+    .ant-flex-vertical {
+      .ant-card {
+        padding: 0;
+        border-radius: 0;
+      }
+
+      .ant-card-head {
+        padding: 0;
+      }
+
+      &:has(.ant-card:only-child) {
+        .ant-card:not(:first-child) {
+          border-bottom: 1px solid var(--border-subtle-01);
+        }
+      }
+    }
+
+    // status
+    &.status-down {
+      .item-title {
+        color: var(--text-on-color-disabled);
+      }
+    }
+  }
+
+  // 카드 그룹 (border X, 분리선 O)
+  .card-group {
+    display: flex;
+    row-gap: var(--spacing-40);
+    padding: var(--spacing-24) 0;
+    overflow: hidden;
+    background-color: var(--layer-01);
+    border: 1px solid var(--border-subtle-01);
+    border-radius: var(--radius-8);
+
+    .ant-row {
+      width: 100%;
+    }
+
+    .ant-col {
+      position: relative;
+      display: flex;
+      gap: var(--spacing-32);
+      padding: 0 var(--spacing-24);
+
+      &:not(:first-child) {
+        border-left: 1px solid var(--border-subtle-01);
+      }
+    }
+
+    .ant-card {
+      padding: 0;
+      background-color: transparent;
+      border-radius: 0;
+
+      // gap: var(--spacing-12);
+
+      .ant-card-head {
+        padding: 0;
+      }
+
+      .ant-card-body {
+        padding: 0;
+      }
+
+      &.ant-card-small {
+        min-height: 0;
+      }
+    }
+
+    // 6컬럼 기준 분리선 커스텀
+    .ant-col-6:nth-child(4n + 1) {
+      border-left: 0;
+    }
+
+    .ant-col-12:nth-child(2n + 1) {
+      border-left: 0;
+    }
+  }
+
+  .card-list {
+    display: flex;
+    gap: var(--spacing-16);
+
+    .ant-card-small {
+      width: $listWidthSm;
+    }
+  }
+
+  // 커스텀 : 카드 그룹 사이즈
+  .card-small-group {
+    height: $cardHeightSm;
+    padding: var(--spacing-16) 0;
+  }
+
+  // 정렬
+  .align-center {
+    * {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  .align-start {
+    * {
+      justify-content: flex-start;
+      text-align: left;
+    }
+  }
+
+  .align-end {
+    * {
+      justify-content: flex-end;
+      text-align: right;
+    }
+  }
+
+  // 레이아웃 row, col 로 구성된 카드 조합의 경우 최대 높이값의 카드 높이에 따라 확장
+  .ant-row {
+    // 기본 카드 높이 확장
+    .ant-col:has(> .ant-card),
+    .ant-col .ant-row .ant-col:has(> .ant-card) {
+      display: flex;
+      flex-direction: column;
+
+      > .ant-card {
+        flex-grow: 1;
+      }
+    }
+
+    // 레이아웃 row, col 구성된 카드 레이아웃 내부에 ant-card-body 확장 시 내부 요소 중앙 정렬
+    .ant-card:has(.ant-card-body:only-child) {
+      // justify-content: center;
+      .ant-card-body {
+        justify-content: center;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
+}

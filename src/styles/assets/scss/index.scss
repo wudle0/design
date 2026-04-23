@@ -1,0 +1,16 @@
+// @use 'themes';
+@use 'base';
+@use 'abstracts';
+@use 'components';
+@use 'solution';
+
+html {
+  body {
+    font-family: 'Pretendard JP', sans-serif !important;
+    font-size: 14px;
+    line-height: 1;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

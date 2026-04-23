@@ -1,0 +1,74 @@
+@use '../abstracts' as *;
+
+#archive {
+  .nodata-wrap {
+    display: flex;
+    justify-content: center;
+    padding: var(--spacing-16) var(--spacing-24);
+    border-radius: var(--radius-6);
+
+    .ant-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      margin: var(--spacing-0);
+      text-align: unset;
+
+      .ant-empty-image {
+        display: none; // 기본 이미지 reset
+      }
+
+      .ant-empty-box {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+
+        &:has(.ant-empty-bubble) {
+          gap: var(--spacing-8);
+        }
+
+        .ant-empty-title {
+          @include typography(h3, var(--text-default));
+          display: flex;
+          gap: var(--spacing-4);
+          align-items: center;
+          justify-content: center;
+        }
+
+        .ant-empty-text {
+          @include typography(body2, var(--text-subtle));
+        }
+
+        .ant-empty-bubble {
+          box-sizing: content-box;
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-8);
+          align-items: flex-start;
+          max-width: 223px;
+          padding: var(--spacing-12) var(--spacing-16);
+          background: var(--layer-02);
+          border-radius: var(--radius-6);
+
+          p {
+            @include typography(body2, var(--text-default));
+          }
+        }
+      }
+
+      .ant-empty-btn {
+        margin-top: var(--spacing-12);
+      }
+
+      .ant-empty-footer {
+        margin: var(--spacing-0);
+      }
+    }
+  }
+
+  .nodata-area {
+    padding: 60px 0;
+  }
+}

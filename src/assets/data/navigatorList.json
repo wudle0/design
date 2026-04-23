@@ -1,0 +1,112 @@
+[
+  {
+    "key": "navigator-bookmark",
+    "name": "즐겨찾기",
+    "item": [
+      {
+        "key": "navigator-bookmark-item1",
+        "name": "option01",
+        "bookmark": "yes"
+      },
+      {
+        "key": "navigator-bookmark-item2",
+        "name": "option02",
+        "bookmark": "yes",
+        "subItems": [
+          {
+            "key": "navigator-bookmark-subItem1",
+            "name": "즐겨찾기",
+            "item": [
+              {
+                "key": "navigator-bookmark-subItem1-1",
+                "name": "suboption01",
+                "bookmark": "yes"
+              },
+              {
+                "key": "navigator-bookmark-subItem1-2",
+                "name": "suboption02",
+                "bookmark": "no"
+              }
+            ]
+          },
+          {
+            "key": "navigator-bookmark-subItem2",
+            "name": "전체",
+            "item": [
+              {
+                "key": "navigator-bookmark-subItem2-1",
+                "name": "suboption03",
+                "bookmark": "yes"
+              },
+              {
+                "key": "navigator-bookmark-subItem2-2",
+                "name": "suboption04",
+                "bookmark": "no"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "navigator-bookmark-item3",
+        "name": "option03",
+        "bookmark": "yes"
+      }
+    ]
+  },
+  {
+    "key": "navigator-all",
+    "name": "전체",
+    "item": [
+      {
+        "key": "navigator-all-item1",
+        "name": "option01",
+        "bookmark": "no"
+      },
+      {
+        "key": "navigator-all-item2",
+        "name": "option02",
+        "bookmark": "no",
+        "subItems": [
+          {
+            "key": "navigator-bookmark-subItem1",
+            "name": "즐겨찾기",
+            "item": [
+              {
+                "key": "navigator-all-subItem1-1",
+                "name": "suboption01",
+                "bookmark": "yes"
+              },
+              {
+                "key": "navigator-all-subItem1-1",
+                "name": "suboption02",
+                "bookmark": "no"
+              }
+            ]
+          },
+          {
+            "key": "navigator-bookmark-subItem2",
+            "name": "전체",
+            "item": [
+              {
+                "key": "navigator-all-subItem2-1",
+                "name": "suboption03",
+                "bookmark": "yes"
+              },
+              {
+                "key": "navigator-all-subItem2-2",
+                "name": "suboption04",
+                "bookmark": "no"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "key": "navigator-all-item3",
+        "name": "option03",
+        "bookmark": "no"
+      }
+    ]
+  }
+]

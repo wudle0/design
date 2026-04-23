@@ -1,0 +1,213 @@
+@use '../../../abstracts' as *;
+
+#archive {
+  .virtual-network {
+    .left-devide-data {
+      // 스크롤 정렬을 위한 스타일 다수 정의
+      .devide-data-inner {
+        .ant-tabs {
+          flex: 1 1 100%;
+          height: 100%;
+          overflow: hidden;
+
+          .ant-tabs-content {
+            height: 100%;
+            overflow: hidden;
+          }
+
+          .content {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100%;
+            overflow: hidden;
+
+            .title-group {
+              min-height: $headerHeight;
+            }
+
+            .content-body {
+              height: 100%;
+              overflow: hidden;
+            }
+
+            .tree-group {
+              height: calc(100% - 48px);
+              overflow-y: auto;
+            }
+          }
+
+          .section {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100%;
+            overflow: hidden;
+
+            .section-body {
+              overflow: auto;
+            }
+          }
+        }
+      }
+    }
+
+    .right-devide-view {
+      .right-devide-view-content {
+        padding: 0;
+      }
+    }
+
+    // 가상 네트워크 구성도 전용 아이콘
+    .ico-monitor-1dp {
+      width: 16px;
+      height: 16px;
+      background-color: var(--icon-default);
+      mask: url('@/styles/assets/images/icon/icon_monitor_physical_lan.svg')
+        no-repeat 50% 50%;
+      mask-size: 16px 16px;
+    }
+
+    .ico-monitor-2dp {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      background-color: var(--icon-default);
+      mask: url('@/styles/assets/images/icon/icon_monitor_physical_host.svg')
+        no-repeat 50% 50%;
+      mask-size: 16px 16px;
+    }
+
+    .ico-monitor-3dp {
+      width: 16px;
+      height: 16px;
+      background-color: var(--icon-default);
+      mask: url('@/styles/assets/images/icon/icon_monitor_physical_part.svg')
+        no-repeat 50% 50%;
+      mask-size: 16px 16px;
+    }
+  }
+
+  // 가네토 svg 영역
+  .svg-host-vm-area {
+    max-width: none;
+
+    .vm-group-box {
+      fill: var(--layer-overlay);
+      stroke: var(--border-default-01);
+    }
+
+    .svgEl {
+      .vm-value {
+        cursor: pointer;
+        fill: transparent;
+        stroke: var(--border-subtle-03);
+        transition:
+          fill 0.1s,
+          stroke 0.1s;
+
+        &:hover {
+          stroke: var(--icon-subtle);
+        }
+
+        /* vlan connect value
+          value-1 : 1개
+          value-2 : 2개 이상 */
+        &.value-1 {
+          fill: var(--chart-cool-04);
+          stroke: var(--chart-cool-04);
+
+          &:hover {
+            fill: var(--chart-cool-04);
+            stroke: var(--chart-cool-06);
+          }
+        }
+
+        &.value-2 {
+          fill: var(--chart-cool-05);
+          stroke: var(--chart-cool-05);
+
+          &:hover {
+            fill: var(--chart-cool-05);
+            stroke: var(--chart-cool-06);
+          }
+        }
+      }
+
+      .vm-status {
+        /* vm status */
+        &.default {
+          fill: var(--support-gray-default);
+        }
+
+        &.error {
+          fill: var(--support-red-default);
+        }
+
+        &.warning {
+          fill: var(--support-orange-default);
+        }
+
+        &.success {
+          fill: var(--support-green-default);
+        }
+
+        &.info {
+          fill: var(--support-blue-default);
+        }
+      }
+
+      /* vm 비활성화 */
+      &.off {
+        .vm-status {
+          &.default {
+            fill: var(--support-gray-subtler);
+          }
+
+          &.error {
+            fill: var(--support-red-subtler);
+          }
+
+          &.warning {
+            fill: var(--support-orange-subtler);
+          }
+
+          &.success {
+            fill: var(--support-green-subtler);
+          }
+
+          &.info {
+            fill: var(--support-blue-subtler);
+          }
+        }
+      }
+    }
+
+    // text element
+    .text-host-name {
+      @include typography(h3, var(--text-default));
+      fill: var(--text-default);
+    }
+
+    .text-vm-length {
+      @include typography(label3, var(--text-default));
+      fill: var(--text-default);
+    }
+  }
+
+  // .ant-popover {
+  //   .ant-popover-inner {
+  //     .ant-popover-inner-content {
+  //       .popover-fix {
+  //         width: 286px;
+
+  //         .ant-flex {
+  //           gap: 8px;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

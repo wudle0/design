@@ -1,0 +1,109 @@
+@use '../abstracts' as *;
+
+#archive {
+  .pagination-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: $paginationHeight;
+    padding: var(--spacing-8) var(--spacing-16);
+    background: var(--layer-01);
+
+    .ant-btn {
+      min-width: 0;
+      padding: var(--spacing-0);
+    }
+
+    .pagination-total {
+      @include typography(label3, var(--text-default));
+      display: flex;
+      gap: var(--spacing-4);
+
+      strong {
+        @include typography(label2, var(--text-default));
+      }
+    }
+
+    .pagination-item {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      .pagination-item-btns {
+        display: flex;
+      }
+
+      .pagination-item-input {
+        @include typography(label3, var(--text-default));
+        width: 40px;
+        height: 32px;
+        padding: var(--spacing-4) var(--spacing-6);
+        text-align: center;
+
+        &[type='number']::-webkit-outer-spin-button,
+        &[type='number']::-webkit-inner-spin-button {
+          margin: 0;
+          appearance: none;
+        }
+      }
+
+      .pagination-item-text {
+        @include typography(label2, var(--text-default));
+      }
+    }
+
+    .page-size {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+
+      .ant-select {
+        width: 128px;
+
+        .ant-select-selection-item {
+          @include typography(label3, var(--text-default));
+        }
+      }
+    }
+
+    &:has(.pagination-total) {
+      justify-content: space-between;
+    }
+  }
+
+  // sticky pagination
+  .sticky-pagination {
+    .pagination-wrap {
+      position: sticky;
+      bottom: 0;
+      z-index: 2;
+    }
+  }
+
+  // content-body 내부에 존재할 경우
+  .content-body {
+    .ant-list + .pagination-wrap {
+      width: calc(100% + var(--spacing-16) * 2);
+      margin: var(--spacing-16) calc(var(--spacing-16) * -1) 0;
+      border-top: 1px solid var(--border-subtle-01);
+    }
+  }
+
+  .content-footer {
+    .pagination-wrap {
+      border-top: 1px solid var(--border-subtle-01);
+    }
+  }
+
+  // form 내부에서 사용될 때 페이지네이션 입력 필드 width 강제 설정
+  .ant-form {
+    .pagination-wrap {
+      .pagination-item {
+        .pagination-item-input[type='number'] {
+          width: 40px;
+        }
+      }
+    }
+  }
+}

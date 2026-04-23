@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+#archive {
+  .panel-guide {
+    .content-body {
+      padding: 0;
+    }
+
+    // 첫번째 ul 좌측 여백 예외 처리
+    .collapse-content-body {
+      > ul {
+        padding-left: 0;
+      }
+    }
+  }
+}

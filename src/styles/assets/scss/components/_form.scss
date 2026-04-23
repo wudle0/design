@@ -1,0 +1,1707 @@
+// @use '../abstracts/tokens' as *;
+@use '../abstracts' as *;
+
+#archive {
+  .ant-form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    label {
+      font-size: 10px; // 필요 없는 height 차지, 안쓰이는 공간
+    }
+
+    &.ant-form-vertical {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ant-form-item {
+      .ant-form-item-control-input-content {
+        width: 100%;
+
+        // 기본 (size 없음 296이 기본!)
+        input:not(
+            .ant-radio-input,
+            .ant-input-number-input,
+            .ant-checkbox-input,
+            .ant-select,
+            .ant-select-selection-search-input
+          ),
+        .ant-input-group,
+        .ant-input-affix-wrapper:has(.ant-input-suffix),
+        .ant-input-number,
+        .ant-upload-wrapper {
+          width: $inputWidthSm;
+          max-width: $inputWidthSm;
+        }
+
+        .ant-input-number-input {
+          max-width: calc($inputWidthSm - 26px);
+        }
+
+        .radio-container,
+        .checkbox-container {
+          flex: 1 1 $inputWidthSm;
+          max-width: $inputWidthSm;
+        }
+
+        // form item 내부 필터 사용시 필요
+        .border-top {
+          margin-top: 1px;
+        }
+      }
+
+      &.md {
+        .radio-container,
+        .checkbox-container,
+        textarea.ant-input {
+          flex: 1 1 $inputWidthMd;
+          max-width: $inputWidthMd;
+        }
+      }
+
+      &.lg {
+        .radio-container,
+        .checkbox-container {
+          flex: 1 1 $inputWidthLg;
+          max-width: $inputWidthLg;
+        }
+      }
+
+      // a-input 요소에 말줄임 들어갔을 경우 (ex. 부트스트랩 토큰 생성 모달)
+      .ellipsis-text {
+        .ant-input {
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+
+  .field-label-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-6);
+  }
+
+  .ant-form-item {
+    display: block;
+
+    // flex: 1;
+    min-width: 0;
+
+    // margin-bottom: var(--spacing-6);
+    margin-bottom: var(--spacing-16);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:only-child {
+      margin-bottom: 0;
+    }
+
+    &:has(.ant-input-textarea) {
+      width: 100%;
+    }
+
+    .ant-row {
+      display: flex;
+      flex-flow: row wrap;
+      min-width: 0;
+    }
+
+    .ant-form-item-label {
+      display: inline-block;
+      padding: 0;
+      margin: 0 0 var(--spacing-6);
+      font-size: 10px;
+      vertical-align: middle;
+
+      label {
+        @include typography(label3, var(--text-default));
+        position: relative;
+        display: inline-flex;
+        gap: var(--spacing-4);
+        align-items: center;
+        max-width: 100%;
+      }
+
+      .ant-form-item-required::before {
+        @include typography(label3, var(--support-red-default));
+        display: inline-block;
+        order: 1;
+        margin: 0;
+      }
+
+      .icon {
+        display: inline-flex;
+        align-items: center;
+        order: 2;
+        pointer-events: auto;
+      }
+    }
+
+    // &:has(.ant-form-item-extra) {
+    //   .ant-form-item-label {
+    //     margin-bottom: var(--spacing-2);
+    //   }
+    // }
+
+    .ant-form-item-extra {
+      @include typography(label5, var(--text-helper));
+
+      // order: -1;
+      order: 0;
+      width: $inputWidthSm;
+      max-width: $inputWidthSm;
+      min-height: fit-content;
+      margin-top: var(--spacing-8); // 2 > 8
+
+      &.md {
+        flex: 1 1 $inputWidthMd;
+        max-width: $inputWidthMd;
+      }
+
+      &.lg {
+        flex: 1 1 $inputWidthLg;
+        max-width: $inputWidthLg;
+      }
+    }
+
+    // extra-order-1 클래스가 있을 때 order: -1 적용
+    &.extra-order-1 {
+      .ant-form-item-extra {
+        order: -1;
+        margin-top: 0;
+        margin-bottom: var(--spacing-6);
+      }
+    }
+
+    .ant-form-item-explain {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2);
+      align-items: flex-start;
+      padding-top: var(--spacing-2);
+      margin-top: var(--spacing-6);
+      margin-bottom: var(--spacing-6);
+      transition: all 0.2s ease;
+
+      .ant-form-item-explain-error {
+        @include typography(label5, var(--support-red-default));
+      }
+
+      .helper {
+        @include typography(label5, var(--text-helper));
+      }
+    }
+
+    .ant-form-item-control {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .ant-form-item-control-input {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: auto;
+
+        .ant-form-item-control-input-content {
+          display: flex;
+          flex: auto;
+          width: 100%;
+
+          .input-number-unit {
+            align-items: center;
+
+            .ant-typography {
+              min-width: 31px;
+            }
+          }
+        }
+
+        .ant-input-suffix {
+          position: relative;
+        }
+      }
+    }
+
+    .suffix-text {
+      @include typography(label3, var(--text-subtle));
+      padding-left: var(--spacing-6);
+
+      // line-height: 1;
+
+      &::before {
+        position: absolute;
+        top: 3px;
+        left: 0;
+        display: block;
+        width: 1px;
+        height: 12px;
+        content: '';
+        background-color: var(--border-default-01);
+      }
+    }
+
+    .ant-input-group {
+      display: flex;
+      gap: var(--spacing-6);
+
+      .group-items {
+        position: relative;
+        flex: 1 1 auto;
+        width: 100%;
+      }
+
+      .ant-input {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+    }
+
+    .ant-input-group-compact {
+      gap: 0;
+
+      > *:only-child {
+        border-radius: var(--radius-6);
+      }
+
+      > *:first-child:not(:last-child) {
+        border-radius: var(--radius-6) 0 0 var(--radius-6);
+      }
+
+      > *:last-child:not(:first-child) {
+        border-radius: 0 var(--radius-6) var(--radius-6) 0;
+      }
+
+      > *:not(:first-child, :last-child) {
+        border-radius: 0;
+      }
+
+      div:not(.ant-select) {
+        padding: var(--spacing-4) var(--spacing-12);
+        border: 1px solid var(--border-default-01);
+      }
+
+      .ant-select {
+        .ant-select-selector {
+          input {
+            width: 100%;
+            max-width: 100%;
+          }
+        }
+
+        &:only-child .ant-select-selector {
+          border-radius: var(--radius-6);
+        }
+
+        &:first-child:not(:last-child) .ant-select-selector {
+          border-radius: var(--radius-6) 0 0 var(--radius-6);
+        }
+
+        &:last-child:not(:first-child) .ant-select-selector {
+          border-radius: 0 var(--radius-6) var(--radius-6) 0;
+        }
+
+        &:not(:first-child, :last-child) .ant-select-selector {
+          border-radius: 0;
+        }
+      }
+
+      &.select-group-compact {
+        .ant-select {
+          flex-shrink: 0;
+          width: 72px;
+        }
+      }
+
+      .ant-input {
+        border-radius: 0;
+      }
+    }
+  }
+
+  .ant-input,
+  .ant-input-number,
+  .ant-input-affix-wrapper {
+    @include typography(label3, var(--text-default));
+    z-index: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-6);
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-6) var(--spacing-12);
+    cursor: pointer;
+    background: var(--field-default);
+    border: 1px solid var(--border-default-01);
+    border-radius: var(--radius-6);
+    transition: $trans-common-bezier-border-color;
+
+    &::placeholder {
+      color: var(--text-subtler);
+    }
+
+    &-sm {
+      @include typography(label5, var(--text-default));
+      height: 24px;
+      padding: var(--spacing-4) var(--spacing-8);
+    }
+
+    &-lg {
+      @include typography(label1, var(--text-default));
+      height: 40px;
+      padding: var(--spacing-8) var(--spacing-12);
+    }
+
+    &-status-error:not(.ant-input-disabled) {
+      border-color: var(--support-red-default);
+    }
+
+    &-status-success:not(.ant-input-disabled) {
+      border-color: var(--support-green-default);
+    }
+
+    &-disabled,
+    &.ant-input-affix-wrapper-disabled {
+      color: var(--text-disabled);
+      cursor: not-allowed;
+      background: var(--field-disabled);
+      border-color: var(--border-disabled);
+    }
+
+    &[readonly] {
+      cursor: not-allowed;
+      background: var(--field-disabled) !important;
+    }
+
+    &:hover {
+      border-color: var(--border-default-03);
+    }
+
+    &:focus,
+    &.ant-input-number-focused,
+    &.ant-input-affix-wrapper-focused {
+      outline: $focus-visible-out;
+      outline-offset: -2px;
+      box-shadow: none;
+    }
+  }
+
+  // MUI style input
+  .is-include-label {
+    position: relative;
+    margin-top: 10px;
+
+    .ant-form-item-label {
+      position: absolute;
+      top: -8px;
+      left: 12px;
+      z-index: 1;
+      padding: 0 var(--spacing-2);
+      pointer-events: none;
+      background-color: transparent;
+
+      &::before {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 2px;
+        content: '';
+        background-color: var(--layer-raised);
+      }
+
+      label {
+        @include typography(label5, var(--text-subtle));
+      }
+    }
+
+    &:has(.ant-input-lg) {
+      .ant-form-item-label {
+        label {
+          @include typography(label5, var(--text-subtle));
+        }
+      }
+    }
+  }
+
+  // number
+  .ant-input-number {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-right: 64px;
+    background-color: var(--field-default);
+
+    input::placeholder {
+      color: var(--text-subtler);
+    }
+
+    .ant-input-number-input-wrap {
+      width: 100%;
+
+      .ant-input-number-input {
+        width: 100%;
+        height: auto;
+        padding: 0;
+        color: var(--text-default);
+      }
+    }
+
+    &.hide-controls {
+      padding-right: var(--spacing-12);
+
+      .ant-input-number-input {
+        height: auto;
+        padding: 0;
+        text-align: end;
+      }
+
+      .ant-input-number-handler-wrap {
+        display: none;
+      }
+    }
+
+    .ant-input-number-handler-wrap {
+      position: absolute;
+      top: 0;
+      right: var(--spacing-4);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 48px;
+      height: 100%;
+      background: transparent;
+      opacity: 1;
+
+      .ant-input-number-handler {
+        position: relative;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        border: 0;
+
+        svg {
+          display: none;
+        }
+
+        &.ant-input-number-handler-up {
+          order: 2;
+
+          &::after {
+            content: 'add';
+          }
+        }
+
+        &.ant-input-number-handler-down {
+          &::after {
+            content: 'remove';
+          }
+        }
+
+        &::after {
+          @include material(md, var(--icon-default), '');
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          pointer-events: none;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      background: var(--field-disabled);
+      border-color: var(--border-disabled);
+    }
+  }
+
+  // number + units
+  .ant-input-number-group-wrapper {
+    width: 100%;
+
+    .ant-input-number-wrapper {
+      display: flex;
+      align-items: center;
+      padding-right: var(--spacing-12);
+      border: 1px solid var(--border-default-01);
+      border-radius: var(--radius-6);
+
+      .ant-input-number {
+        padding-right: 0;
+        border: 0;
+      }
+
+      .ant-input-number-group-addon {
+        position: relative;
+      }
+    }
+  }
+
+  // password
+  .ant-input-affix-wrapper {
+    // 중복 스타일이지만 필요한 타겟만 적용 (allow-clear 적용 시 스타일 깨짐 현상 방지)
+    &:has(.ant-input-suffix) {
+      .ant-input {
+        padding: 0;
+        outline: none;
+        background: transparent;
+        border: none;
+      }
+    }
+
+    &.ant-input-password {
+      .ant-input {
+        // 스타일 위치 변경
+        padding: 0;
+        outline: none;
+        background: transparent;
+        border: none;
+      }
+
+      .ant-input-suffix {
+        position: relative;
+        max-height: 20px;
+
+        .anticon-eye,
+        .anticon-eye-invisible {
+          opacity: 0;
+        }
+      }
+    }
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  // textarea
+  .ant-input-textarea {
+    position: relative;
+    width: 100%;
+    max-width: $inputWidthSm;
+    padding-bottom: 20px;
+
+    &::after {
+      @include typography(label5, var(--text-helper));
+      margin-top: var(--spacing-6);
+    }
+
+    &.md {
+      max-width: $inputWidthMd;
+    }
+
+    &.lg {
+      max-width: $inputWidthLg;
+    }
+  }
+
+  // select
+  .ant-select {
+    // position: relative;
+    // display: inline-block;
+    width: $inputWidthSm;
+    max-width: $inputWidthSm;
+
+    &.md {
+      flex: 1 1 $inputWidthMd;
+      max-width: $inputWidthMd;
+    }
+
+    &.lg {
+      flex: 1 1 $inputWidthLg;
+      max-width: $inputWidthLg;
+    }
+
+    // &.ant-select-in-form-item {
+    //   width: 100%;
+    // }
+
+    .ant-select-selector {
+      @include typography(label3, var(--text-default));
+      display: flex;
+      align-items: center;
+      padding: 0 var(--spacing-12);
+      background: var(--field-default);
+      border: 1px solid var(--border-default-01);
+      border-radius: var(--radius-6);
+      transition: $trans-common-bezier-border-color;
+
+      .ant-select-selection-item {
+        @include typography(label3, var(--text-default));
+      }
+    }
+
+    .ant-select-selection-placeholder {
+      color: var(--text-subtler);
+    }
+
+    &.ant-select-sm {
+      .ant-select-selector {
+        @include typography(label5, var(--text-default));
+        height: 24px;
+        padding: var(--spacing-4) var(--spacing-8);
+      }
+    }
+
+    &.ant-select-lg {
+      .ant-select-selector {
+        @include typography(label1, var(--text-default));
+        padding: 0 var(--spacing-12);
+      }
+    }
+
+    &.ant-select-multiple {
+      .ant-select-selector {
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 32px;
+        padding: var(--spacing-6) var(--spacing-12);
+
+        &::after {
+          @include material(md, var(--icon-default), 'keyboard_arrow_down');
+          position: absolute;
+          top: 50%;
+          right: var(--spacing-12);
+          width: var(--spacing-16);
+          margin-top: -1px;
+          white-space: nowrap;
+          pointer-events: none;
+          content: 'keyboard_arrow_down';
+          transform: translateY(-50%);
+        }
+
+        .ant-select-selection-overflow {
+          gap: var(--spacing-4);
+          max-width: calc(100% - var(--spacing-16));
+        }
+
+        .ant-select-selection-search {
+          top: 0;
+          margin-left: 0;
+
+          .ant-select-selection-search-input {
+            height: 18px;
+            line-height: normal;
+          }
+        }
+      }
+
+      &.ant-select-sm {
+        .ant-select-selector {
+          padding: var(--spacing-4) var(--spacing-8);
+        }
+      }
+
+      &.ant-select-lg {
+        .ant-select-selector {
+          min-height: 40px;
+          padding: var(--spacing-8) var(--spacing-12);
+        }
+
+        .ant-select-selection-search-input {
+          height: 18px;
+          line-height: normal;
+        }
+      }
+
+      .ant-select-selection-item {
+        @include typography(label6, var(--text-default));
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 18px;
+        padding: var(--spacing-2) var(--spacing-8);
+        margin: 0;
+        background: var(--layer-02);
+        border: 1px solid var(--border-disabled);
+        border-radius: var(--radius-9999);
+
+        .ant-select-selection-item-content {
+          margin-right: 0;
+        }
+
+        .ant-select-selection-item-remove {
+          @include material(xs, var(--icon-default), 'close');
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: var(--spacing-4);
+          pointer-events: auto;
+          cursor: pointer;
+
+          &::before {
+            content: 'close';
+          }
+
+          .anticon {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &:hover:not(.ant-select-disabled) {
+      .ant-select-selector {
+        border-color: var(--border-default-03);
+      }
+    }
+
+    &.ant-select-focused:not(.ant-select-disabled) {
+      .ant-select-selector {
+        outline: $focus-visible-out;
+        outline-offset: -2px;
+        box-shadow: none;
+      }
+    }
+
+    &-status-error.ant-select-focused:not(.ant-select-disabled) {
+      .ant-select-selector {
+        outline: none;
+        border-color: var(--support-red-default);
+      }
+    }
+
+    &-status-success.ant-select-focused:not(.ant-select-disabled) {
+      .ant-select-selector {
+        outline: none;
+        border-color: var(--support-red-default);
+      }
+    }
+
+    &.ant-select-disabled {
+      .ant-select-selector {
+        cursor: not-allowed;
+        background: var(--field-disabled);
+        border-color: var(--border-disabled);
+      }
+
+      .ant-select-selection-placeholder,
+      .ant-select-selection-item {
+        color: var(--text-disabled);
+      }
+    }
+
+    &[readonly] {
+      .ant-select-selector {
+        cursor: not-allowed;
+        background: var(--field-disabled);
+      }
+    }
+
+    .ant-select-arrow {
+      position: absolute;
+      top: 50%;
+      right: var(--spacing-12);
+      display: flex;
+      gap: var(--spacing-6);
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 0;
+      pointer-events: none;
+      transform: translateY(-50%);
+
+      .suffix-text {
+        &::before {
+          top: 0;
+        }
+      }
+
+      .anticon {
+        display: none;
+      }
+
+      &::after {
+        @include material(md, var(--icon-default), 'keyboard_arrow_down');
+        line-height: 1;
+        content: 'keyboard_arrow_down';
+      }
+    }
+
+    &:hover:not(.ant-select-disabled) .ant-select-arrow {
+      color: var(--icon-hover);
+    }
+  }
+
+  // checkbox
+  .ant-checkbox-wrapper {
+    display: inline-flex;
+    gap: var(--spacing-4);
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+
+    // 마지막 요소 하단 여백 발생하는 것을 방지
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .material-icon {
+      vertical-align: middle;
+    }
+
+    &:not(
+        .ant-checkbox-wrapper-disabled,
+        .ant-checkbox-checked,
+        .ant-checkbox-indeterminate
+      ) {
+      &:hover .ant-checkbox-inner {
+        background-color: transparent;
+        border-color: var(--icon-brand-default);
+      }
+
+      &:hover .ant-checkbox-checked::after {
+        visibility: hidden;
+      }
+
+      &:active .ant-checkbox-inner {
+        background-color: transparent;
+        border-color: var(--icon-brand-pressed);
+      }
+    }
+
+    &.ant-checkbox-wrapper-checked:not(.ant-checkbox-wrapper-disabled),
+    &:has(.ant-checkbox-checked):not(.ant-checkbox-wrapper-disabled) {
+      &:hover .ant-checkbox-inner {
+        background-color: var(--icon-brand-hover) !important;
+        border-color: var(--icon-brand-hover) !important;
+      }
+
+      &:active .ant-checkbox-inner {
+        background-color: var(--icon-brand-pressed) !important;
+        border-color: var(--icon-brand-pressed) !important;
+      }
+    }
+
+    &:has(.ant-checkbox-indeterminate) {
+      &:hover .ant-checkbox-inner {
+        background-color: var(--icon-brand-default) !important;
+      }
+
+      &:active .ant-checkbox-inner {
+        background-color: var(--icon-brand-pressed) !important;
+      }
+    }
+
+    .ant-checkbox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+
+      + span {
+        @include typography(label3, var(--text-default));
+        padding: 0;
+      }
+
+      // 체크박스 disabled 상태에서 span 텍스트 색상 처리
+      &.ant-checkbox-disabled + span {
+        color: var(--text-disabled);
+      }
+
+      .ant-checkbox-input:focus-visible + .ant-checkbox-inner {
+        outline: $focus-visible-out;
+      }
+
+      .ant-checkbox-inner {
+        position: relative;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background-color: var(--field-default);
+        background-repeat: no-repeat;
+        background-position: 1.2px 1.5px;
+        background-size: 80%;
+        border-color: var(--icon-subtle);
+        border-radius: 2px;
+
+        &::after {
+          top: 46%;
+          left: 50%;
+          transform: translate(-50%, -60%) rotate(45deg) scale(0);
+        }
+      }
+
+      // 비체크 + 비불확정 + 활성 상태
+      &:not(
+          .ant-checkbox-checked,
+          .ant-checkbox-disabled,
+          .ant-checkbox-indeterminate
+        ) {
+        &:hover .ant-checkbox-inner,
+        &:active .ant-checkbox-inner {
+          background-color: transparent;
+        }
+
+        &:hover .ant-checkbox-inner {
+          border-color: var(--icon-brand-default);
+        }
+
+        &:active .ant-checkbox-inner {
+          border-color: var(--icon-brand-pressed);
+        }
+      }
+
+      // 체크됨 + 활성
+      &.ant-checkbox-checked:not(
+          .ant-checkbox-disabled,
+          .ant-checkbox-indeterminate
+        ) {
+        .ant-checkbox-inner {
+          background-color: var(--icon-brand-default);
+
+          // background-image: $check-icon;
+          border-color: var(--icon-brand-default);
+        }
+      }
+
+      // 체크됨 + 비활성
+      &.ant-checkbox-checked {
+        .ant-checkbox-inner {
+          background-color: var(--icon-disabled);
+
+          // background-image: $check-icon;
+          border-color: var(--icon-disabled);
+
+          &::after {
+            // top: 46%;
+            // left: 50%;
+            box-sizing: content-box;
+            width: 3px;
+            height: 6px;
+            border: solid var(--icon-on-color);
+            border-width: 0 2px 2px 0;
+            border-radius: 1px;
+            transform: translate(-50%, -60%) rotate(45deg) scale(1);
+          }
+        }
+
+        // + span {
+        //   color: var(--text-default);
+        // }
+      }
+
+      // 비체크 + 비활성
+      &.ant-checkbox-disabled:not(.ant-checkbox-checked) {
+        .ant-checkbox-inner {
+          background: none;
+          border-color: var(--icon-disabled);
+        }
+
+        + span {
+          color: var(--text-disabled);
+        }
+      }
+
+      // 불확정 상태
+      &.ant-checkbox-indeterminate {
+        .ant-checkbox-inner {
+          background-color: var(--icon-brand-default);
+          border: none;
+
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 1.5px;
+            content: '';
+            background-color: var(--icon-on-color);
+            border-radius: 1px;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+  }
+
+  .ant-checkbox-group {
+    flex-direction: column;
+    overflow: hidden; // 사이드 영역 내부에서 스크롤 생겨서 히든 처리 // 얘도 마찬가지..
+
+    &.horizontal {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-2) var(--spacing-16);
+
+      .ant-checkbox-wrapper {
+        margin-bottom: var(--spacing-4);
+      }
+    }
+
+    &:not(.horizontal) {
+      .ant-checkbox-wrapper {
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &:has(.checkbox-container) {
+      flex-direction: row;
+      gap: var(--spacing-8);
+    }
+
+    &:has(.description) {
+      .ant-checkbox-wrapper {
+        .ant-checkbox {
+          align-self: flex-start;
+        }
+
+        .description {
+          margin-top: var(--spacing-2);
+          color: var(--text-helper);
+        }
+      }
+    }
+  }
+
+  .checkbox-container {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-6);
+    align-items: flex-start;
+    width: 100%;
+    padding: var(--spacing-12);
+    cursor: pointer;
+    background: var(--layer-raised);
+    border: 1px solid var(--border-default-01);
+    border-radius: var(--radius-6);
+    transition: $trans-common-bezier-bg-color, $trans-common-bezier-border-color;
+
+    &:has(.ant-checkbox-checked) {
+      background-color: var(--background-subtle);
+      border-color: var(--icon-brand-default);
+    }
+
+    .checkbox-contents {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      justify-content: center;
+      min-width: 0;
+
+      &:has(.title .material-icon) {
+        .ant-tag {
+          margin-left: 24px;
+        }
+      }
+    }
+
+    .title {
+      @include typography(label2, var(--text-default));
+      display: flex;
+      gap: var(--spacing-6);
+      align-items: flex-start;
+
+      span:not(.material-icon) {
+        // @include ellipsis(2);
+        padding-top: var(--spacing-2);
+        white-space: normal;
+      }
+
+      // 아이콘이 있을 때만 들여쓰기
+      &:has(.material-icon) + .description {
+        margin-left: 24px;
+      }
+    }
+
+    .description {
+      @include typography(label3, var(--text-default));
+      margin-top: 0;
+
+      // @include ellipsis(2);
+      white-space: normal;
+    }
+
+    .ant-tag {
+      width: fit-content;
+    }
+
+    &:hover {
+      background: linear-gradient(
+          0deg,
+          var(--interaction-hover) 0%,
+          var(--interaction-hover) 100%
+        ),
+        var(--layer-raised);
+    }
+
+    &:active {
+      background: linear-gradient(
+          0deg,
+          var(--interaction-selected) 0%,
+          var(--interaction-selected) 100%
+        ),
+        var(--layer-raised);
+    }
+
+    &.ant-checkbox-wrapper {
+      &.ant-checkbox-wrapper-checked {
+        background: linear-gradient(
+            0deg,
+            var(--interaction-selected) 0%,
+            var(--interaction-selected) 100%
+          ),
+          var(--layer-raised);
+        border: 1px solid var(--border-active);
+      }
+    }
+  }
+
+  // radio
+  .ant-radio-group {
+    display: flex;
+    flex-flow: column wrap;
+    gap: var(--spacing-6);
+    width: 100%;
+
+    &.horizontal {
+      flex-direction: row;
+      gap: var(--spacing-16);
+    }
+
+    &:has(.radio-container) {
+      flex-direction: row;
+      gap: var(--spacing-8);
+    }
+  }
+
+  .ant-radio-wrapper {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-right: 0;
+
+    span:not(.icon, .material-icon) {
+      @include typography(label3, var(--text-default));
+      padding: 0;
+
+      > .ant-tag {
+        padding: var(--spacing-0) var(--spacing-8);
+      }
+    }
+
+    .ant-radio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      margin-right: var(--spacing-4);
+
+      .ant-radio-inner {
+        background-color: transparent;
+        border-color: var(--icon-subtle);
+
+        &::after {
+          background-color: var(--field-default);
+        }
+      }
+
+      &.ant-radio-checked {
+        .ant-radio-inner {
+          background-color: var(--icon-brand-default);
+          border-color: var(--icon-brand-default);
+        }
+
+        &::after {
+          border: 1px solid var(--icon-brand-default);
+        }
+      }
+    }
+
+    &:hover {
+      .ant-radio-inner {
+        border-color: var(--icon-brand-default);
+      }
+    }
+
+    &:active {
+      .ant-radio-inner {
+        border-color: var(--icon-brand-pressed);
+      }
+    }
+
+    .ant-radio-input {
+      &:focus-visible + .ant-radio-inner {
+        outline: $focus-visible-out;
+      }
+    }
+
+    &.ant-radio-wrapper-disabled {
+      span {
+        color: var(--text-disabled);
+      }
+
+      .ant-radio-inner {
+        border-color: var(--icon-disabled);
+      }
+
+      .ant-radio-checked {
+        .ant-radio-inner {
+          background-color: var(--icon-disabled);
+          border-color: var(--icon-disabled);
+
+          &::after {
+            background-color: var(--layer-raised);
+          }
+        }
+      }
+    }
+  }
+
+  .ant-checkbox-wrapper,
+  .ant-radio-wrapper {
+    > span:has(.icon) {
+      display: inline-flex;
+      gap: var(--spacing-4);
+      align-items: center;
+
+      .icon {
+        height: 20px;
+      }
+    }
+  }
+
+  // box radio
+  .radio-container {
+    display: flex;
+    flex: 1;
+    gap: var(--spacing-6);
+    align-items: flex-start;
+    width: 100%;
+    padding: var(--spacing-12);
+    cursor: pointer;
+    background: var(--layer-raised);
+    border: 1px solid var(--border-default-01);
+    border-radius: var(--radius-6);
+    transition: $trans-common-bezier-bg-color, $trans-common-bezier-border-color;
+
+    .radio-contents {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2);
+      justify-content: center;
+      padding-left: 26px;
+
+      // description 없을 때 타이틀 커지게
+      &:not(:has(.description)) .title {
+        @include typography(label1, var(--text-default));
+      }
+    }
+
+    .title {
+      @include typography(label3, var(--text-default));
+      display: flex;
+      gap: var(--spacing-6);
+
+      span:not(.material-icon) {
+        @include ellipsis(2);
+      }
+
+      // 아이콘이 있을 때만 들여쓰기
+      &:has(.material-icon) + .description {
+        margin-left: 26px;
+      }
+    }
+
+    .description {
+      @include typography(label6, var(--text-helper));
+      @include ellipsis(2);
+    }
+
+    &.ant-radio-wrapper {
+      margin-right: 0;
+
+      .ant-radio {
+        position: absolute;
+        top: 11px;
+      }
+
+      // description 없을 때 위치 조절
+      // &:not(:has(.description)) .ant-radio {
+      //   top: 0;
+      // }
+    }
+
+    &:active {
+      background: linear-gradient(
+          0deg,
+          var(--interaction-selected) 0%,
+          var(--interaction-selected) 100%
+        ),
+        var(--layer-raised);
+    }
+
+    &.ant-radio-wrapper-checked {
+      background: linear-gradient(
+          0deg,
+          var(--interaction-selected) 0%,
+          var(--interaction-selected) 100%
+        ),
+        var(--layer-raised);
+      border: 1px solid var(--border-active);
+
+      .ant-radio-checked .ant-radio-inner::after {
+        background-color: var(--layer-raised);
+      }
+
+      // 선택된 상태에서 disabled일 때
+      &.ant-radio-wrapper-disabled {
+        cursor: not-allowed;
+        background: var(--interaction-disabled);
+        border: 1px solid var(--border-disabled);
+
+        .ant-radio-checked .ant-radio-inner {
+          background-color: var(--icon-disabled);
+          border-color: var(--icon-disabled);
+        }
+
+        .ant-radio-checked .ant-radio-inner::after {
+          background-color: var(--layer-raised);
+        }
+      }
+    }
+
+    // disabled 상태
+    &.ant-radio-wrapper-disabled {
+      cursor: not-allowed;
+      background: var(--layer-disabled);
+      border: 1px solid var(--border-disabled);
+
+      .ant-radio-disabled .ant-radio-inner {
+        background-color: var(--layer-01);
+        border-color: var(--icon-disabled);
+      }
+
+      .ant-radio-disabled .ant-radio-inner::after {
+        background-color: var(--text-disabled);
+      }
+    }
+  }
+
+  // switch
+  .ant-switch {
+    @include typography(label3, var(--text-default));
+
+    // 기본사이즈
+    width: 40px;
+    min-width: 40px;
+    height: 20px;
+    background: var(--toggle-inactive-default);
+
+    &:hover:not(.ant-switch-disabled) {
+      background: var(--toggle-inactive-hover);
+    }
+
+    &:focus-visible {
+      outline: $focus-visible-out;
+    }
+
+    .ant-switch-handle {
+      width: 16px;
+      height: 16px;
+
+      &::before {
+        background-color: var(--toggle-element-default);
+      }
+    }
+
+    &.ant-switch-disabled {
+      background: var(--toggle-inactive-disabled);
+
+      .ant-switch-handle {
+        &::before {
+          background-color: var(--toggle-element-disabled);
+        }
+      }
+    }
+
+    .ant-switch-inner {
+      padding-top: 3px;
+      padding-left: 20px;
+    }
+
+    &.ant-switch-checked {
+      background: var(--toggle-active-default);
+
+      &:hover {
+        background: var(--toggle-active-hover);
+      }
+
+      .ant-switch-handle {
+        left: calc(100% - 18px);
+      }
+
+      .ant-switch-inner {
+        padding-top: 2px;
+        padding-left: 5px;
+      }
+    }
+
+    // small 사이즈
+    &.ant-switch-small {
+      width: 32px;
+      min-width: 32px;
+      height: 16px;
+
+      .ant-switch-handle {
+        width: 12px;
+        height: 12px;
+      }
+
+      &.ant-switch-checked {
+        .ant-switch-handle {
+          left: calc(100% - 14px);
+        }
+      }
+    }
+  }
+
+  // switch는 label 지원이 없어서 외부에서 텍스트를 구성함
+  // switch 앞쪽 텍스트는 셀렉터로 제어 불가하므로 공통 클래스에 스타일 적용
+  .ant-switch-text {
+    @include typography(label5, var(--text-default));
+  }
+
+  // switch로 on/off 되는 추가 form-item의 경우 gap을 8px로 통일
+  .switch-form-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-8);
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+
+    .switch-form-wrap-text {
+      @include typography(label5, var(--text-helper));
+      display: flex;
+      gap: var(--spacing-4);
+      align-items: center;
+    }
+  }
+
+  // upload
+  .ant-upload-wrapper {
+    width: 100%;
+
+    .ant-upload {
+      display: block;
+      width: 100%;
+
+      .custom-upload {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0 20px;
+        text-align: center;
+        cursor: pointer;
+        background: var(--field-default);
+        border: 1px dashed var(--border-default-01);
+        border-radius: var(--radius-6);
+        transition: $trans-common-bezier-bg-color;
+
+        &:hover {
+          background: var(--interaction-hover);
+        }
+
+        &:active {
+          background: var(--interaction-pressed);
+        }
+
+        &.drag-hover {
+          background: var(--interaction-selected);
+        }
+
+        .upload-inner {
+          @include typography(body2, var(--text-default));
+          display: flex;
+          flex-flow: row wrap;
+          gap: var(--spacing-4);
+          align-items: center;
+          min-height: 46px;
+        }
+
+        .upload-link {
+          color: var(--button-primary-default);
+          text-decoration: underline;
+        }
+
+        .drop-hint {
+          padding: 59px 0;
+          color: var(--text-disabled);
+        }
+      }
+    }
+
+    .ant-upload-list {
+      @include scrollbars;
+      display: block;
+      max-height: 168px;
+      margin-top: var(--spacing-6);
+      overflow: hidden auto;
+
+      .ant-upload-list-item-container {
+        height: fit-content !important;
+        margin-bottom: var(--spacing-4);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .render-list {
+          gap: var(--spacing-4);
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+
+          span:not(.material-icon) {
+            @include typography(label3, var(--link-default));
+            @include ellipsis(1);
+            text-decoration: underline;
+
+            &.error {
+              color: var(--text-disabled);
+            }
+
+            &.uploading {
+              color: var(--text-disabled);
+            }
+          }
+
+          .left {
+            display: flex;
+            flex: 1 1 auto;
+            gap: var(--spacing-2);
+            align-items: center;
+            width: 100%;
+            min-width: 0;
+          }
+
+          .right:not(.material-icon) {
+            @include typography(label6, var(--text-subtle));
+            display: flex;
+            flex-shrink: 0;
+            gap: 4px;
+            align-items: center;
+            white-space: nowrap;
+
+            &.error {
+              color: var(--text-disabled);
+            }
+
+            &.uploading {
+              color: var(--text-disabled);
+            }
+          }
+        }
+
+        .ant-progress {
+          display: block;
+          width: calc(100% - 34px);
+          margin: 0 auto;
+          margin-top: var(--spacing-2);
+        }
+      }
+    }
+  }
+
+  .markdown-body {
+    padding: 0;
+    font-family: var(--font-family-default);
+    color: var(--text-default);
+    background: transparent;
+
+    hr {
+      display: none;
+    }
+
+    h4 {
+      @include typography(h3, var(--text-default));
+      display: flex;
+      align-items: center;
+      height: 24px;
+      margin-top: 0;
+      margin-bottom: var(--spacing-4);
+    }
+
+    h2 {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    p {
+      @include typography(label5, var(--text-helper));
+      margin-bottom: var(--spacing-16);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    code {
+      @include typography(code2, var(--support-red-default));
+      background: var(--layer-03);
+    }
+
+    pre {
+      padding: var(--spacing-2) var(--spacing-4);
+      background: var(--layer-03);
+
+      code {
+        @include typography(code2, var(--support-blue-default));
+      }
+    }
+
+    ul {
+      padding-left: var(--spacing-16);
+      margin-block-start: 0;
+      margin-top: var(--spacing-4);
+      list-style: disc;
+
+      li {
+        @include typography(body2, var(--text-default));
+
+        & + li {
+          margin-top: var(--spacing-4);
+        }
+
+        &:has(> ul) + li:has(> ul) {
+          margin-top: var(--spacing-8);
+        }
+
+        &:has(.value + .value + .value) {
+          line-height: 22px;
+        }
+
+        strong {
+          @include typography(body2, var(--text-default));
+        }
+
+        ul {
+          list-style: circle;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &.no-operation {
+      .ant-tabs-nav-operations {
+        display: none;
+      }
+    }
+
+    .ant-tabs-nav-operations {
+      .ant-tabs-nav-more {
+        color: var(--icon-default);
+
+        .anticon {
+          width: max-content;
+        }
+      }
+    }
+
+    .ant-tabs-nav {
+      &::before {
+        border-bottom: 1px solid var(--border-subtle-01);
+      }
+    }
+
+    .ant-tabs-nav,
+    .ant-tabs-nav-wrap {
+      width: 100%;
+      margin-bottom: 0;
+      overflow: hidden;
+
+      // @include hide-scrollbar;
+    }
+
+    .ant-tabs-tabpane:has(.content-body .side-view-content) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ant-tabs-extra-content {
+      margin-right: var(--spacing-40);
+
+      &:last-of-type {
+        margin-right: var(--spacing-16);
+        margin-left: var(--spacing-40);
+      }
+
+      .ant-btn:not(:first-child) {
+        margin-left: var(--spacing-8);
+      }
+    }
+
+    .ant-tabs-nav-list {
+      position: relative;
+      display: block;
+      width: max-content;
+    }
+
+    .ant-tabs-ink-bar {
+      background: var(--border-active);
+    }
+
+    .ant-tabs-content {
+      @include scrollbars;
+      height: 100%;
+      overflow: auto;
+    }
+
+    // default
+    .ant-tabs-tab {
+      position: relative;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      height: calc($headerHeight + 1px); // 타이틀 컴포넌트와의 정렬
+      margin: 0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: $trans-common-bezier-bg-color;
+
+      .ant-tabs-tab-btn {
+        @include typography(label2, var(--text-subtle));
+        @include focus-visible(in);
+        display: flex;
+        gap: var(--spacing-4);
+        align-items: center;
+        padding: 3px var(--spacing-16);
+        transition: $trans-common-bezier-color;
+      }
+
+      .ant-btn:has(.material-icon:only-child) {
+        padding: 0;
+      }
+
+      // 탭 활성화 시 탭 바 하단 라인 (트랜지션 별도 선언)
+      &::before {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        content: '';
+
+        // background-color: var(--border-active);
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+        transition:
+          transform 0.24s ease-out,
+          opacity 0.1s ease-out;
+      }
+    }
+
+    // hover
+    .ant-tabs-tab:hover {
+      .ant-tabs-tab-btn {
+        color: var(--button-primary-pressed);
+      }
+    }
+
+    // press
+    .ant-tabs-tab:active {
+      .ant-tabs-tab-btn {
+        color: var(--button-primary-pressed);
+      }
+    }
+
+    // active
+    .ant-tabs-tab.ant-tabs-tab-active {
+      .ant-tabs-tab-btn {
+        @include typography(label2, var(--text-brand));
+      }
+
+      &::before {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    // disabled
+    .ant-tabs-tab-disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+
+      .ant-tabs-tab-btn {
+        @include typography(label2, var(--text-disabled));
+      }
+    }
+  }
+}

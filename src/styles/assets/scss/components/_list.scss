@@ -1,0 +1,308 @@
+@use '../abstracts' as *;
+
+#archive {
+  .ant-list {
+    position: relative;
+
+    &.horizontal-list {
+      .ant-list-items {
+        flex-flow: row wrap;
+
+        .ant-list-item {
+          width: $listWidthSm;
+        }
+      }
+    }
+
+    &.auto {
+      width: auto;
+    }
+
+    .ant-list-items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+
+      &:has(.horizontal-item) {
+        gap: var(--spacing-12);
+      }
+    }
+
+    .ant-list-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      align-items: stretch;
+      justify-content: stretch;
+      padding: 0;
+      border: 0;
+
+      &.horizontal-item {
+        flex-direction: row;
+        gap: var(--spacing-8);
+
+        .key-area {
+          flex: 0 0 auto;
+          align-self: flex-start;
+          min-width: 120px;
+        }
+      }
+
+      .key-area {
+        @include typography(label2, var(--text-subtler));
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-4);
+        align-items: center;
+
+        // a-list copy btn
+        // .ant-btn:has(> .material-icon:only-child),
+        // .ant-btn:has(> .custom-icon:only-child) {
+        //   min-width: 0;
+        //   padding: var(--spacing-0);
+
+        //   // copy 버튼 앞에 다른 요소가 있을 때 구분선 추가
+        //   &:not(:first-child)::before {
+        //     display: inline-block;
+        //     width: 1px;
+        //     height: 12px;
+        //     margin-right: var(--spacing-4);
+        //     margin-left: var(--spacing-4);
+        //     content: '';
+        //     background-color: var(--border-default-01);
+        //   }
+        // }
+
+        // 복사 버튼
+        .btn-copy {
+          position: relative;
+          margin-left: var(--spacing-12);
+
+          &::before {
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            display: block;
+            width: 1px;
+            height: 16px;
+            margin-top: -8px;
+            content: '';
+            background-color: var(--border-default-01);
+          }
+        }
+
+        &:has(.btn-copy:only-child) {
+          .btn-copy {
+            margin-left: 0;
+
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .value-area {
+        @include typography(body2, var(--text-default));
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-4);
+        align-items: center;
+
+        // overflow: hidden;
+
+        & > * {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--spacing-4);
+          align-items: center;
+        }
+      }
+
+      .count-text {
+        @include typography(label5, var(--text-brand));
+      }
+
+      .text {
+        @include typography(body2, var(--text-default));
+        width: 100%;
+      }
+
+      .kv {
+        @include typography(body2, var(--text-default));
+        width: 100%;
+
+        .ant-divider.ant-divider-vertical {
+          display: block;
+          height: 12px;
+        }
+      }
+
+      .text-accent {
+        @include typography(body1, var(--text-default));
+      }
+
+      .copy {
+        @include typography(body2, var(--text-default));
+      }
+
+      .tag-wrap {
+        max-width: 100%;
+
+        .ant-tag {
+          max-width: 100%;
+
+          .tag-wrap-text {
+            @include ellipsis(1);
+          }
+        }
+      }
+
+      .ellipsis-text {
+        width: 100%;
+      }
+    }
+
+    .ant-divider-vertical {
+      height: auto;
+
+      &:last-of-type {
+        display: none;
+      }
+    }
+  }
+
+  // default (native)
+  .default-list {
+    @include typography(body2, var(--text-default));
+    display: block;
+    padding-left: var(--spacing-0);
+    list-style-position: inside;
+
+    &:is(ul) {
+      list-style-type: disc;
+
+      ul {
+        padding-left: var(--spacing-16);
+        margin-top: var(--spacing-4);
+        list-style-type: circle;
+
+        ul {
+          padding-left: var(--spacing-16);
+          margin-top: var(--spacing-4);
+          list-style-type: square;
+        }
+      }
+
+      li {
+        padding-left: var(--spacing-12);
+        text-indent: calc(var(--spacing-12) * -1);
+
+        &::marker {
+          font-size: 8px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &:is(ol) {
+      list-style-type: decimal;
+
+      ol {
+        padding-left: var(--spacing-16);
+        margin-top: var(--spacing-4);
+        list-style-type: lower-alpha;
+
+        ol {
+          padding-left: var(--spacing-16);
+          margin-top: var(--spacing-4);
+          list-style-type: lower-roman;
+        }
+      }
+    }
+
+    li {
+      display: list-item;
+
+      // margin-bottom: var(--spacing-4);
+      // alert > list 타입 추가로 인해 margin-bottom 제거 (25.08.28)
+
+      &::marker {
+        font: inherit;
+        color: inherit;
+      }
+    }
+  }
+
+  .order-list {
+    @include typography(body2, var(--text-default));
+    padding-left: 0;
+    margin-left: 22px;
+
+    /* ant 스타일 덮어쓰기 */
+    list-style-position: outside;
+    list-style-type: decimal;
+    background: none;
+
+    li {
+      display: list-item;
+      padding: 0;
+      margin-top: var(--spacing-4);
+      list-style-type: decimal;
+      background: none;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  // divider list
+  .divider-list {
+    @include ellipsis(1);
+    display: block;
+
+    // flex: 0 0 100%;
+    flex: 0 0 auto;
+    gap: var(--spacing-0);
+    align-items: center;
+    width: 100%;
+
+    &.flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-8) var(--spacing-0);
+
+      li {
+        display: inline-flex;
+      }
+    }
+
+    li {
+      @include typography(body2, var(--text-subtle));
+      display: inline-block;
+      flex: 0 0 auto;
+      align-items: center;
+      margin-right: var(--spacing-8);
+
+      &:not(:first-child) {
+        &::before {
+          display: inline-block;
+          width: 1px;
+          height: 60%;
+          height: 12px;
+          margin-right: var(--spacing-8);
+          content: '';
+          background-color: var(--border-default-01);
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
